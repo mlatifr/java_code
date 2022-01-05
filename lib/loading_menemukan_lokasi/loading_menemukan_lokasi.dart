@@ -55,7 +55,7 @@ class _LoadingMenentukanLokasiState extends State<LoadingMenentukanLokasi> {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => Beranda(),
+                              builder: (context) => const Beranda(),
                             ),
                           );
                           // await Navigator.push(

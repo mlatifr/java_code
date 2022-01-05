@@ -20,92 +20,14 @@ class _BerandaState extends State<Beranda> {
             mainAxisSize: MainAxisSize.max,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Row(
-                mainAxisSize: MainAxisSize.max,
-                children: [
-                  Material(
-                    color: Colors.transparent,
-                    elevation: 3,
-                    shape: const RoundedRectangleBorder(
-                      borderRadius: BorderRadius.only(
-                        bottomLeft: Radius.circular(30),
-                        bottomRight: Radius.circular(30),
-                        topLeft: Radius.circular(0),
-                        topRight: Radius.circular(0),
-                      ),
-                    ),
-                    child: Container(
-                      width: MediaQuery.of(context).size.width,
-                      height: 60,
-                      decoration: const BoxDecoration(
-                        // color: FlutterFlowTheme.tertiaryColor,
-                        borderRadius: BorderRadius.only(
-                          bottomLeft: Radius.circular(30),
-                          bottomRight: Radius.circular(30),
-                          topLeft: Radius.circular(0),
-                          topRight: Radius.circular(0),
-                        ),
-                      ),
-                      child: Padding(
-                        padding: const EdgeInsetsDirectional.fromSTEB(
-                            20, 10, 20, 10),
-                        child: TextFormField(
-                          // controller: searchFieldController,
-                          obscureText: false,
-                          decoration: InputDecoration(
-                            labelText: 'Pencarian',
-                            labelStyle: GoogleFonts.montserrat(
-                              // //fontFamily: 'Montserrat',
-                              color: const Color(0xFFAAAAAA),
-                              fontSize: 18,
-                              fontWeight: FontWeight.normal,
-                            ),
-                            hintText: 'Search by name, location etc...',
-                            hintStyle: GoogleFonts.montserrat(
-                              // //fontFamily: 'Montserrat',
-                              color: const Color(0xFFAAAAAA),
-                              fontSize: 18,
-                              fontWeight: FontWeight.normal,
-                            ),
-                            enabledBorder: OutlineInputBorder(
-                              borderSide: const BorderSide(
-                                color: Color(0xFF009AAD),
-                                width: 2,
-                              ),
-                              borderRadius: BorderRadius.circular(30),
-                            ),
-                            focusedBorder: OutlineInputBorder(
-                              borderSide: const BorderSide(
-                                color: Color(0xFF009AAD),
-                                width: 2,
-                              ),
-                              borderRadius: BorderRadius.circular(30),
-                            ),
-                            prefixIcon: const Icon(
-                              Icons.search_rounded,
-                              color: Color(0xFF009AAD),
-                              size: 26,
-                            ),
-                          ),
-                          style: GoogleFonts.montserrat(
-                            // //fontFamily: 'Montserrat',
-                            color: const Color(0xFFAAAAAA),
-                            fontSize: 18,
-                            fontWeight: FontWeight.normal,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
+              const WidgetPencarian(),
               Padding(
                 padding: const EdgeInsetsDirectional.fromSTEB(25, 12, 20, 0),
                 child: Row(
                   mainAxisSize: MainAxisSize.max,
                   children: [
                     Image.asset(
-                      'assets/images/promo_yg_tersedia.png',
+                      'assets/Beranda/promo_yg_tersedia.png',
                       width: 23,
                       height: 16,
                       fit: BoxFit.cover,
@@ -124,171 +46,9 @@ class _BerandaState extends State<Beranda> {
                   ],
                 ),
               ),
+              const WidgetListPromoYgTersedia(),
               Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(0, 12, 1, 0),
-                child: SingleChildScrollView(
-                  scrollDirection: Axis.horizontal,
-                  child: Row(
-                    mainAxisSize: MainAxisSize.max,
-                    children: [
-                      Padding(
-                        padding:
-                            const EdgeInsetsDirectional.fromSTEB(25, 0, 0, 0),
-                        child: Stack(
-                          children: [
-                            Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
-                                  0, 0, 20, 0),
-                              child: ClipRRect(
-                                borderRadius: BorderRadius.circular(15),
-                                child: Image.asset(
-                                  'assets/images/diskon10%_bg.png',
-                                  width: 282,
-                                  height: 158,
-                                  fit: BoxFit.cover,
-                                ),
-                              ),
-                            ),
-                            Container(
-                              width: 282,
-                              height: 158,
-                              decoration: BoxDecoration(
-                                color: const Color(0xD3009AAD),
-                                borderRadius: BorderRadius.circular(15),
-                              ),
-                              child: Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
-                                    0, 50, 0, 0),
-                                child: Column(
-                                  mainAxisSize: MainAxisSize.max,
-                                  children: [
-                                    Row(
-                                      mainAxisSize: MainAxisSize.max,
-                                      children: [
-                                        Padding(
-                                          padding: const EdgeInsetsDirectional
-                                              .fromSTEB(57, 0, 0, 0),
-                                          child: Text(
-                                            'Diskon',
-                                            textAlign: TextAlign.start,
-                                            style: GoogleFonts.montserrat(
-                                              // //fontFamily: 'Montserrat',
-                                              color: Colors.white,
-                                              fontSize: 20,
-                                              fontWeight: FontWeight.w800,
-                                            ),
-                                          ),
-                                        ),
-                                        Padding(
-                                          padding: const EdgeInsetsDirectional
-                                              .fromSTEB(5, 0, 0, 0),
-                                          child: Text(
-                                            '10 %',
-                                            textAlign: TextAlign.start,
-                                            style: GoogleFonts.montserrat(
-                                              // //fontFamily: 'Montserrat',
-                                              color: Colors.white,
-                                              fontSize: 35,
-                                              fontWeight: FontWeight.w800,
-                                            ),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                    Text(
-                                      'Lorem ipsum dolor sit amet',
-                                      style: GoogleFonts.montserrat(
-                                        // //fontFamily: 'Montserrat',
-                                        color: const Color(0xB4FFFFFF),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      Stack(
-                        children: [
-                          Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
-                                0, 0, 20, 0),
-                            child: ClipRRect(
-                              borderRadius: BorderRadius.circular(15),
-                              child: Image.asset(
-                                'assets/images/diskon10%_bg.png',
-                                width: 282,
-                                height: 158,
-                                fit: BoxFit.cover,
-                              ),
-                            ),
-                          ),
-                          Container(
-                            width: 282,
-                            height: 158,
-                            decoration: BoxDecoration(
-                              color: const Color(0xD3009AAD),
-                              borderRadius: BorderRadius.circular(15),
-                            ),
-                            child: Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
-                                  0, 50, 0, 0),
-                              child: Column(
-                                mainAxisSize: MainAxisSize.max,
-                                children: [
-                                  Row(
-                                    mainAxisSize: MainAxisSize.max,
-                                    children: [
-                                      Padding(
-                                        padding: const EdgeInsetsDirectional
-                                            .fromSTEB(57, 0, 0, 0),
-                                        child: Text(
-                                          'Diskon',
-                                          textAlign: TextAlign.start,
-                                          style: GoogleFonts.montserrat(
-                                            // //fontFamily: 'Montserrat',
-                                            color: Colors.white,
-                                            fontSize: 20,
-                                            fontWeight: FontWeight.w800,
-                                          ),
-                                        ),
-                                      ),
-                                      Padding(
-                                        padding: const EdgeInsetsDirectional
-                                            .fromSTEB(5, 0, 0, 0),
-                                        child: Text(
-                                          '10 %',
-                                          textAlign: TextAlign.start,
-                                          style: GoogleFonts.montserrat(
-                                            // //fontFamily: 'Montserrat',
-                                            color: Colors.white,
-                                            fontSize: 35,
-                                            fontWeight: FontWeight.w800,
-                                          ),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                  Text(
-                                    'Lorem ipsum dolor sit amet',
-                                    style: GoogleFonts.montserrat(
-                                      // //fontFamily: 'Montserrat',
-                                      color: const Color(0xB4FFFFFF),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(20, 12, 1, 0),
+                padding: const EdgeInsetsDirectional.fromSTEB(20, 0, 1, 0),
                 child: SingleChildScrollView(
                   scrollDirection: Axis.horizontal,
                   child: Row(
@@ -440,7 +200,7 @@ class _BerandaState extends State<Beranda> {
                               child: ClipRRect(
                                 borderRadius: BorderRadius.circular(10),
                                 child: Image.asset(
-                                  'assets/images/tambah_makanan.png',
+                                  'assets/Beranda/tambah_makanan.png',
                                   width: 75,
                                   height: 75,
                                   fit: BoxFit.cover,
@@ -586,7 +346,7 @@ class _BerandaState extends State<Beranda> {
                               child: ClipRRect(
                                 borderRadius: BorderRadius.circular(10),
                                 child: Image.asset(
-                                  'assets/images/chicken_slam.png',
+                                  'assets/Beranda/chicken_slam.png',
                                   width: 75,
                                   height: 75,
                                   fit: BoxFit.cover,
@@ -711,7 +471,7 @@ class _BerandaState extends State<Beranda> {
                               child: ClipRRect(
                                 borderRadius: BorderRadius.circular(10),
                                 child: Image.asset(
-                                  'assets/images/nasi_goreng.png',
+                                  'assets/Beranda/nasi_goreng.png',
                                   width: 75,
                                   height: 75,
                                   fit: BoxFit.cover,
@@ -835,7 +595,7 @@ class _BerandaState extends State<Beranda> {
                               child: ClipRRect(
                                 borderRadius: BorderRadius.circular(10),
                                 child: Image.asset(
-                                  'assets/images/es_sogem.png',
+                                  'assets/Beranda/es_sogem.png',
                                   width: 75,
                                   height: 75,
                                   fit: BoxFit.cover,
@@ -912,10 +672,9 @@ class _BerandaState extends State<Beranda> {
                               child: Row(
                                 mainAxisSize: MainAxisSize.max,
                                 children: [
-                                  ElevatedButton(
-                                    onPressed: () {},
-                                    child: const Text('button'),
-                                  ),
+                                  IconButton(
+                                      onPressed: () {},
+                                      icon: const Icon(Icons.remove)),
                                   // FlutterFlowIconButton(
                                   //   borderColor: Colors.transparent,
                                   //   borderRadius: 30,
@@ -938,9 +697,11 @@ class _BerandaState extends State<Beranda> {
                                       fontWeight: FontWeight.w500,
                                     ),
                                   ),
-                                  ElevatedButton(
+                                  IconButton(
                                     onPressed: () {},
-                                    child: const Text('button'),
+                                    icon: const Icon(Icons.add_box),
+                                    color:
+                                        const Color.fromARGB(255, 0, 154, 173),
                                   )
                                   // FlutterFlowIconButton(
                                   //   borderColor: Colors.transparent,
@@ -991,7 +752,7 @@ class _BerandaState extends State<Beranda> {
                               child: ClipRRect(
                                 borderRadius: BorderRadius.circular(10),
                                 child: Image.asset(
-                                  'assets/images/es_sogem.png',
+                                  'assets/Beranda/es_sogem.png',
                                   width: 75,
                                   height: 75,
                                   fit: BoxFit.cover,
@@ -1116,7 +877,7 @@ class _BerandaState extends State<Beranda> {
                               child: ClipRRect(
                                 borderRadius: BorderRadius.circular(10),
                                 child: Image.asset(
-                                  'assets/images/es_sogem.png',
+                                  'assets/Beranda/es_sogem.png',
                                   width: 75,
                                   height: 75,
                                   fit: BoxFit.cover,
@@ -1185,6 +946,187 @@ class _BerandaState extends State<Beranda> {
           ),
         ),
       ),
+    );
+  }
+}
+
+class WidgetListPromoYgTersedia extends StatelessWidget {
+  const WidgetListPromoYgTersedia({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: const EdgeInsets.symmetric(vertical: 25, horizontal: 25),
+      height: 158,
+      child: ListView.builder(
+          // physics: NeverScrollableScrollPhysics(),
+          scrollDirection: Axis.horizontal,
+          shrinkWrap: true,
+          itemCount: 5,
+          itemBuilder: (context, index) {
+            return Stack(
+              children: [
+                Padding(
+                  padding: const EdgeInsetsDirectional.fromSTEB(0, 0, 20, 0),
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(15),
+                    child: Image.asset(
+                      'assets/Beranda/diskon10%_bg.png',
+                      width: 282,
+                      height: 158,
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                ),
+                Container(
+                  width: 282,
+                  height: 158,
+                  decoration: BoxDecoration(
+                    color: const Color(0xD3009AAD),
+                    borderRadius: BorderRadius.circular(15),
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsetsDirectional.fromSTEB(0, 50, 0, 0),
+                    child: Column(
+                      mainAxisSize: MainAxisSize.max,
+                      children: [
+                        Row(
+                          mainAxisSize: MainAxisSize.max,
+                          children: [
+                            Padding(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
+                                  57, 0, 0, 0),
+                              child: Text(
+                                'Diskon',
+                                textAlign: TextAlign.start,
+                                style: GoogleFonts.montserrat(
+                                  // //fontFamily: 'Montserrat',
+                                  color: Colors.white,
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.w800,
+                                ),
+                              ),
+                            ),
+                            Padding(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
+                                  5, 0, 0, 0),
+                              child: Text(
+                                '10 %',
+                                textAlign: TextAlign.start,
+                                style: GoogleFonts.montserrat(
+                                  // //fontFamily: 'Montserrat',
+                                  color: Colors.white,
+                                  fontSize: 35,
+                                  fontWeight: FontWeight.w800,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                        Text(
+                          'Lorem ipsum dolor sit amet',
+                          style: GoogleFonts.montserrat(
+                            // //fontFamily: 'Montserrat',
+                            color: const Color(0xB4FFFFFF),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ],
+            );
+          }),
+    );
+  }
+}
+
+class WidgetPencarian extends StatelessWidget {
+  const WidgetPencarian({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisSize: MainAxisSize.max,
+      children: [
+        Material(
+          color: Colors.transparent,
+          elevation: 3,
+          shape: const RoundedRectangleBorder(
+            borderRadius: BorderRadius.only(
+              bottomLeft: Radius.circular(30),
+              bottomRight: Radius.circular(30),
+              topLeft: Radius.circular(0),
+              topRight: Radius.circular(0),
+            ),
+          ),
+          child: Container(
+            width: MediaQuery.of(context).size.width,
+            height: 60,
+            decoration: const BoxDecoration(
+              // color: FlutterFlowTheme.tertiaryColor,
+              borderRadius: BorderRadius.only(
+                bottomLeft: Radius.circular(30),
+                bottomRight: Radius.circular(30),
+                topLeft: Radius.circular(0),
+                topRight: Radius.circular(0),
+              ),
+            ),
+            child: Padding(
+              padding: const EdgeInsetsDirectional.fromSTEB(20, 10, 20, 10),
+              child: TextFormField(
+                // controller: searchFieldController,
+                obscureText: false,
+                decoration: InputDecoration(
+                  labelText: 'Pencarian',
+                  labelStyle: GoogleFonts.montserrat(
+                    // //fontFamily: 'Montserrat',
+                    color: const Color(0xFFAAAAAA),
+                    fontSize: 18,
+                    fontWeight: FontWeight.normal,
+                  ),
+                  hintText: 'Search by name, location etc...',
+                  hintStyle: GoogleFonts.montserrat(
+                    // //fontFamily: 'Montserrat',
+                    color: const Color(0xFFAAAAAA),
+                    fontSize: 18,
+                    fontWeight: FontWeight.normal,
+                  ),
+                  enabledBorder: OutlineInputBorder(
+                    borderSide: const BorderSide(
+                      color: Color(0xFF009AAD),
+                      width: 2,
+                    ),
+                    borderRadius: BorderRadius.circular(30),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderSide: const BorderSide(
+                      color: Color(0xFF009AAD),
+                      width: 2,
+                    ),
+                    borderRadius: BorderRadius.circular(30),
+                  ),
+                  prefixIcon: const Icon(
+                    Icons.search_rounded,
+                    color: Color(0xFF009AAD),
+                    size: 26,
+                  ),
+                ),
+                style: GoogleFonts.montserrat(
+                  // //fontFamily: 'Montserrat',
+                  color: const Color(0xFFAAAAAA),
+                  fontSize: 18,
+                  fontWeight: FontWeight.normal,
+                ),
+              ),
+            ),
+          ),
+        ),
+      ],
     );
   }
 }

@@ -68,6 +68,13 @@ flutter:
     # loading menentukan lokasi 
     - assets/Loading-MenemukanLokasi/pattern-2.png
     - assets/Loading-MenemukanLokasi/map.png
+    # beranda
+    - assets/Beranda/promo_yg_tersedia.png
+    - assets/Beranda/diskon10%_bg.png
+    - assets/Beranda/tambah_makanan.png
+    - assets/Beranda/chicken_slam.png
+    - assets/Beranda/nasi_goreng.png
+    - assets/Beranda/es_sogem.png
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
 
