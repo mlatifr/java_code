@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import 'loading_menemukan_lokasi/loading_menemukan_lokasi.dart';
+
 void main() {
   runApp(const MyApp());
 }
@@ -99,14 +101,11 @@ class _MyHomePageState extends State<MyHomePage> {
                         controller: textControllerEmail,
                         obscureText: false,
                         decoration: InputDecoration(
-                          // labelText: 'Lorem.ipsum@gmail.com',
                           labelStyle: GoogleFonts.montserrat(
-                            // fontFamily: 'Montserrat',
                             color: const Color(0xFF757575),
                           ),
                           hintText: 'Lorem.ipsum@gmail.com',
                           hintStyle: GoogleFonts.montserrat(
-                            // fontFamily: 'Montserrat',
                             color: const Color(0xFF757575),
                           ),
                           enabledBorder: const UnderlineInputBorder(
@@ -133,7 +132,6 @@ class _MyHomePageState extends State<MyHomePage> {
                           fillColor: Colors.white,
                         ),
                         style: GoogleFonts.montserrat(
-                          // fontFamily: 'Montserrat',
                           color: const Color(0xFF757575),
                         ),
                         textAlign: TextAlign.center,
@@ -144,9 +142,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           const EdgeInsetsDirectional.fromSTEB(16, 40, 0, 0),
                       child: Text(
                         'Kata Sandi',
-                        style: GoogleFonts.montserrat(
-                            // fontFamily: 'Montserrat',
-                            ),
+                        style: GoogleFonts.montserrat(),
                       ),
                     ),
                     Padding(
@@ -158,7 +154,6 @@ class _MyHomePageState extends State<MyHomePage> {
                         decoration: InputDecoration(
                           hintText: '*********',
                           hintStyle: GoogleFonts.montserrat(
-                            // fontFamily: 'Montserrat',
                             color: const Color(0xFF757575),
                           ),
                           enabledBorder: const UnderlineInputBorder(
@@ -197,7 +192,6 @@ class _MyHomePageState extends State<MyHomePage> {
                           ),
                         ),
                         style: GoogleFonts.montserrat(
-                          // fontFamily: 'Montserrat',
                           color: const Color(0xFF757575),
                         ),
                         textAlign: TextAlign.start,
@@ -212,7 +206,15 @@ class _MyHomePageState extends State<MyHomePage> {
                               primary: const Color(0xFF009AAD),
                               shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(20.0))),
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) =>
+                                    const LoadingMenentukanLokasi(),
+                              ),
+                            );
+                          },
                           child: const Text('MASUK')),
                     ),
                     Padding(
@@ -221,10 +223,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       child: Text(
                         'atau',
                         textAlign: TextAlign.center,
-                        style: GoogleFonts.montserrat(
-                            // fontSize: 24,
-                            // color: Colors.blue,
-                            ),
+                        style: GoogleFonts.montserrat(),
                       ),
                     ),
                     Padding(
@@ -305,58 +304,6 @@ class _MyHomePageState extends State<MyHomePage> {
                             ],
                           )),
                     ),
-                    // Padding(
-                    //   padding: EdgeInsetsDirectional.fromSTEB(12, 9, 0, 0),
-                    //   child: FFButtonWidget(
-                    //     onPressed: () {
-                    //       print('Button pressed ...');
-                    //     },
-                    //     text: 'Masuk Menggunakan Google',
-                    //     icon: FaIcon(
-                    //       FontAwesomeIcons.google,
-                    //     ),
-                    //     options: FFButtonOptions(
-                    //       width: 300,
-                    //       height: 40,
-                    //       color: FlutterFlowTheme.tertiaryColor,
-                    //       textStyle: FlutterFlowTheme.subtitle2.override(
-                    //         fontFamily: 'Montserrat',
-                    //         color: Colors.black,
-                    //       ),
-                    //       borderSide: BorderSide(
-                    //         color: Colors.black,
-                    //         width: 1,
-                    //       ),
-                    //       borderRadius: 20,
-                    //     ),
-                    //   ),
-                    // ),
-                    // Padding(
-                    //   padding: EdgeInsetsDirectional.fromSTEB(12, 17, 0, 0),
-                    //   child: FFButtonWidget(
-                    //     onPressed: () {
-                    //       print('Button pressed ...');
-                    //     },
-                    //     text: 'Masuk Menggunakan Apple',
-                    //     icon: FaIcon(
-                    //       FontAwesomeIcons.apple,
-                    //     ),
-                    //     options: FFButtonOptions(
-                    //       width: 300,
-                    //       height: 40,
-                    //       color: Colors.black,
-                    //       textStyle: FlutterFlowTheme.subtitle2.override(
-                    //         fontFamily: 'Montserrat',
-                    //         color: Colors.white,
-                    //       ),
-                    //       borderSide: BorderSide(
-                    //         color: Colors.transparent,
-                    //         width: 1,
-                    //       ),
-                    //       borderRadius: 20,
-                    //     ),
-                    //   ),
-                    // ),
                   ],
                 ),
               ],
