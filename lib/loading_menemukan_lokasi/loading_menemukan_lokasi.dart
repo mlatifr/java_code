@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:java_code/beranda/beranda.dart';
 
 class LoadingMenentukanLokasi extends StatefulWidget {
   const LoadingMenentukanLokasi({Key? key}) : super(key: key);
@@ -17,7 +18,7 @@ class _LoadingMenentukanLokasiState extends State<LoadingMenentukanLokasi> {
       backgroundColor: Colors.white,
       body: SafeArea(
         child: Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(35, 91, 0, 0),
+            padding: const EdgeInsetsDirectional.fromSTEB(35, 91, 0, 0),
             child: Container(
               width: 359,
               height: 799,
@@ -33,29 +34,30 @@ class _LoadingMenentukanLokasiState extends State<LoadingMenentukanLokasi> {
                 mainAxisSize: MainAxisSize.max,
                 children: [
                   Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(61, 117, 61, 0),
+                    padding:
+                        const EdgeInsetsDirectional.fromSTEB(61, 117, 61, 0),
                     child: Text(
                       'Mencari Lokasimu ...',
                       style: GoogleFonts.montserrat(
                         // fontFamily: 'Montserrat',
-                        color: Color(0x801E1E1E),
+                        color: const Color(0x801E1E1E),
                         fontSize: 22,
                       ),
                     ),
                   ),
                   Align(
-                    alignment: AlignmentDirectional(0, -0.24),
+                    alignment: const AlignmentDirectional(0, -0.24),
                     child: Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(84, 49, 85, 0),
+                      padding:
+                          const EdgeInsetsDirectional.fromSTEB(84, 49, 85, 0),
                       child: InkWell(
                         onTap: () async {
-                          // await Navigator.push(
-                          //   context,
-                          //   MaterialPageRoute(
-                          //     builder: (context) =>
-                          //         NavBarPage(initialPage: 'Beranda'),
-                          //   ),
-                          // );
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => Beranda(),
+                            ),
+                          );
                           // await Navigator.push(
                           //   context,
                           //   MaterialPageRoute(
@@ -74,13 +76,14 @@ class _LoadingMenentukanLokasiState extends State<LoadingMenentukanLokasi> {
                     ),
                   ),
                   Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(57, 49, 57, 0),
+                    padding:
+                        const EdgeInsetsDirectional.fromSTEB(57, 49, 57, 0),
                     child: Text(
                       'Perumahan\nGriyashanta Permata\nN-524, Mojolangu, \nKec. Lowokwaru, \nKota Malang',
                       textAlign: TextAlign.center,
                       style: GoogleFonts.montserrat(
                         // fontFamily: 'Montserrat',
-                        color: Color(0xFF1E1E1E),
+                        color: const Color(0xFF1E1E1E),
                         fontSize: 22,
                       ),
                     ),
