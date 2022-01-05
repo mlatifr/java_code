@@ -42,10 +42,10 @@ class _MyHomePageState extends State<MyHomePage> {
       backgroundColor: Colors.white,
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsetsDirectional.fromSTEB(30, 38, 30, 0),
+          padding: const EdgeInsetsDirectional.fromSTEB(20, 20, 20, 0),
           child: Container(
-            width: 367,
-            height: 825,
+            width: MediaQuery.of(context).size.width,
+            height: MediaQuery.of(context).size.height,
             decoration: BoxDecoration(
               color: Colors.white,
               image: DecorationImage(
@@ -69,7 +69,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   ),
                 ),
                 const Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(16, 121, 0, 0),
+                  padding: EdgeInsetsDirectional.fromSTEB(16, 80, 0, 0),
                   child: Text(
                     'Masuk Untuk Melanjutkan!',
                     textAlign: TextAlign.start,
@@ -86,7 +86,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
                     const Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(16, 40, 0, 0),
+                      padding: EdgeInsetsDirectional.fromSTEB(16, 25, 0, 0),
                       child: Text(
                         'Alamat Email',
                         style: TextStyle(
@@ -139,7 +139,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     ),
                     Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(16, 40, 0, 0),
+                          const EdgeInsetsDirectional.fromSTEB(16, 25, 0, 0),
                       child: Text(
                         'Kata Sandi',
                         style: GoogleFonts.montserrat(),
@@ -219,7 +219,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     ),
                     Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(0, 60, 0, 0),
+                          const EdgeInsetsDirectional.fromSTEB(0, 35, 0, 0),
                       child: Text(
                         'atau',
                         textAlign: TextAlign.center,
@@ -228,7 +228,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     ),
                     Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(12, 40, 0, 0),
+                          const EdgeInsetsDirectional.fromSTEB(12, 5, 0, 0),
                       child: ElevatedButton(
                           style: ElevatedButton.styleFrom(
                               fixedSize: const Size(336, 44),
@@ -267,7 +267,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     ),
                     Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(12, 40, 0, 0),
+                          const EdgeInsetsDirectional.fromSTEB(12, 5, 0, 0),
                       child: ElevatedButton(
                           style: ElevatedButton.styleFrom(
                               fixedSize: const Size(336, 44),
