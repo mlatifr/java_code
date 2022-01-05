@@ -75,6 +75,8 @@ flutter:
     - assets/Beranda/chicken_slam.png
     - assets/Beranda/nasi_goreng.png
     - assets/Beranda/es_sogem.png
+    - assets/Beranda/pesanan_icon.png
+    - assets/Beranda/profil_icon.png
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
 

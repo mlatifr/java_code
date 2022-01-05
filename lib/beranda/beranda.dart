@@ -25,15 +25,15 @@ class _BerandaState extends State<Beranda> {
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
-            label: 'Home',
+            label: 'Beranda',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.business),
-            label: 'Business',
+            icon: ImageIcon(AssetImage('assets/Beranda/pesanan_icon.png')),
+            label: 'Pesanan',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.school),
-            label: 'School',
+            icon: ImageIcon(AssetImage('assets/Beranda/profil_icon.png')),
+            label: 'Profil',
           ),
         ],
         currentIndex: _selectedIndex,
