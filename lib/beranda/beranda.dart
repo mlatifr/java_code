@@ -73,100 +73,7 @@ class _BerandaState extends State<Beranda> {
                 ),
               ),
               const WidgetListPromoYgTersedia(),
-              Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(20, 0, 1, 0),
-                child: SingleChildScrollView(
-                  scrollDirection: Axis.horizontal,
-                  child: Row(
-                    mainAxisSize: MainAxisSize.max,
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: const [
-                      // Padding(
-                      //   padding: EdgeInsetsDirectional.fromSTEB(0, 10, 13, 0),
-                      //   child: FFButtonWidget(
-                      //     onPressed: () {
-                      //       print('Semua_Menu pressed ...');
-                      //     },
-                      //     text: 'Semua Menu',
-                      //     icon: Icon(
-                      //       Icons.menu,
-                      //       size: 15,
-                      //     ),
-                      //     options: FFButtonOptions(
-                      //       width: 180,
-                      //       height: 40,
-                      //       color: Color(0xFF2E2E2E),
-                      //       textStyle: FlutterFlowTheme.subtitle2.override(
-                      //         //fontFamily: 'Montserrat',
-                      //         color: Colors.white,
-                      //         fontWeight: FontWeight.w600,
-                      //       ),
-                      //       borderSide: BorderSide(
-                      //         color: Colors.transparent,
-                      //         width: 1,
-                      //       ),
-                      //       borderRadius: 50,
-                      //     ),
-                      //   ),
-                      // ),
-                      // Padding(
-                      //   padding: EdgeInsetsDirectional.fromSTEB(0, 10, 13, 0),
-                      //   child: FFButtonWidget(
-                      //     onPressed: () {
-                      //       print('Semua_Menu pressed ...');
-                      //     },
-                      //     text: 'Makanan',
-                      //     icon: FaIcon(
-                      //       FontAwesomeIcons.glassWhiskey,
-                      //     ),
-                      //     options: FFButtonOptions(
-                      //       width: 180,
-                      //       height: 40,
-                      //       color: Color(0xFF009AAD),
-                      //       textStyle: FlutterFlowTheme.subtitle2.override(
-                      //         //fontFamily: 'Montserrat',
-                      //         color: Colors.white,
-                      //         fontWeight: FontWeight.w600,
-                      //       ),
-                      //       borderSide: BorderSide(
-                      //         color: Colors.transparent,
-                      //         width: 1,
-                      //       ),
-                      //       borderRadius: 50,
-                      //     ),
-                      //   ),
-                      // ),
-                      // Padding(
-                      //   padding: EdgeInsetsDirectional.fromSTEB(0, 10, 13, 0),
-                      //   child: FFButtonWidget(
-                      //     onPressed: () {
-                      //       print('Semua_Menu pressed ...');
-                      //     },
-                      //     text: 'Minuman',
-                      //     icon: FaIcon(
-                      //       FontAwesomeIcons.coffee,
-                      //     ),
-                      //     options: FFButtonOptions(
-                      //       width: 180,
-                      //       height: 40,
-                      //       color: Color(0xFF009AAD),
-                      //       textStyle: FlutterFlowTheme.subtitle2.override(
-                      //         //fontFamily: 'Montserrat',
-                      //         color: Colors.white,
-                      //         fontWeight: FontWeight.w600,
-                      //       ),
-                      //       borderSide: BorderSide(
-                      //         color: Colors.transparent,
-                      //         width: 1,
-                      //       ),
-                      //       borderRadius: 50,
-                      //     ),
-                      //   ),
-                      // ),
-                    ],
-                  ),
-                ),
-              ),
+              const SemuaMenuBawahPromo(),
               Padding(
                 padding: const EdgeInsetsDirectional.fromSTEB(25, 22, 0, 17),
                 child: Row(
@@ -976,6 +883,142 @@ class _BerandaState extends State<Beranda> {
   }
 }
 
+class SemuaMenuBawahPromo extends StatelessWidget {
+  const SemuaMenuBawahPromo({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsetsDirectional.fromSTEB(20, 0, 1, 0),
+      child: SingleChildScrollView(
+        scrollDirection: Axis.horizontal,
+        child: Row(
+          mainAxisSize: MainAxisSize.max,
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            Padding(
+              padding: const EdgeInsetsDirectional.fromSTEB(0, 10, 13, 0),
+              child: Padding(
+                padding: const EdgeInsetsDirectional.fromSTEB(12, 5, 0, 0),
+                child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                        fixedSize: const Size(189, 35),
+                        primary: const Color.fromARGB(255, 46, 46, 46),
+                        shadowColor: const Color.fromARGB(255, 46, 46, 46),
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(20.0))),
+                    onPressed: () {},
+                    child: Row(
+                      children: [
+                        const SizedBox(
+                          width: 10,
+                        ),
+                        Image.asset(
+                          'assets/Beranda/semua_menu_icon.png',
+                          width: 20,
+                          height: 20,
+                          fit: BoxFit.cover,
+                        ),
+                        const SizedBox(
+                          width: 10,
+                        ),
+                        Text(
+                          'Semua Menu',
+                          style: GoogleFonts.montserrat(
+                            color: Colors.white,
+                            // fontSize: 12,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                      ],
+                    )),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsetsDirectional.fromSTEB(0, 10, 13, 0),
+              child: Padding(
+                padding: const EdgeInsetsDirectional.fromSTEB(12, 5, 0, 0),
+                child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                        fixedSize: const Size(146, 35),
+                        primary: const Color.fromARGB(255, 0, 154, 173),
+                        shadowColor: const Color.fromARGB(255, 46, 46, 46),
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(20.0))),
+                    onPressed: () {},
+                    child: Row(
+                      children: [
+                        const SizedBox(
+                          width: 8,
+                        ),
+                        Image.asset(
+                          'assets/Beranda/makanan_icon.png',
+                          width: 20,
+                          height: 20,
+                          fit: BoxFit.cover,
+                        ),
+                        const SizedBox(
+                          width: 10,
+                        ),
+                        Text(
+                          'Makanan',
+                          style: GoogleFonts.montserrat(
+                            color: Colors.white,
+                            // fontSize: 12,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                      ],
+                    )),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsetsDirectional.fromSTEB(0, 10, 13, 0),
+              child: Padding(
+                padding: const EdgeInsetsDirectional.fromSTEB(12, 5, 0, 0),
+                child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                        fixedSize: const Size(146, 35),
+                        primary: const Color.fromARGB(255, 0, 154, 173),
+                        shadowColor: const Color.fromARGB(255, 46, 46, 46),
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(20.0))),
+                    onPressed: () {},
+                    child: Row(
+                      children: [
+                        const SizedBox(
+                          width: 8,
+                        ),
+                        Image.asset(
+                          'assets/Beranda/minuman_icon.png',
+                          width: 20,
+                          height: 20,
+                          fit: BoxFit.cover,
+                        ),
+                        const SizedBox(
+                          width: 10,
+                        ),
+                        Text(
+                          'Minuman',
+                          style: GoogleFonts.montserrat(
+                            color: Colors.white,
+                            // fontSize: 12,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                      ],
+                    )),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
 class WidgetListPromoYgTersedia extends StatelessWidget {
   const WidgetListPromoYgTersedia({
     Key? key,
@@ -1080,7 +1123,7 @@ class WidgetPencarian extends StatelessWidget {
       mainAxisSize: MainAxisSize.max,
       children: [
         Material(
-          color: Colors.transparent,
+          // color: Colors.transparent,
           elevation: 3,
           shape: const RoundedRectangleBorder(
             borderRadius: BorderRadius.only(
@@ -1115,7 +1158,7 @@ class WidgetPencarian extends StatelessWidget {
                     fontSize: 18,
                     fontWeight: FontWeight.normal,
                   ),
-                  hintText: 'Search by name, location etc...',
+                  // hintText: 'Search by name, location etc...',
                   hintStyle: GoogleFonts.montserrat(
                     // //fontFamily: 'Montserrat',
                     color: const Color(0xFFAAAAAA),
