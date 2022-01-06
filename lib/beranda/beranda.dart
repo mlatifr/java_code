@@ -22,6 +22,9 @@ class _BerandaState extends State<Beranda> {
       // key: scaffoldKey,
       // backgroundColor: Colors,
       bottomNavigationBar: BottomNavigationBar(
+        backgroundColor: const Color.fromARGB(255, 46, 46, 46),
+        unselectedItemColor: const Color.fromARGB(255, 194, 194, 194),
+        selectedItemColor: const Color.fromARGB(255, 255, 255, 255),
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
@@ -37,7 +40,6 @@ class _BerandaState extends State<Beranda> {
           ),
         ],
         currentIndex: _selectedIndex,
-        selectedItemColor: Colors.amber[800],
         onTap: _onItemTapped,
       ),
       body: SafeArea(
@@ -127,7 +129,7 @@ class _BerandaState extends State<Beranda> {
                   ],
                 ),
               ),
-              WidgetListItemMinuman(),
+              const WidgetListItemMinuman(),
             ],
           ),
         ),
