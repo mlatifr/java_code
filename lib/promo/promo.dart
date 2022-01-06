@@ -48,35 +48,10 @@ class _PromoState extends State<Promo> {
           child: Column(
             mainAxisSize: MainAxisSize.max,
             crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const WidgetPencarian(),
-              Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(25, 12, 20, 0),
-                child: Row(
-                  mainAxisSize: MainAxisSize.max,
-                  children: [
-                    Image.asset(
-                      'assets/Beranda/promo_yg_tersedia.png',
-                      width: 23,
-                      height: 16,
-                      fit: BoxFit.cover,
-                    ),
-                    Padding(
-                      padding: const EdgeInsetsDirectional.fromSTEB(9, 0, 0, 0),
-                      child: Text(
-                        'Promo yang Tersedia',
-                        style: GoogleFonts.montserrat(
-                          // //fontFamily: 'Montserrat',
-                          fontSize: 20,
-                          fontWeight: FontWeight.w600,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              const WidgetListPromoYgTersedia(),
-              const WidgetListItemMinuman(),
+            children: const [
+              WidgetNavigatorBack(),
+              WidgetListPromoYgTersedia(),
+              WidgetListItemMinuman(),
             ],
           ),
         ),
@@ -216,104 +191,89 @@ class WidgetListPromoYgTersedia extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.symmetric(vertical: 25, horizontal: 25),
-      height: 158,
-      child: ListView.builder(
-          // physics: NeverScrollableScrollPhysics(),
-          scrollDirection: Axis.horizontal,
-          shrinkWrap: true,
-          itemCount: 5,
-          itemBuilder: (context, index) {
-            return Stack(
-              children: [
-                Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(0, 0, 20, 0),
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(15),
-                    child: Image.asset(
-                      'assets/Beranda/diskon10%_bg.png',
-                      width: 282,
-                      height: 158,
-                      fit: BoxFit.cover,
-                    ),
-                  ),
+        margin: const EdgeInsets.symmetric(vertical: 25, horizontal: 25),
+        // height: 180,
+        child: Stack(
+          children: [
+            Padding(
+              padding: const EdgeInsetsDirectional.fromSTEB(0, 0, 20, 0),
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(15),
+                child: Image.asset(
+                  'assets/Beranda/diskon10%_bg.png',
+                  width: 378,
+                  height: 150,
+                  fit: BoxFit.cover,
                 ),
-                GestureDetector(
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const Promo(),
-                      ),
-                    );
-                  },
-                  child: Container(
-                    width: 282,
-                    height: 158,
-                    decoration: BoxDecoration(
-                      color: const Color(0xD3009AAD),
-                      borderRadius: BorderRadius.circular(15),
-                    ),
-                    child: Padding(
-                      padding:
-                          const EdgeInsetsDirectional.fromSTEB(0, 50, 0, 0),
-                      child: Column(
-                        mainAxisSize: MainAxisSize.max,
-                        children: [
-                          Row(
-                            mainAxisSize: MainAxisSize.max,
-                            children: [
-                              Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
-                                    57, 0, 0, 0),
-                                child: Text(
-                                  'Diskon',
-                                  textAlign: TextAlign.start,
-                                  style: GoogleFonts.montserrat(
-                                    // //fontFamily: 'Montserrat',
-                                    color: Colors.white,
-                                    fontSize: 20,
-                                    fontWeight: FontWeight.w800,
-                                  ),
-                                ),
-                              ),
-                              Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
-                                    5, 0, 0, 0),
-                                child: Text(
-                                  '10 %',
-                                  textAlign: TextAlign.start,
-                                  style: GoogleFonts.montserrat(
-                                    // //fontFamily: 'Montserrat',
-                                    color: Colors.white,
-                                    fontSize: 35,
-                                    fontWeight: FontWeight.w800,
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                          Text(
-                            'Lorem ipsum dolor sit amet',
+              ),
+            ),
+            Container(
+              width: 378,
+              height: 150,
+              decoration: BoxDecoration(
+                color: const Color(0xD3009AAD),
+                borderRadius: BorderRadius.circular(15),
+              ),
+              child: Padding(
+                padding: const EdgeInsetsDirectional.fromSTEB(0, 50, 0, 0),
+                child: Column(
+                  mainAxisSize: MainAxisSize.max,
+                  children: [
+                    Row(
+                      mainAxisSize: MainAxisSize.max,
+                      children: [
+                        Padding(
+                          padding:
+                              const EdgeInsetsDirectional.fromSTEB(75, 0, 0, 0),
+                          child: Text(
+                            'Diskon',
+                            textAlign: TextAlign.start,
                             style: GoogleFonts.montserrat(
                               // //fontFamily: 'Montserrat',
-                              color: const Color(0xB4FFFFFF),
+                              color: Colors.white,
+                              fontSize: 20,
+                              fontWeight: FontWeight.w800,
                             ),
                           ),
-                        ],
+                        ),
+                        Padding(
+                          padding:
+                              const EdgeInsetsDirectional.fromSTEB(10, 0, 0, 0),
+                          child: Text(
+                            '10 %',
+                            textAlign: TextAlign.start,
+                            style: GoogleFonts.montserrat(
+                              //color: Colors.white,
+                              fontSize: 35,
+                              fontWeight: FontWeight.w800,
+                              foreground: Paint()
+                                ..style = PaintingStyle.stroke
+                                ..strokeWidth = 2
+                                ..color = Colors.white,
+                              // //fontFamily: 'Montserrat',
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                    Text(
+                      'Lorem ipsum dolor sit amet',
+                      style: GoogleFonts.montserrat(
+                        // //fontFamily: 'Montserrat',
+                        color: const Color(0xB4FFFFFF),
                       ),
                     ),
-                  ),
+                  ],
                 ),
-              ],
-            );
-          }),
-    );
+              ),
+            ),
+          ],
+        ));
   }
 }
 
-class WidgetPencarian extends StatelessWidget {
-  const WidgetPencarian({
+class WidgetNavigatorBack extends StatelessWidget {
+  const WidgetNavigatorBack({
     Key? key,
   }) : super(key: key);
 
