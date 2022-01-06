@@ -71,7 +71,7 @@ flutter:
     # beranda
     - assets/Beranda/promo_yg_tersedia.png
     - assets/Beranda/diskon10%_bg.png
-    - assets/Beranda/tambah_makanan.png
+    - assets/Beranda/chicken_katsu.png
     - assets/Beranda/chicken_slam.png
     - assets/Beranda/nasi_goreng.png
     - assets/Beranda/es_sogem.png
@@ -80,6 +80,9 @@ flutter:
     - assets/Beranda/semua_menu_icon.png
     - assets/Beranda/makanan_icon.png
     - assets/Beranda/minuman_icon.png
+    - assets/Beranda/tambahkan_catatan_icon.png
+    - assets/Beranda/minus_icon.png
+    - assets/Beranda/plus_icon.png
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
 
