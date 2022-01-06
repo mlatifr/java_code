@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:java_code/promo/promo.dart';
 
 class Beranda extends StatefulWidget {
   const Beranda({Key? key}) : super(key: key);
@@ -228,29 +229,27 @@ class WidgetListItemMinuman extends StatelessWidget {
                       ),
                     ),
                   ),
-                  SizedBox(
-                    child: Flexible(
-                      flex: 1,
-                      child: Row(
-                        mainAxisSize: MainAxisSize.max,
-                        children: [
-                          IconButton(
-                              onPressed: () {}, icon: const Icon(Icons.remove)),
-                          Text(
-                            '1',
-                            style: GoogleFonts.montserrat(
-                              //fontFamily: 'Montserrat',
-                              fontSize: 18,
-                              fontWeight: FontWeight.w500,
-                            ),
+                  Flexible(
+                    flex: 1,
+                    child: Row(
+                      mainAxisSize: MainAxisSize.max,
+                      children: [
+                        IconButton(
+                            onPressed: () {}, icon: const Icon(Icons.remove)),
+                        Text(
+                          '1',
+                          style: GoogleFonts.montserrat(
+                            //fontFamily: 'Montserrat',
+                            fontSize: 18,
+                            fontWeight: FontWeight.w500,
                           ),
-                          IconButton(
-                            onPressed: () {},
-                            icon: const Icon(Icons.add_box),
-                            color: const Color.fromARGB(255, 0, 154, 173),
-                          )
-                        ],
-                      ),
+                        ),
+                        IconButton(
+                          onPressed: () {},
+                          icon: const Icon(Icons.add_box),
+                          color: const Color.fromARGB(255, 0, 154, 173),
+                        )
+                      ],
                     ),
                   ),
                 ],
@@ -308,7 +307,8 @@ class WidgetListTambahMakanan extends StatelessWidget {
                       ),
                     ),
                   ),
-                  Expanded(
+                  Flexible(
+                    flex: 2,
                     child: Padding(
                       padding:
                           const EdgeInsetsDirectional.fromSTEB(10, 0, 0, 0),
@@ -353,29 +353,30 @@ class WidgetListTambahMakanan extends StatelessWidget {
                       ),
                     ),
                   ),
-                  SizedBox(
-                    child: Flexible(
-                      flex: 1,
-                      child: Row(
-                        mainAxisSize: MainAxisSize.max,
-                        children: [
-                          IconButton(
+                  Flexible(
+                    flex: 1,
+                    child: Row(
+                      mainAxisSize: MainAxisSize.max,
+                      children: [
+                        Flexible(
+                          flex: 1,
+                          child: IconButton(
                               onPressed: () {}, icon: const Icon(Icons.remove)),
-                          Text(
-                            '1',
-                            style: GoogleFonts.montserrat(
-                              //fontFamily: 'Montserrat',
-                              fontSize: 18,
-                              fontWeight: FontWeight.w500,
-                            ),
+                        ),
+                        Text(
+                          '1',
+                          style: GoogleFonts.montserrat(
+                            //fontFamily: 'Montserrat',
+                            fontSize: 18,
+                            fontWeight: FontWeight.w500,
                           ),
-                          IconButton(
-                            onPressed: () {},
-                            icon: const Icon(Icons.add_box),
-                            color: const Color.fromARGB(255, 0, 154, 173),
-                          )
-                        ],
-                      ),
+                        ),
+                        IconButton(
+                          onPressed: () {},
+                          icon: const Icon(Icons.add_box),
+                          color: const Color.fromARGB(255, 0, 154, 173),
+                        )
+                      ],
                     ),
                   ),
                 ],
@@ -554,59 +555,70 @@ class WidgetListPromoYgTersedia extends StatelessWidget {
                     ),
                   ),
                 ),
-                Container(
-                  width: 282,
-                  height: 158,
-                  decoration: BoxDecoration(
-                    color: const Color(0xD3009AAD),
-                    borderRadius: BorderRadius.circular(15),
-                  ),
-                  child: Padding(
-                    padding: const EdgeInsetsDirectional.fromSTEB(0, 50, 0, 0),
-                    child: Column(
-                      mainAxisSize: MainAxisSize.max,
-                      children: [
-                        Row(
-                          mainAxisSize: MainAxisSize.max,
-                          children: [
-                            Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
-                                  57, 0, 0, 0),
-                              child: Text(
-                                'Diskon',
-                                textAlign: TextAlign.start,
-                                style: GoogleFonts.montserrat(
-                                  // //fontFamily: 'Montserrat',
-                                  color: Colors.white,
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.w800,
+                GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const Promo(),
+                      ),
+                    );
+                  },
+                  child: Container(
+                    width: 282,
+                    height: 158,
+                    decoration: BoxDecoration(
+                      color: const Color(0xD3009AAD),
+                      borderRadius: BorderRadius.circular(15),
+                    ),
+                    child: Padding(
+                      padding:
+                          const EdgeInsetsDirectional.fromSTEB(0, 50, 0, 0),
+                      child: Column(
+                        mainAxisSize: MainAxisSize.max,
+                        children: [
+                          Row(
+                            mainAxisSize: MainAxisSize.max,
+                            children: [
+                              Padding(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                    57, 0, 0, 0),
+                                child: Text(
+                                  'Diskon',
+                                  textAlign: TextAlign.start,
+                                  style: GoogleFonts.montserrat(
+                                    // //fontFamily: 'Montserrat',
+                                    color: Colors.white,
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.w800,
+                                  ),
                                 ),
                               ),
-                            ),
-                            Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
-                                  5, 0, 0, 0),
-                              child: Text(
-                                '10 %',
-                                textAlign: TextAlign.start,
-                                style: GoogleFonts.montserrat(
-                                  // //fontFamily: 'Montserrat',
-                                  color: Colors.white,
-                                  fontSize: 35,
-                                  fontWeight: FontWeight.w800,
+                              Padding(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                    5, 0, 0, 0),
+                                child: Text(
+                                  '10 %',
+                                  textAlign: TextAlign.start,
+                                  style: GoogleFonts.montserrat(
+                                    // //fontFamily: 'Montserrat',
+                                    color: Colors.white,
+                                    fontSize: 35,
+                                    fontWeight: FontWeight.w800,
+                                  ),
                                 ),
                               ),
-                            ),
-                          ],
-                        ),
-                        Text(
-                          'Lorem ipsum dolor sit amet',
-                          style: GoogleFonts.montserrat(
-                            // //fontFamily: 'Montserrat',
-                            color: const Color(0xB4FFFFFF),
+                            ],
                           ),
-                        ),
-                      ],
+                          Text(
+                            'Lorem ipsum dolor sit amet',
+                            style: GoogleFonts.montserrat(
+                              // //fontFamily: 'Montserrat',
+                              color: const Color(0xB4FFFFFF),
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ),
