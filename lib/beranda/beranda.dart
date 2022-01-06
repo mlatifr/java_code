@@ -605,12 +605,9 @@ class WidgetListTambahMakanan extends StatelessWidget {
                       ),
                     ),
                   ),
-                  Container(
-                    width: 100,
-                    height: 100,
-                    decoration: const BoxDecoration(
-                      color: Color(0xFFF6F6F6),
-                    ),
+                  SizedBox(
+                    // width: 100,
+                    // height: 100,
                     child: Flexible(
                       flex: 1,
                       child: Row(
