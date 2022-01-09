@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:java_code/beranda/beranda.dart';
 
 class Promo extends StatefulWidget {
   const Promo({Key? key}) : super(key: key);
@@ -20,38 +19,68 @@ class _PromoState extends State<Promo> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      extendBody: true,
       // key: scaffoldKey,
-      // backgroundColor: Colors,
-      bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: const Color.fromARGB(255, 46, 46, 46),
-        unselectedItemColor: const Color.fromARGB(255, 194, 194, 194),
-        selectedItemColor: const Color.fromARGB(255, 255, 255, 255),
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Beranda',
+      backgroundColor: const Color.fromARGB(255, 229, 229, 229),
+      // backgroundColor: Colors.transparent,
+      bottomNavigationBar: Container(
+        decoration: const BoxDecoration(
+          color: Colors.white,
+          // border: Border.all(color: Color(0xFFF38B6FF), width: 2),
+          //other code
+        ),
+        child: ClipRRect(
+          borderRadius: const BorderRadius.only(
+            topLeft: Radius.circular(30.0),
+            topRight: Radius.circular(30.0),
           ),
-          BottomNavigationBarItem(
-            icon: ImageIcon(AssetImage('assets/Beranda/pesanan_icon.png')),
-            label: 'Pesanan',
+          child: BottomNavigationBar(
+            backgroundColor: const Color.fromARGB(255, 46, 46, 46),
+            unselectedItemColor: const Color.fromARGB(255, 194, 194, 194),
+            selectedItemColor: const Color.fromARGB(255, 255, 255, 255),
+            items: const <BottomNavigationBarItem>[
+              BottomNavigationBarItem(
+                icon: Icon(Icons.home),
+                label: 'Beranda',
+              ),
+              BottomNavigationBarItem(
+                icon: ImageIcon(AssetImage('assets/Beranda/pesanan_icon.png')),
+                label: 'Pesanan',
+              ),
+              BottomNavigationBarItem(
+                icon: ImageIcon(AssetImage('assets/Beranda/profil_icon.png')),
+                label: 'Profil',
+              ),
+            ],
+            currentIndex: _selectedIndex,
+            onTap: _onItemTapped,
           ),
-          BottomNavigationBarItem(
-            icon: ImageIcon(AssetImage('assets/Beranda/profil_icon.png')),
-            label: 'Profil',
-          ),
-        ],
-        currentIndex: _selectedIndex,
-        onTap: _onItemTapped,
+        ),
       ),
       body: SafeArea(
         child: SingleChildScrollView(
           child: Column(
             mainAxisSize: MainAxisSize.max,
             crossAxisAlignment: CrossAxisAlignment.start,
-            children: const [
-              WidgetNavigatorBack(),
-              WidgetListPromoYgTersedia(),
-              WidgetListItemMinuman(),
+            children: [
+              const WidgetNavigatorBack(),
+              const WidgetImagePromo(),
+              Container(
+                height: MediaQuery.of(context).size.height,
+                color: Colors.transparent,
+                child: Container(
+                    // margin: const EdgeInsets.symmetric(
+                    //     vertical: 25, horizontal: 25),
+                    decoration: const BoxDecoration(
+                        color: Color.fromARGB(255, 255, 255, 255),
+                        borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(30.0),
+                          topRight: Radius.circular(30.0),
+                        )),
+                    child: const Center(
+                      child: Text("Hi modal sheet"),
+                    )),
+              ),
             ],
           ),
         ),
@@ -60,131 +89,8 @@ class _PromoState extends State<Promo> {
   }
 }
 
-class WidgetListItemMinuman extends StatelessWidget {
-  const WidgetListItemMinuman({
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsetsDirectional.fromSTEB(25, 0, 25, 0),
-      child: Column(
-        mainAxisSize: MainAxisSize.max,
-        children: [
-          Padding(
-            padding: const EdgeInsetsDirectional.fromSTEB(0, 0, 0, 17),
-            child: Container(
-              width: 378,
-              height: 89,
-              decoration: BoxDecoration(
-                color: const Color(0xFFF6F6F6),
-                boxShadow: const [
-                  BoxShadow(
-                    blurRadius: 8,
-                    color: Color(0x592E2E2E),
-                    offset: Offset(0, 2),
-                    spreadRadius: 1,
-                  )
-                ],
-                borderRadius: BorderRadius.circular(10),
-              ),
-              child: Row(
-                mainAxisSize: MainAxisSize.max,
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  Padding(
-                    padding: const EdgeInsetsDirectional.fromSTEB(7, 7, 7, 7),
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(10),
-                      child: Image.asset(
-                        'assets/Beranda/es_sogem.png',
-                        width: 75,
-                        height: 75,
-                        fit: BoxFit.cover,
-                      ),
-                    ),
-                  ),
-                  Expanded(
-                    child: Padding(
-                      padding:
-                          const EdgeInsetsDirectional.fromSTEB(10, 0, 0, 0),
-                      child: Column(
-                        // mainAxisSize: MainAxisSize.max,
-                        // mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            'Es Sogem',
-                            style: GoogleFonts.montserrat(
-                              //fontFamily: 'Montserrat',
-                              color: const Color(0xFF111417),
-                              fontSize: 20,
-                              fontWeight: FontWeight.w500,
-                            ),
-                          ),
-                          Text(
-                            'Rp 10.000',
-                            style: GoogleFonts.montserrat(
-                              //fontFamily: 'Montserrat',
-                              color: const Color(0xFF009AAD),
-                              fontSize: 18,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                          SizedBox(
-                            height: 38,
-                            child: TextButton.icon(
-                                onPressed: () {},
-                                icon: Image.asset(
-                                    'assets/Beranda/tambahkan_catatan_icon.png'),
-                                label: Text(
-                                  'Tambahkan Catatan',
-                                  style: GoogleFonts.montserrat(
-                                      color: const Color(0xFFAAAAAA),
-                                      fontWeight: FontWeight.w500,
-                                      fontSize: 10),
-                                )),
-                          )
-                        ],
-                      ),
-                    ),
-                  ),
-                  Flexible(
-                    flex: 1,
-                    child: Row(
-                      mainAxisSize: MainAxisSize.max,
-                      children: [
-                        IconButton(
-                            onPressed: () {}, icon: const Icon(Icons.remove)),
-                        Text(
-                          '1',
-                          style: GoogleFonts.montserrat(
-                            //fontFamily: 'Montserrat',
-                            fontSize: 18,
-                            fontWeight: FontWeight.w500,
-                          ),
-                        ),
-                        IconButton(
-                          onPressed: () {},
-                          icon: const Icon(Icons.add_box),
-                          color: const Color.fromARGB(255, 0, 154, 173),
-                        )
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-class WidgetListPromoYgTersedia extends StatelessWidget {
-  const WidgetListPromoYgTersedia({
+class WidgetImagePromo extends StatelessWidget {
+  const WidgetImagePromo({
     Key? key,
   }) : super(key: key);
 
@@ -312,12 +218,13 @@ class WidgetNavigatorBack extends StatelessWidget {
                 children: [
                   IconButton(
                       onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => const Beranda(),
-                          ),
-                        );
+                        Navigator.pop(context);
+                        // Navigator.push(
+                        //   context,
+                        //   MaterialPageRoute(
+                        //     builder: (context) => const Beranda(),
+                        //   ),
+                        // );
                       },
                       icon: const Icon(Icons.arrow_back_ios_rounded)),
                   const SizedBox(
