@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_literals_to_create_immutables
+
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -62,29 +64,152 @@ class _PromoState extends State<Promo> {
           child: Column(
             mainAxisSize: MainAxisSize.max,
             crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const WidgetNavigatorBack(),
-              const WidgetImagePromo(),
-              Container(
-                height: MediaQuery.of(context).size.height,
-                color: Colors.transparent,
-                child: Container(
-                    // margin: const EdgeInsets.symmetric(
-                    //     vertical: 25, horizontal: 25),
-                    decoration: const BoxDecoration(
-                        color: Color.fromARGB(255, 255, 255, 255),
-                        borderRadius: BorderRadius.only(
-                          topLeft: Radius.circular(30.0),
-                          topRight: Radius.circular(30.0),
-                        )),
-                    child: const Center(
-                      child: Text("Hi modal sheet"),
-                    )),
-              ),
+            children: const [
+              WidgetNavigatorBack(),
+              WidgetImagePromo(),
+              WidgetSyaratKetentuan(),
             ],
           ),
         ),
       ),
+    );
+  }
+}
+
+class WidgetSyaratKetentuan extends StatelessWidget {
+  const WidgetSyaratKetentuan({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: MediaQuery.of(context).size.height -
+          (MediaQuery.of(context).size.height * 1 / 2.15),
+      color: Colors.transparent,
+      child: Container(
+          margin: const EdgeInsets.symmetric(vertical: 0, horizontal: 0),
+          decoration: const BoxDecoration(
+              color: Color.fromARGB(255, 255, 255, 255),
+              borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(30.0),
+                topRight: Radius.circular(30.0),
+              )),
+          child: Column(
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(
+                  top: 20,
+                  bottom: 10,
+                ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    Text(
+                      'Nama Promo',
+                      style: GoogleFonts.montserrat(
+                        //color: Colors.white,
+                        fontSize: 20,
+                        fontWeight: FontWeight.w600,
+                        foreground: Paint()
+                          // ..style = PaintingStyle.stroke
+                          // ..strokeWidth = 2
+                          ..color = const Color.fromARGB(255, 46, 46, 46),
+                        // //fontFamily: 'Montserrat',
+                      ),
+                    ),
+                    Text(
+                      'Diskon 10%',
+                      style: GoogleFonts.montserrat(
+                        //color: Colors.white,
+                        fontSize: 21,
+                        fontWeight: FontWeight.w700,
+                        foreground: Paint()
+                          // ..style = PaintingStyle.stroke
+                          // ..strokeWidth = 2
+                          ..color = const Color.fromARGB(255, 0, 154, 173),
+                        // //fontFamily: 'Montserrat',
+                      ),
+                    )
+                  ],
+                ),
+              ),
+              const Divider(),
+              Padding(
+                padding: const EdgeInsets.only(left: 30),
+                child: Row(
+                  children: [
+                    const ImageIcon(
+                      AssetImage('assets/Promo/SyaratKetentuan.png'),
+                      color: Color.fromARGB(255, 0, 154, 173),
+                    ),
+                    const SizedBox(
+                      width: 10,
+                    ),
+                    Text(
+                      'Syarat dan Ketentuan',
+                      style: GoogleFonts.montserrat(
+                        //color: Colors.white,
+                        fontSize: 20,
+                        fontWeight: FontWeight.w600,
+                        foreground: Paint()
+                          // ..style = PaintingStyle.stroke
+                          // ..strokeWidth = 2
+                          ..color = const Color.fromARGB(255, 46, 46, 46),
+                        // //fontFamily: 'Montserrat',
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              Flexible(
+                flex: 1,
+                child: ListView(
+                  shrinkWrap: true,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(
+                        top: 15,
+                        left: 65,
+                        right: 30,
+                      ),
+                      child: Text(
+                        // ignore: prefer_adjacent_string_concatenation
+                        'Lorem ipsum dolor sit amet, consectetur ' +
+                            ' adipisicing elit,' +
+                            ' sed do eiusmod tempor incididunt ut labore et dolore' +
+                            '  magna aliqua. Ut enim ad minim veniam, quis nostrud ' +
+                            ' exercitation ullamco laboris nisi ut aliquip ex ea ' +
+                            ' vommodo consequat.\n\n' +
+                            '   1. Lorem ipsum dolor sit amet, consectetur ' +
+                            '      adipisicing elit,' +
+                            ' sed do eiusmod tempor incididunt ut labore et dolore\n\n' +
+                            '   2. Lorem ipsum dolor sit amet, consectetur ' +
+                            '      adipisicing elit,' +
+                            ' sed do eiusmod tempor incididunt ut labore et dolore\n\n' +
+                            '   3. Lorem ipsum dolor sit amet, consectetur ' +
+                            '      adipisicing elit,' +
+                            ' sed do eiusmod tempor incididunt ut labore et dolore\n\n' +
+                            'Lorem ipsum dolor sit amet, consectetur ' +
+                            ' adipisicing elit,' +
+                            ' sed do eiusmod tempor incididunt ut labore et dolore' +
+                            '  magna aliqua. Ut enim ad minim veniam, quis nostrud ' +
+                            ' exercitation ullamco laboris nisi ut aliquip ex ea ',
+                        textAlign: TextAlign.justify,
+                        style: GoogleFonts.montserrat(
+                          // letterSpacing: 1.5,
+                          // //fontFamily: 'Montserrat',
+                          // color: Colors.white,
+                          fontSize: 12,
+                          // fontWeight: FontWeight.w800,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              )
+            ],
+          )),
     );
   }
 }
