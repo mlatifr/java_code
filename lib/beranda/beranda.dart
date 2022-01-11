@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:java_code/detail_katalog/detail_katalog.dart';
 import 'package:java_code/promo/promo.dart';
 
 class Beranda extends StatefulWidget {
@@ -378,7 +379,14 @@ class WidgetListTambahMakanan extends StatelessWidget {
                           ),
                         ),
                         IconButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => const DetailKatalog(),
+                              ),
+                            );
+                          },
                           icon: const Icon(Icons.add_box),
                           color: const Color.fromARGB(255, 0, 154, 173),
                         )
