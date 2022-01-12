@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_literals_to_create_immutables
+// ignore_for_file: prefer_const_literals_to_create_immutables, non_constant_identifier_names
 
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -256,22 +256,7 @@ class WidgetSyaratKetentuan extends StatelessWidget {
                         ),
                         IconButton(
                             onPressed: () {
-                              showModalBottomSheet(
-                                  shape: const RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.vertical(
-                                        top: Radius.circular(25.0)),
-                                  ),
-                                  context: context,
-                                  builder: (context) {
-                                    return Container(
-                                      margin: const EdgeInsets.symmetric(
-                                          vertical: 0, horizontal: 0),
-                                      height:
-                                          MediaQuery.of(context).size.height *
-                                              1 /
-                                              5,
-                                    );
-                                  });
+                              ModalBottomLevel(context);
                             },
                             icon: const Icon(Icons.chevron_right)),
                       ],
@@ -330,22 +315,7 @@ class WidgetSyaratKetentuan extends StatelessWidget {
                         ),
                         IconButton(
                             onPressed: () {
-                              showModalBottomSheet(
-                                  shape: const RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.vertical(
-                                        top: Radius.circular(25.0)),
-                                  ),
-                                  context: context,
-                                  builder: (context) {
-                                    return Container(
-                                      margin: const EdgeInsets.symmetric(
-                                          vertical: 0, horizontal: 0),
-                                      height:
-                                          MediaQuery.of(context).size.height *
-                                              1 /
-                                              5,
-                                    );
-                                  });
+                              ModalBottomToping(context);
                             },
                             icon: const Icon(Icons.chevron_right)),
                       ],
@@ -401,22 +371,7 @@ class WidgetSyaratKetentuan extends StatelessWidget {
                         ),
                         IconButton(
                             onPressed: () {
-                              showModalBottomSheet(
-                                  shape: const RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.vertical(
-                                        top: Radius.circular(25.0)),
-                                  ),
-                                  context: context,
-                                  builder: (context) {
-                                    return Container(
-                                      margin: const EdgeInsets.symmetric(
-                                          vertical: 0, horizontal: 0),
-                                      height:
-                                          MediaQuery.of(context).size.height *
-                                              1 /
-                                              5,
-                                    );
-                                  });
+                              ModalBottomBuatCatatan(context);
                             },
                             icon: const Icon(Icons.chevron_right)),
                       ],
@@ -428,6 +383,408 @@ class WidgetSyaratKetentuan extends StatelessWidget {
             ],
           )),
     );
+  }
+
+  Future<dynamic> ModalBottomLevel(BuildContext context) {
+    return showModalBottomSheet(
+        shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.vertical(top: Radius.circular(25.0)),
+        ),
+        context: context,
+        builder: (context) {
+          return Container(
+            margin: const EdgeInsets.symmetric(vertical: 0, horizontal: 0),
+            height: MediaQuery.of(context).size.height * 1 / 5,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(left: 100, right: 100),
+                  child: SizedBox(
+                    height: 5.0,
+                    child: Container(
+                        decoration: BoxDecoration(
+                          color: const Color.fromARGB(196, 196, 196, 196),
+                          borderRadius: BorderRadius.circular(10.0),
+                        ),
+                        child: const Center(
+                          child: Text(""),
+                        )),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(right: 270.0),
+                  child: Text(
+                    'Pilih Level',
+                    style: GoogleFonts.montserrat(
+                      //color: Colors.white,
+                      fontSize: 17,
+                      fontWeight: FontWeight.w700,
+                      foreground: Paint()
+                        // ..style = PaintingStyle.stroke
+                        // ..strokeWidth = 2
+                        ..color = const Color.fromARGB(255, 46, 46, 46),
+                      // //fontFamily: 'Montserrat',
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(left: 18.0, right: 100),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      ElevatedButton(
+                          style: ButtonStyle(
+                              backgroundColor: MaterialStateProperty.all<Color>(
+                                  const Color.fromARGB(255, 0, 154, 173)),
+                              shape: MaterialStateProperty.all<
+                                      RoundedRectangleBorder>(
+                                  RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(18.0),
+                              ))),
+                          onPressed: () {},
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            children: [
+                              Text(
+                                '1',
+                                style: GoogleFonts.montserrat(
+                                  //color: Colors.white,
+                                  fontSize: 17,
+                                  fontWeight: FontWeight.w400,
+                                  foreground: Paint()
+                                    // ..style = PaintingStyle.stroke
+                                    // ..strokeWidth = 2
+                                    ..color = Colors.white,
+                                  // //fontFamily: 'Montserrat',
+                                ),
+                              ),
+                              const Icon(Icons.check)
+                            ],
+                          )),
+                      ElevatedButton(
+                          style: ButtonStyle(
+                            shape: MaterialStateProperty.all(const CircleBorder(
+                                side: BorderSide(
+                              color: Color.fromARGB(255, 0, 154, 173),
+                            ))),
+                            backgroundColor: MaterialStateProperty.all<Color>(
+                                const Color.fromARGB(255, 255, 255, 255)),
+                          ),
+                          onPressed: () {},
+                          child: Text(
+                            '2',
+                            style: GoogleFonts.montserrat(
+                              //color: Colors.white,
+                              fontSize: 17,
+                              fontWeight: FontWeight.w400,
+                              foreground: Paint()
+                                // ..style = PaintingStyle.stroke
+                                // ..strokeWidth = 2
+                                ..color = Colors.black,
+                              // //fontFamily: 'Montserrat',
+                            ),
+                          )),
+                      ElevatedButton(
+                          style: ButtonStyle(
+                            shape: MaterialStateProperty.all(const CircleBorder(
+                                side: BorderSide(
+                              color: Color.fromARGB(255, 0, 154, 173),
+                            ))),
+                            backgroundColor: MaterialStateProperty.all<Color>(
+                                const Color.fromARGB(255, 255, 255, 255)),
+                          ),
+                          onPressed: () {},
+                          child: Text(
+                            '3',
+                            style: GoogleFonts.montserrat(
+                              //color: Colors.white,
+                              fontSize: 17,
+                              fontWeight: FontWeight.w400,
+                              foreground: Paint()
+                                // ..style = PaintingStyle.stroke
+                                // ..strokeWidth = 2
+                                ..color = Colors.black,
+                              // //fontFamily: 'Montserrat',
+                            ),
+                          )),
+                      ElevatedButton(
+                          style: ButtonStyle(
+                            shape: MaterialStateProperty.all(const CircleBorder(
+                                side: BorderSide(
+                              color: Color.fromARGB(255, 0, 154, 173),
+                            ))),
+                            backgroundColor: MaterialStateProperty.all<Color>(
+                                const Color.fromARGB(255, 255, 255, 255)),
+                          ),
+                          onPressed: () {},
+                          child: Text(
+                            '4',
+                            style: GoogleFonts.montserrat(
+                              //color: Colors.white,
+                              fontSize: 17,
+                              fontWeight: FontWeight.w400,
+                              foreground: Paint()
+                                // ..style = PaintingStyle.stroke
+                                // ..strokeWidth = 2
+                                ..color = Colors.black,
+                              // //fontFamily: 'Montserrat',
+                            ),
+                          )),
+                      ElevatedButton(
+                          style: ButtonStyle(
+                            shape: MaterialStateProperty.all(const CircleBorder(
+                                side: BorderSide(
+                              color: Color.fromARGB(255, 0, 154, 173),
+                            ))),
+                            backgroundColor: MaterialStateProperty.all<Color>(
+                                const Color.fromARGB(255, 255, 255, 255)),
+                          ),
+                          onPressed: () {},
+                          child: Text(
+                            '5',
+                            style: GoogleFonts.montserrat(
+                              //color: Colors.white,
+                              fontSize: 17,
+                              fontWeight: FontWeight.w400,
+                              foreground: Paint()
+                                // ..style = PaintingStyle.stroke
+                                // ..strokeWidth = 2
+                                ..color = Colors.black,
+                              // //fontFamily: 'Montserrat',
+                            ),
+                          )),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          );
+        });
+  }
+
+  Future<dynamic> ModalBottomToping(BuildContext context) {
+    return showModalBottomSheet(
+        shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.vertical(top: Radius.circular(25.0)),
+        ),
+        context: context,
+        builder: (context) {
+          return Container(
+            margin: const EdgeInsets.symmetric(vertical: 0, horizontal: 0),
+            height: MediaQuery.of(context).size.height * 1 / 5,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(left: 100, right: 100),
+                  child: SizedBox(
+                    height: 5.0,
+                    child: Container(
+                        decoration: BoxDecoration(
+                          color: const Color.fromARGB(196, 196, 196, 196),
+                          borderRadius: BorderRadius.circular(10.0),
+                        ),
+                        child: const Center(
+                          child: Text(""),
+                        )),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(right: 270.0),
+                  child: Text(
+                    'Pilih Toping',
+                    style: GoogleFonts.montserrat(
+                      //color: Colors.white,
+                      fontSize: 17,
+                      fontWeight: FontWeight.w700,
+                      foreground: Paint()
+                        // ..style = PaintingStyle.stroke
+                        // ..strokeWidth = 2
+                        ..color = const Color.fromARGB(255, 46, 46, 46),
+                      // //fontFamily: 'Montserrat',
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(left: 18.0, right: 80),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      ElevatedButton(
+                          style: ButtonStyle(
+                              backgroundColor: MaterialStateProperty.all<Color>(
+                                  const Color.fromARGB(255, 0, 154, 173)),
+                              shape: MaterialStateProperty.all<
+                                      RoundedRectangleBorder>(
+                                  RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(18.0),
+                              ))),
+                          onPressed: () {},
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            children: [
+                              Text(
+                                'Mozarella',
+                                style: GoogleFonts.montserrat(
+                                  //color: Colors.white,
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.w400,
+                                  foreground: Paint()
+                                    // ..style = PaintingStyle.stroke
+                                    // ..strokeWidth = 2
+                                    ..color = Colors.white,
+                                  // //fontFamily: 'Montserrat',
+                                ),
+                              ),
+                              const Icon(Icons.check)
+                            ],
+                          )),
+                      ElevatedButton(
+                          style: ButtonStyle(
+                            shape: MaterialStateProperty
+                                .all<RoundedRectangleBorder>(
+                                    RoundedRectangleBorder(
+                                        borderRadius:
+                                            BorderRadius.circular(18.0),
+                                        side: const BorderSide(
+                                          color:
+                                              Color.fromARGB(255, 0, 154, 173),
+                                        ))),
+                            backgroundColor: MaterialStateProperty.all<Color>(
+                                const Color.fromARGB(255, 255, 255, 255)),
+                          ),
+                          onPressed: () {},
+                          child: Text(
+                            'Sausage',
+                            style: GoogleFonts.montserrat(
+                              //color: Colors.white,
+                              fontSize: 12,
+                              fontWeight: FontWeight.w400,
+                              foreground: Paint()
+                                // ..style = PaintingStyle.stroke
+                                // ..strokeWidth = 2
+                                ..color = Colors.black,
+                              // //fontFamily: 'Montserrat',
+                            ),
+                          )),
+                      ElevatedButton(
+                          style: ButtonStyle(
+                            shape: MaterialStateProperty
+                                .all<RoundedRectangleBorder>(
+                                    RoundedRectangleBorder(
+                                        borderRadius:
+                                            BorderRadius.circular(18.0),
+                                        side: const BorderSide(
+                                          color:
+                                              Color.fromARGB(255, 0, 154, 173),
+                                        ))),
+                            backgroundColor: MaterialStateProperty.all<Color>(
+                                const Color.fromARGB(255, 255, 255, 255)),
+                          ),
+                          onPressed: () {},
+                          child: Text(
+                            'Dimsum',
+                            style: GoogleFonts.montserrat(
+                              //color: Colors.white,
+                              fontSize: 12,
+                              fontWeight: FontWeight.w400,
+                              foreground: Paint()
+                                // ..style = PaintingStyle.stroke
+                                // ..strokeWidth = 2
+                                ..color = Colors.black,
+                              // //fontFamily: 'Montserrat',
+                            ),
+                          )),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          );
+        });
+  }
+
+  Future<dynamic> ModalBottomBuatCatatan(BuildContext context) {
+    return showModalBottomSheet(
+        shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.vertical(top: Radius.circular(25.0)),
+        ),
+        context: context,
+        builder: (context) {
+          return Container(
+            margin: const EdgeInsets.symmetric(vertical: 0, horizontal: 0),
+            height: MediaQuery.of(context).size.height * 1 / 5,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(left: 100, right: 100),
+                  child: SizedBox(
+                    height: 5.0,
+                    child: Container(
+                        decoration: BoxDecoration(
+                          color: const Color.fromARGB(196, 196, 196, 196),
+                          borderRadius: BorderRadius.circular(10.0),
+                        ),
+                        child: const Center(
+                          child: Text(""),
+                        )),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(right: 270.0),
+                  child: Text(
+                    'Buat Catatan',
+                    style: GoogleFonts.montserrat(
+                      //color: Colors.white,
+                      fontSize: 17,
+                      fontWeight: FontWeight.w700,
+                      foreground: Paint()
+                        // ..style = PaintingStyle.stroke
+                        // ..strokeWidth = 2
+                        ..color = const Color.fromARGB(255, 46, 46, 46),
+                      // //fontFamily: 'Montserrat',
+                    ),
+                  ),
+                ),
+                Padding(
+                    padding: const EdgeInsets.only(left: 18.0, right: 10),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        Flexible(
+                          flex: 5,
+                          child: TextFormField(
+                            initialValue:
+                                'Lorem ipsum dolor sit amet, consectetur adipisicing elit',
+                          ),
+                        ),
+                        Flexible(
+                          flex: 1,
+                          child: ElevatedButton(
+                              style: ButtonStyle(
+                                shape: MaterialStateProperty.all(
+                                    const CircleBorder(
+                                        side: BorderSide(
+                                  color: Color.fromARGB(255, 0, 154, 173),
+                                ))),
+                                backgroundColor:
+                                    MaterialStateProperty.all<Color>(
+                                        const Color.fromARGB(255, 0, 154, 173)),
+                              ),
+                              onPressed: () {},
+                              child: const Icon(
+                                Icons.check,
+                                size: 14,
+                              )),
+                        ),
+                      ],
+                    )),
+              ],
+            ),
+          );
+        });
   }
 }
 
