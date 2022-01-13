@@ -11,13 +11,6 @@ class DetailKatalog extends StatefulWidget {
 }
 
 class _DetailKatalogState extends State<DetailKatalog> {
-  void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
-  }
-
-  int _selectedIndex = 0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,40 +18,6 @@ class _DetailKatalogState extends State<DetailKatalog> {
       // key: scaffoldKey,
       backgroundColor: const Color.fromARGB(255, 229, 229, 229),
       // backgroundColor: Colors.transparent,
-      bottomNavigationBar: Container(
-        decoration: const BoxDecoration(
-          color: Colors.white,
-          // border: Border.all(color: Color(0xFFF38B6FF), width: 2),
-          //other code
-        ),
-        child: ClipRRect(
-          borderRadius: const BorderRadius.only(
-            topLeft: Radius.circular(30.0),
-            topRight: Radius.circular(30.0),
-          ),
-          child: BottomNavigationBar(
-            backgroundColor: const Color.fromARGB(255, 46, 46, 46),
-            unselectedItemColor: const Color.fromARGB(255, 194, 194, 194),
-            selectedItemColor: const Color.fromARGB(255, 255, 255, 255),
-            items: const <BottomNavigationBarItem>[
-              BottomNavigationBarItem(
-                icon: Icon(Icons.home),
-                label: 'Beranda',
-              ),
-              BottomNavigationBarItem(
-                icon: ImageIcon(AssetImage('assets/Beranda/pesanan_icon.png')),
-                label: 'Pesanan',
-              ),
-              BottomNavigationBarItem(
-                icon: ImageIcon(AssetImage('assets/Beranda/profil_icon.png')),
-                label: 'Profil',
-              ),
-            ],
-            currentIndex: _selectedIndex,
-            onTap: _onItemTapped,
-          ),
-        ),
-      ),
       body: SafeArea(
         child: SingleChildScrollView(
           child: Column(
@@ -743,7 +702,7 @@ class WidgetSyaratKetentuan extends StatelessWidget {
                       foreground: Paint()
                         // ..style = PaintingStyle.stroke
                         // ..strokeWidth = 2
-                        ..color = const Color.fromARGB(255, 46, 46, 46),  
+                        ..color = const Color.fromARGB(255, 46, 46, 46),
                       // //fontFamily: 'Montserrat',
                     ),
                   ),

@@ -2,6 +2,10 @@
 
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:java_code/beranda/beranda.dart';
+import 'package:java_code/beranda/halaman1.dart';
+import 'package:java_code/beranda/halaman2.dart';
+import 'package:java_code/beranda/widgetBeranda.dart';
 
 class Promo extends StatefulWidget {
   const Promo({Key? key}) : super(key: key);
@@ -11,65 +15,76 @@ class Promo extends StatefulWidget {
 }
 
 class _PromoState extends State<Promo> {
-  void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
-  }
+  final screens = [const WidgetPagePromo(), const Halaman1(), const Halaman2()];
 
-  int _selectedIndex = 0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      bottomNavigationBar: ClipRRect(
+        borderRadius: const BorderRadius.only(
+          topRight: Radius.circular(30),
+          topLeft: Radius.circular(30),
+        ),
+        child: BottomNavigationBar(
+          backgroundColor: const Color.fromARGB(255, 46, 46, 46),
+          unselectedItemColor: const Color.fromARGB(255, 194, 194, 194),
+          selectedItemColor: const Color.fromARGB(255, 255, 255, 255),
+          items: const <BottomNavigationBarItem>[
+            BottomNavigationBarItem(
+              icon: Icon(Icons.home),
+              label: 'Beranda',
+            ),
+            BottomNavigationBarItem(
+              icon: ImageIcon(AssetImage('assets/Beranda/pesanan_icon.png')),
+              label: 'Pesanan',
+            ),
+            BottomNavigationBarItem(
+              icon: ImageIcon(AssetImage('assets/Beranda/profil_icon.png')),
+              label: 'Profil',
+            ),
+          ],
+          // currentIndex: value.,
+          onTap: (value) => setState(() {
+            if (value == 0) {
+              Navigator.pop(context);
+              selectedIndexBottomNavBar = 0;
+            }
+            if (value == 1) {
+              selectedIndexBottomNavBar = value;
+            }
+            if (value == 2) {
+              selectedIndexBottomNavBar = value;
+            }
+          }),
+        ),
+      ),
       extendBody: true,
       // key: scaffoldKey,
       backgroundColor: const Color.fromARGB(255, 229, 229, 229),
       // backgroundColor: Colors.transparent,
-      bottomNavigationBar: Container(
-        decoration: const BoxDecoration(
-          color: Colors.white,
-          // border: Border.all(color: Color(0xFFF38B6FF), width: 2),
-          //other code
-        ),
-        child: ClipRRect(
-          borderRadius: const BorderRadius.only(
-            topLeft: Radius.circular(30.0),
-            topRight: Radius.circular(30.0),
-          ),
-          child: BottomNavigationBar(
-            backgroundColor: const Color.fromARGB(255, 46, 46, 46),
-            unselectedItemColor: const Color.fromARGB(255, 194, 194, 194),
-            selectedItemColor: const Color.fromARGB(255, 255, 255, 255),
-            items: const <BottomNavigationBarItem>[
-              BottomNavigationBarItem(
-                icon: Icon(Icons.home),
-                label: 'Beranda',
-              ),
-              BottomNavigationBarItem(
-                icon: ImageIcon(AssetImage('assets/Beranda/pesanan_icon.png')),
-                label: 'Pesanan',
-              ),
-              BottomNavigationBarItem(
-                icon: ImageIcon(AssetImage('assets/Beranda/profil_icon.png')),
-                label: 'Profil',
-              ),
-            ],
-            currentIndex: _selectedIndex,
-            onTap: _onItemTapped,
-          ),
-        ),
-      ),
-      body: SafeArea(
-        child: SingleChildScrollView(
-          child: Column(
-            mainAxisSize: MainAxisSize.max,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: const [
-              WidgetNavigatorBack(),
-              WidgetImagePromo(),
-              WidgetSyaratKetentuan(),
-            ],
-          ),
+      body: screens[selectedIndexBottomNavBar],
+      // body: WidgetPagePromo(),
+    );
+  }
+}
+
+class WidgetPagePromo extends StatelessWidget {
+  const WidgetPagePromo({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return SafeArea(
+      child: SingleChildScrollView(
+        child: Column(
+          mainAxisSize: MainAxisSize.max,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: const [
+            WidgetNavigatorBack(),
+            WidgetImagePromo(),
+            WidgetSyaratKetentuan(),
+          ],
         ),
       ),
     );
