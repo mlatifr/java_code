@@ -743,7 +743,7 @@ class WidgetSyaratKetentuan extends StatelessWidget {
                       foreground: Paint()
                         // ..style = PaintingStyle.stroke
                         // ..strokeWidth = 2
-                        ..color = const Color.fromARGB(255, 46, 46, 46),
+                        ..color = const Color.fromARGB(255, 46, 46, 46),  
                       // //fontFamily: 'Montserrat',
                     ),
                   ),
