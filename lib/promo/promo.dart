@@ -5,7 +5,6 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:java_code/beranda/beranda.dart';
 import 'package:java_code/beranda/halaman1.dart';
 import 'package:java_code/beranda/halaman2.dart';
-import 'package:java_code/beranda/widgetBeranda.dart';
 
 class Promo extends StatefulWidget {
   const Promo({Key? key}) : super(key: key);
@@ -26,6 +25,7 @@ class _PromoState extends State<Promo> {
           topLeft: Radius.circular(30),
         ),
         child: BottomNavigationBar(
+          currentIndex: selectedIndexBottomNavBar,
           backgroundColor: const Color.fromARGB(255, 46, 46, 46),
           unselectedItemColor: const Color.fromARGB(255, 194, 194, 194),
           selectedItemColor: const Color.fromARGB(255, 255, 255, 255),

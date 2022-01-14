@@ -92,6 +92,8 @@ flutter:
     - assets/DetailKatalog/level.png
     - assets/DetailKatalog/toping.png
     - assets/DetailKatalog/catatan.png
+    # pesanan
+    - 'assets/Pesanan/top_nav_bar_icon.png'
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
 
