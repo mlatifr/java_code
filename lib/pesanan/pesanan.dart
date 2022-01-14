@@ -72,66 +72,8 @@ class _PesananState extends State<Pesanan> {
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 mainAxisSize: MainAxisSize.max,
                 children: [
-                  GestureDetector(
-                    onTap: () {
-                      setState(() {
-                        currentScreen = 0;
-                        print('currentScreen $currentScreen');
-                      });
-                    },
-                    child: Text(
-                      'Sedang Berjalan',
-                      style: GoogleFonts.montserrat(
-                        shadows: [
-                          const Shadow(
-                              color: Color.fromARGB(255, 0, 154, 173),
-                              offset: Offset(0, -10))
-                        ],
-                        decoration: TextDecoration.underline,
-                        decorationColor: const Color.fromARGB(255, 0, 154, 173),
-                        decorationThickness: 3,
-                        // decorationStyle: ,
-                        //color: Colors.white,
-                        fontSize: 16,
-                        fontWeight: FontWeight.w700,
-                        foreground: Paint()
-                          // ..style = PaintingStyle.stroke
-                          // ..strokeWidth = 2
-                          ..color = Colors.transparent,
-                        // //fontFamily: 'Montserrat',
-                      ),
-                    ),
-                  ),
-                  GestureDetector(
-                    onTap: () {
-                      setState(() {
-                        currentScreen = 1;
-                        print('currentScreen $currentScreen');
-                      });
-                    },
-                    child: Text(
-                      'Riwayat',
-                      style: GoogleFonts.montserrat(
-                        shadows: [
-                          const Shadow(
-                              // color: Color.fromARGB(255, 0, 154, 173),
-                              offset: Offset(0, -10))
-                        ],
-                        decoration: TextDecoration.underline,
-                        decorationColor: Colors.black,
-                        decorationThickness: 3,
-                        // decorationStyle: ,
-                        //color: Colors.white,
-                        fontSize: 16,
-                        fontWeight: FontWeight.w700,
-                        foreground: Paint()
-                          // ..style = PaintingStyle.stroke
-                          // ..strokeWidth = 2
-                          ..color = Colors.transparent,
-                        // //fontFamily: 'Montserrat',
-                      ),
-                    ),
-                  ),
+                  SedangBerjalan(),
+                  Riwayat(),
                 ],
               ),
             ),
@@ -139,5 +81,153 @@ class _PesananState extends State<Pesanan> {
         ),
       ],
     );
+  }
+
+  Widget Riwayat() {
+    if (currentScreen == 1) {
+      return GestureDetector(
+        onTap: () {
+          setState(() {
+            currentScreen = 1;
+            print('currentScreen $currentScreen');
+          });
+        },
+        child: Container(
+          height: 200,
+          // color: Colors.black,
+          child: Text(
+            'Riwayat',
+            style: GoogleFonts.montserrat(
+              shadows: [
+                const Shadow(
+                    color: Color.fromARGB(255, 0, 154, 173),
+                    offset: Offset(0, -10))
+              ],
+              decoration: TextDecoration.underline,
+              decorationColor: const Color.fromARGB(255, 0, 154, 173),
+              decorationThickness: 3,
+              // decorationStyle: ,
+              //color: Colors.white,
+              fontSize: 16,
+              fontWeight: FontWeight.w700,
+              foreground: Paint()
+                // ..style = PaintingStyle.stroke
+                // ..strokeWidth = 2
+                ..color = Colors.transparent,
+              // //fontFamily: 'Montserrat',
+            ),
+          ),
+        ),
+      );
+    } else {
+      return GestureDetector(
+        onTap: () {
+          setState(() {
+            currentScreen = 1;
+            print('currentScreen $currentScreen');
+          });
+        },
+        child: Container(
+          height: 200,
+          // color: Colors.black,
+          child: Text(
+            'Riwayat',
+            style: GoogleFonts.montserrat(
+              shadows: [
+                const Shadow(
+                    // color: Color.fromARGB(255, 0, 154, 173),
+                    offset: Offset(0, -10))
+              ],
+              decoration: TextDecoration.underline,
+              decorationColor: Colors.black,
+              decorationThickness: 3,
+              // decorationStyle: ,
+              //color: Colors.white,
+              fontSize: 16,
+              fontWeight: FontWeight.w700,
+              foreground: Paint()
+                // ..style = PaintingStyle.stroke
+                // ..strokeWidth = 2
+                ..color = Colors.transparent,
+              // //fontFamily: 'Montserrat',
+            ),
+          ),
+        ),
+      );
+    }
+  }
+
+  Widget SedangBerjalan() {
+    if (currentScreen == 0) {
+      return GestureDetector(
+        onTap: () {
+          setState(() {
+            currentScreen = 0;
+            print('currentScreen $currentScreen');
+          });
+        },
+        child: Container(
+          height: 200,
+          // color: Colors.black,
+          child: Text(
+            'Sedang Berjalan',
+            style: GoogleFonts.montserrat(
+              shadows: [
+                const Shadow(
+                    color: Color.fromARGB(255, 0, 154, 173),
+                    offset: Offset(0, -10))
+              ],
+              decoration: TextDecoration.underline,
+              decorationColor: const Color.fromARGB(255, 0, 154, 173),
+              decorationThickness: 3,
+              // decorationStyle: ,
+              //color: Colors.white,
+              fontSize: 16,
+              fontWeight: FontWeight.w700,
+              foreground: Paint()
+                // ..style = PaintingStyle.stroke
+                // ..strokeWidth = 2
+                ..color = Colors.transparent,
+              // //fontFamily: 'Montserrat',
+            ),
+          ),
+        ),
+      );
+    } else {
+      return GestureDetector(
+        onTap: () {
+          setState(() {
+            currentScreen = 0;
+            print('currentScreen $currentScreen');
+          });
+        },
+        child: Container(
+          height: 200,
+          // color: Colors.black,
+          child: Text(
+            'Sedang Berjalan',
+            style: GoogleFonts.montserrat(
+              shadows: [
+                const Shadow(
+                    // color: Color.fromARGB(255, 0, 154, 173),
+                    offset: Offset(0, -10))
+              ],
+              decoration: TextDecoration.underline,
+              decorationColor: Colors.black,
+              decorationThickness: 3,
+              // decorationStyle: ,
+              //color: Colors.white,
+              fontSize: 16,
+              fontWeight: FontWeight.w700,
+              foreground: Paint()
+                // ..style = PaintingStyle.stroke
+                // ..strokeWidth = 2
+                ..color = Colors.transparent,
+              // //fontFamily: 'Montserrat',
+            ),
+          ),
+        ),
+      );
+    }
   }
 }
