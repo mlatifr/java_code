@@ -1,9 +1,8 @@
-// ignore_for_file: prefer_const_literals_to_create_immutables
+// ignore_for_file: prefer_const_literals_to_create_immutables, non_constant_identifier_names, avoid_print
 
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:java_code/beranda/halaman1.dart';
-import 'package:java_code/beranda/halaman2.dart';
 
 class Pesanan extends StatefulWidget {
   const Pesanan({Key? key}) : super(key: key);
@@ -15,38 +14,45 @@ class Pesanan extends StatefulWidget {
 var currentScreen = 0;
 
 class _PesananState extends State<Pesanan> {
-  final screenPesanan = [Halaman2(), Halaman1()];
+  final screenPesanan = [const WidgetContainerPesanan(), const Halaman1()];
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: AppBar(
-          automaticallyImplyLeading: false,
-          backgroundColor: Colors.transparent,
-          shadowColor: Colors.transparent,
-          actions: [
-            // ElevatedButton(onPressed: null, child: Text('Halaman 1')),
-            // ElevatedButton(onPressed: null, child: Text('Halaman 2'))
-            // const WidgetTopNavigator(),
-            WidgetTopNavBar(context)
-          ],
-        ),
-        extendBody: true,
-        // key: scaffoldKey,
-        backgroundColor: const Color.fromARGB(255, 229, 229, 229),
-        // backgroundColor: Colors.transparent,
-        body: screenPesanan[currentScreen]
-        // body: WidgetPagePesanan(),
-        );
+    return SafeArea(
+      child: Scaffold(
+          // extendBodyBehindAppBar: true,
+          appBar: AppBar(
+            automaticallyImplyLeading: false,
+            backgroundColor: Colors.transparent,
+            shadowColor: const Color.fromARGB(255, 229, 229, 229),
+            elevation: 0,
+            actions: [
+              // ElevatedButton(onPressed: null, child: Text('Halaman 1')),
+              // ElevatedButton(onPressed: null, child: Text('Halaman 2'))
+              // const WidgetTopNavigator(),
+              WidgetTopNavBar(context)
+            ],
+          ),
+          extendBody: true,
+          // key: scaffoldKey,
+          backgroundColor: const Color.fromARGB(255, 229, 229, 229),
+          // backgroundColor: Colors.transparent,
+          body: screenPesanan[currentScreen]
+          // body: WidgetPagePesanan(),
+          ),
+    );
   }
 
   Widget WidgetTopNavBar(BuildContext context) {
     return Row(
       mainAxisSize: MainAxisSize.max,
       children: [
-        Material(
-          elevation: 3,
-          shape: const RoundedRectangleBorder(
+        Container(
+          margin: const EdgeInsets.only(bottom: 5.0),
+          width: MediaQuery.of(context).size.width,
+          decoration: const BoxDecoration(
+            color: Colors.white,
+            boxShadow: [BoxShadow(blurRadius: 5.0)],
             borderRadius: BorderRadius.only(
               bottomLeft: Radius.circular(30),
               bottomRight: Radius.circular(30),
@@ -54,28 +60,15 @@ class _PesananState extends State<Pesanan> {
               topRight: Radius.circular(0),
             ),
           ),
-          child: Container(
-            width: MediaQuery.of(context).size.width,
-            height: 60,
-            decoration: const BoxDecoration(
-              // color: FlutterFlowTheme.tertiaryColor,
-              borderRadius: BorderRadius.only(
-                bottomLeft: Radius.circular(30),
-                bottomRight: Radius.circular(30),
-                topLeft: Radius.circular(0),
-                topRight: Radius.circular(0),
-              ),
-            ),
-            child: Padding(
-              padding: const EdgeInsetsDirectional.fromSTEB(20, 20, 20, 10),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                mainAxisSize: MainAxisSize.max,
-                children: [
-                  SedangBerjalan(),
-                  Riwayat(),
-                ],
-              ),
+          child: Padding(
+            padding: const EdgeInsetsDirectional.fromSTEB(20, 20, 20, 0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              mainAxisSize: MainAxisSize.max,
+              children: [
+                SedangBerjalan(),
+                Riwayat(),
+              ],
             ),
           ),
         ),
@@ -92,7 +85,7 @@ class _PesananState extends State<Pesanan> {
             print('currentScreen $currentScreen');
           });
         },
-        child: Container(
+        child: SizedBox(
           height: 200,
           // color: Colors.black,
           child: Text(
@@ -127,7 +120,7 @@ class _PesananState extends State<Pesanan> {
             print('currentScreen $currentScreen');
           });
         },
-        child: Container(
+        child: SizedBox(
           height: 200,
           // color: Colors.black,
           child: Text(
@@ -166,7 +159,7 @@ class _PesananState extends State<Pesanan> {
             print('currentScreen $currentScreen');
           });
         },
-        child: Container(
+        child: SizedBox(
           height: 200,
           // color: Colors.black,
           child: Text(
@@ -201,7 +194,7 @@ class _PesananState extends State<Pesanan> {
             print('currentScreen $currentScreen');
           });
         },
-        child: Container(
+        child: SizedBox(
           height: 200,
           // color: Colors.black,
           child: Text(
@@ -229,5 +222,38 @@ class _PesananState extends State<Pesanan> {
         ),
       );
     }
+  }
+}
+
+class WidgetContainerPesanan extends StatelessWidget {
+  const WidgetContainerPesanan({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: const BoxDecoration(
+          color: Colors.white,
+          image: DecorationImage(
+            image: AssetImage('assets/Pesanan/background_pesanan.png'),
+            // fit: BoxFit.cover,
+          )),
+      child: Center(
+          child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        // crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Image.asset('assets/Pesanan/img_center_pesanan.png'),
+          const SizedBox(
+            height: 50,
+          ),
+          const Text(
+            'Sudah Pesan?\nLacak pesananmu\ndi sini.',
+            textAlign: TextAlign.center,
+          )
+        ],
+      )),
+    );
   }
 }

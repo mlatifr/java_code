@@ -198,9 +198,17 @@ class WidgetSyaratKetentuan extends StatelessWidget {
                         ),
                       ],
                     ),
-                    Row(
-                      children: [
-                        Text(
+                    SizedBox(
+                      height: 30,
+                      child: TextButton.icon(
+                        onPressed: () {
+                          ModalBottomLevel(context);
+                        },
+                        label: const Icon(
+                          Icons.chevron_right,
+                          color: Colors.black,
+                        ),
+                        icon: Text(
                           '1',
                           style: GoogleFonts.montserrat(
                             //color: Colors.white,
@@ -213,13 +221,8 @@ class WidgetSyaratKetentuan extends StatelessWidget {
                             // //fontFamily: 'Montserrat',
                           ),
                         ),
-                        IconButton(
-                            onPressed: () {
-                              ModalBottomLevel(context);
-                            },
-                            icon: const Icon(Icons.chevron_right)),
-                      ],
-                    )
+                      ),
+                    ),
                   ],
                 ),
               ),
@@ -257,9 +260,17 @@ class WidgetSyaratKetentuan extends StatelessWidget {
                         ),
                       ],
                     ),
-                    Row(
-                      children: [
-                        Text(
+                    SizedBox(
+                      height: 30,
+                      child: TextButton.icon(
+                        onPressed: () {
+                          ModalBottomToping(context);
+                        },
+                        label: const Icon(
+                          Icons.chevron_right,
+                          color: Colors.black,
+                        ),
+                        icon: Text(
                           '1',
                           style: GoogleFonts.montserrat(
                             //color: Colors.white,
@@ -272,13 +283,8 @@ class WidgetSyaratKetentuan extends StatelessWidget {
                             // //fontFamily: 'Montserrat',
                           ),
                         ),
-                        IconButton(
-                            onPressed: () {
-                              ModalBottomToping(context);
-                            },
-                            icon: const Icon(Icons.chevron_right)),
-                      ],
-                    )
+                      ),
+                    ),
                   ],
                 ),
               ),
@@ -313,9 +319,17 @@ class WidgetSyaratKetentuan extends StatelessWidget {
                         ),
                       ],
                     ),
-                    Row(
-                      children: [
-                        Text(
+                    SizedBox(
+                      height: 30,
+                      child: TextButton.icon(
+                        onPressed: () {
+                          ModalBottomBuatCatatan(context);
+                        },
+                        label: const Icon(
+                          Icons.chevron_right,
+                          color: Colors.black,
+                        ),
+                        icon: Text(
                           '1',
                           style: GoogleFonts.montserrat(
                             //color: Colors.white,
@@ -328,17 +342,38 @@ class WidgetSyaratKetentuan extends StatelessWidget {
                             // //fontFamily: 'Montserrat',
                           ),
                         ),
-                        IconButton(
-                            onPressed: () {
-                              ModalBottomBuatCatatan(context);
-                            },
-                            icon: const Icon(Icons.chevron_right)),
-                      ],
-                    )
+                      ),
+                    ),
                   ],
                 ),
               ),
               const Divider(),
+              SizedBox(
+                height: 42,
+                width: 350,
+                child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    primary: const Color.fromARGB(255, 0, 154, 173),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(30), // <-- Radius
+                    ),
+                  ),
+                  onPressed: () {},
+                  child: Text(
+                    'Tambahkan Ke Pesanan',
+                    style: GoogleFonts.montserrat(
+                        //color: Colors.white,
+                        fontSize: 16,
+                        fontWeight: FontWeight.w600,
+                        foreground: Paint()
+                          // ..style = PaintingStyle.stroke
+                          // ..strokeWidth = 2
+                          ..color = Colors.white
+                        // //fontFamily: 'Montserrat',
+                        ),
+                  ),
+                ),
+              )
             ],
           )),
     );
