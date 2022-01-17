@@ -2,7 +2,6 @@
 
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:java_code/beranda/halaman1.dart';
 
 class Pesanan extends StatefulWidget {
   const Pesanan({Key? key}) : super(key: key);
@@ -14,7 +13,10 @@ class Pesanan extends StatefulWidget {
 var currentScreen = 0;
 
 class _PesananState extends State<Pesanan> {
-  final screenPesanan = [const WidgetContainerPesanan(), const Halaman1()];
+  final screenPesanan = [
+    const WidgetContainerSedangBerjalan(),
+    const WidgetContainerRiwayat()
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -225,8 +227,8 @@ class _PesananState extends State<Pesanan> {
   }
 }
 
-class WidgetContainerPesanan extends StatelessWidget {
-  const WidgetContainerPesanan({
+class WidgetContainerSedangBerjalan extends StatelessWidget {
+  const WidgetContainerSedangBerjalan({
     Key? key,
   }) : super(key: key);
 
@@ -244,6 +246,67 @@ class WidgetContainerPesanan extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         // crossAxisAlignment: CrossAxisAlignment.center,
         children: [
+          Image.asset('assets/Pesanan/img_center_pesanan.png'),
+          const SizedBox(
+            height: 50,
+          ),
+          const Text(
+            'Sudah Pesan?\nLacak pesananmu\ndi sini.',
+            textAlign: TextAlign.center,
+          )
+        ],
+      )),
+    );
+  }
+}
+
+class WidgetContainerRiwayat extends StatefulWidget {
+  const WidgetContainerRiwayat({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  State<WidgetContainerRiwayat> createState() => _WidgetContainerRiwayatState();
+}
+
+class _WidgetContainerRiwayatState extends State<WidgetContainerRiwayat> {
+  String dropdownValue = 'One';
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: const BoxDecoration(
+          color: Colors.white,
+          image: DecorationImage(
+            image: AssetImage('assets/Pesanan/background_pesanan.png'),
+            // fit: BoxFit.cover,
+          )),
+      child: Center(
+          child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        // crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          DropdownButton<String>(
+            value: dropdownValue,
+            icon: const Icon(Icons.arrow_downward),
+            elevation: 16,
+            style: const TextStyle(color: Colors.deepPurple),
+            underline: Container(
+              height: 2,
+              color: Colors.deepPurpleAccent,
+            ),
+            onChanged: (String? newValue) {
+              setState(() {
+                dropdownValue = newValue!;
+              });
+            },
+            items: <String>['One', 'Two', 'Free', 'Four']
+                .map<DropdownMenuItem<String>>((String value) {
+              return DropdownMenuItem<String>(
+                value: value,
+                child: Text(value),
+              );
+            }).toList(),
+          ),
           Image.asset('assets/Pesanan/img_center_pesanan.png'),
           const SizedBox(
             height: 50,
