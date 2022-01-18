@@ -270,7 +270,8 @@ class WidgetContainerRiwayat extends StatefulWidget {
 }
 
 class _WidgetContainerRiwayatState extends State<WidgetContainerRiwayat> {
-  String dropdownValue = 'One';
+  List<String> dropdownValueStatus = ['Semua Status', 'Selesai', 'Dibatalkan'];
+  String statusPesananValue = 'Semua Status';
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -282,30 +283,21 @@ class _WidgetContainerRiwayatState extends State<WidgetContainerRiwayat> {
           )),
       child: Center(
           child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.start,
         // crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          DropdownButton<String>(
-            value: dropdownValue,
-            icon: const Icon(Icons.arrow_downward),
-            elevation: 16,
-            style: const TextStyle(color: Colors.deepPurple),
-            underline: Container(
-              height: 2,
-              color: Colors.deepPurpleAccent,
-            ),
-            onChanged: (String? newValue) {
-              setState(() {
-                dropdownValue = newValue!;
-              });
-            },
-            items: <String>['One', 'Two', 'Free', 'Four']
-                .map<DropdownMenuItem<String>>((String value) {
-              return DropdownMenuItem<String>(
-                value: value,
-                child: Text(value),
-              );
-            }).toList(),
+          const SizedBox(
+            height: 10,
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              WidgetDropDownStatusPesanan(),
+              const SizedBox(
+                width: 10,
+              ),
+              WidgetDropDownStatusPesanan(),
+            ],
           ),
           Image.asset('assets/Pesanan/img_center_pesanan.png'),
           const SizedBox(
@@ -317,6 +309,69 @@ class _WidgetContainerRiwayatState extends State<WidgetContainerRiwayat> {
           )
         ],
       )),
+    );
+  }
+
+  Container WidgetDropDownStatusPesanan() {
+    return Container(
+      width: 178,
+      height: 37,
+      padding: const EdgeInsets.all(8),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(30.0),
+        border: Border.all(
+            color: const Color.fromARGB(255, 0, 154, 173),
+            style: BorderStyle.solid,
+            width: 0.80),
+      ),
+      child: DropdownButtonHideUnderline(
+        child: DropdownButton<String>(
+          value: statusPesananValue,
+          // icon: Icon(Icons.arrow_drop_down),
+          selectedItemBuilder: (BuildContext context) {
+            return dropdownValueStatus.map((String value) {
+              return Text(
+                value,
+                style: GoogleFonts.montserrat(
+                  fontSize: 16,
+                  fontWeight: FontWeight.w600,
+                  // foreground: Paint()
+                  // ..color = Color.fromARGB(255, 0, 154, 173),
+                ),
+              );
+            }).toList();
+          },
+          onChanged: (String? newValue) {
+            setState(() {
+              statusPesananValue = newValue!;
+            });
+          },
+          items:
+              dropdownValueStatus.map<DropdownMenuItem<String>>((String value) {
+            if (value == statusPesananValue) {
+              return DropdownMenuItem<String>(
+                value: value,
+                child: Text(
+                  value,
+                  style: GoogleFonts.montserrat(
+                    decorationThickness: 3,
+                    fontSize: 16,
+                    fontWeight: FontWeight.w600,
+                    foreground: Paint()
+                      ..color = const Color.fromARGB(255, 0, 154, 173),
+                  ),
+                ),
+              );
+            } else {
+              return DropdownMenuItem(
+                value: value,
+                child: Text(value),
+              );
+            }
+          }).toList(),
+        ),
+      ),
     );
   }
 }
