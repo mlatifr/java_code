@@ -2,9 +2,12 @@
 
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:java_code/beranda/BottomNavBarProvider.dart';
 import 'package:java_code/beranda/beranda.dart';
 import 'package:java_code/beranda/halaman1.dart';
 import 'package:java_code/beranda/halaman2.dart';
+import 'package:java_code/pesanan/pesanan.dart';
+import 'package:provider/provider.dart';
 
 class Promo extends StatefulWidget {
   const Promo({Key? key}) : super(key: key);
@@ -14,56 +17,59 @@ class Promo extends StatefulWidget {
 }
 
 class _PromoState extends State<Promo> {
-  final screens = [const WidgetPagePromo(), const Halaman1(), const Halaman2()];
+  final screens = [const WidgetPagePromo(), const Pesanan(), const Halaman2()];
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      bottomNavigationBar: ClipRRect(
-        borderRadius: const BorderRadius.only(
-          topRight: Radius.circular(30),
-          topLeft: Radius.circular(30),
+    return ChangeNotifierProvider(
+      create: (context) => BottomNavBarProvider(),
+      child: Scaffold(
+        bottomNavigationBar: ClipRRect(
+          borderRadius: const BorderRadius.only(
+            topRight: Radius.circular(30),
+            topLeft: Radius.circular(30),
+          ),
+          child: BottomNavigationBar(
+            currentIndex: selectedIndexBottomNavBar,
+            backgroundColor: const Color.fromARGB(255, 46, 46, 46),
+            unselectedItemColor: const Color.fromARGB(255, 194, 194, 194),
+            selectedItemColor: const Color.fromARGB(255, 255, 255, 255),
+            items: const <BottomNavigationBarItem>[
+              BottomNavigationBarItem(
+                icon: Icon(Icons.home),
+                label: 'Beranda',
+              ),
+              BottomNavigationBarItem(
+                icon: ImageIcon(AssetImage('assets/Beranda/pesanan_icon.png')),
+                label: 'Pesanan',
+              ),
+              BottomNavigationBarItem(
+                icon: ImageIcon(AssetImage('assets/Beranda/profil_icon.png')),
+                label: 'Profil',
+              ),
+            ],
+            // currentIndex: value.,
+            onTap: (value) => setState(() {
+              if (value == 0) {
+                Navigator.pop(context);
+                selectedIndexBottomNavBar = 0;
+              }
+              if (value == 1) {
+                selectedIndexBottomNavBar = value;
+              }
+              if (value == 2) {
+                selectedIndexBottomNavBar = value;
+              }
+            }),
+          ),
         ),
-        child: BottomNavigationBar(
-          currentIndex: selectedIndexBottomNavBar,
-          backgroundColor: const Color.fromARGB(255, 46, 46, 46),
-          unselectedItemColor: const Color.fromARGB(255, 194, 194, 194),
-          selectedItemColor: const Color.fromARGB(255, 255, 255, 255),
-          items: const <BottomNavigationBarItem>[
-            BottomNavigationBarItem(
-              icon: Icon(Icons.home),
-              label: 'Beranda',
-            ),
-            BottomNavigationBarItem(
-              icon: ImageIcon(AssetImage('assets/Beranda/pesanan_icon.png')),
-              label: 'Pesanan',
-            ),
-            BottomNavigationBarItem(
-              icon: ImageIcon(AssetImage('assets/Beranda/profil_icon.png')),
-              label: 'Profil',
-            ),
-          ],
-          // currentIndex: value.,
-          onTap: (value) => setState(() {
-            if (value == 0) {
-              Navigator.pop(context);
-              selectedIndexBottomNavBar = 0;
-            }
-            if (value == 1) {
-              selectedIndexBottomNavBar = value;
-            }
-            if (value == 2) {
-              selectedIndexBottomNavBar = value;
-            }
-          }),
-        ),
+        extendBody: true,
+        // key: scaffoldKey,
+        backgroundColor: const Color.fromARGB(255, 229, 229, 229),
+        // backgroundColor: Colors.transparent,
+        body: screens[selectedIndexBottomNavBar],
+        // body: WidgetPagePromo(),
       ),
-      extendBody: true,
-      // key: scaffoldKey,
-      backgroundColor: const Color.fromARGB(255, 229, 229, 229),
-      // backgroundColor: Colors.transparent,
-      body: screens[selectedIndexBottomNavBar],
-      // body: WidgetPagePromo(),
     );
   }
 }
