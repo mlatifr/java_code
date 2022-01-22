@@ -30,6 +30,34 @@ class _WidgetBerandaState extends State<WidgetBeranda> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 const WidgetPencarian(),
+
+                Padding(
+                  padding: const EdgeInsetsDirectional.fromSTEB(25, 12, 20, 0),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.max,
+                    children: [
+                      Image.asset(
+                        'assets/Beranda/promo_yg_tersedia.png',
+                        width: 23,
+                        height: 16,
+                        fit: BoxFit.cover,
+                      ),
+                      Padding(
+                        padding:
+                            const EdgeInsetsDirectional.fromSTEB(9, 0, 0, 0),
+                        child: Text(
+                          'Promo yang Tersedia',
+                          style: GoogleFonts.montserrat(
+                            // //fontFamily: 'Montserrat',
+                            fontSize: 20,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                const WidgetListPromoYgTersedia(),
                 DefaultTabController(
                     length: 3,
                     child: Container(
@@ -141,7 +169,7 @@ class _WidgetBerandaState extends State<WidgetBeranda> {
                               ]),
                           Container(
                             width: MediaQuery.of(context).size.width,
-                            height: 500,
+                            height: 400,
                             color: Colors.amber,
                             child: TabBarView(children: [
                               SingleChildScrollView(
@@ -160,39 +188,11 @@ class _WidgetBerandaState extends State<WidgetBeranda> {
                         ],
                       ),
                     )),
-
-                Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(25, 12, 20, 0),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.max,
-                    children: [
-                      Image.asset(
-                        'assets/Beranda/promo_yg_tersedia.png',
-                        width: 23,
-                        height: 16,
-                        fit: BoxFit.cover,
-                      ),
-                      Padding(
-                        padding:
-                            const EdgeInsetsDirectional.fromSTEB(9, 0, 0, 0),
-                        child: Text(
-                          'Promo yang Tersedia',
-                          style: GoogleFonts.montserrat(
-                            // //fontFamily: 'Montserrat',
-                            fontSize: 20,
-                            fontWeight: FontWeight.w600,
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                const WidgetListPromoYgTersedia(),
-                //inline
-                WidgetSemuaMenu(),
-                // const WidgetListMakanan(),
-                WidgetMakanan(context, newContext),
-                WidgetMinuman(),
+                // //inline
+                // WidgetSemuaMenu(),
+                // // const WidgetListMakanan(),
+                // WidgetMakanan(context, newContext),
+                // WidgetMinuman(),
               ],
             ),
           ),
