@@ -33,23 +33,128 @@ class _WidgetBerandaState extends State<WidgetBeranda> {
                 DefaultTabController(
                     length: 3,
                     child: Container(
-                      color: Colors.blue,
+                      color: Colors.red,
                       child: Column(
                         children: [
-                          TabBar(tabs: [Text('1'), Text('2'), Text('3')]),
+                          TabBar(
+                              indicatorColor: Colors.transparent,
+                              isScrollable: true,
+                              tabs: [
+                                Container(
+                                  width: 160, height: 35,
+                                  // color: Color.fromARGB(255, 46, 46, 46),
+                                  decoration: BoxDecoration(
+                                      color: Color.fromARGB(255, 46, 46, 46),
+                                      borderRadius:
+                                          BorderRadius.circular(20.0)),
+                                  child: Row(
+                                    children: [
+                                      const SizedBox(
+                                        width: 10,
+                                      ),
+                                      Image.asset(
+                                        'assets/Beranda/semua_menu_icon.png',
+                                        width: 20,
+                                        height: 20,
+                                        fit: BoxFit.cover,
+                                      ),
+                                      const SizedBox(
+                                        width: 10,
+                                      ),
+                                      Text(
+                                        'Semua Menu',
+                                        style: GoogleFonts.montserrat(
+                                          color: Colors.white,
+                                          // fontSize: 12,
+                                          fontWeight: FontWeight.w600,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                Container(
+                                  width: 140, height: 35,
+                                  // color: Color.fromARGB(255, 46, 46, 46),
+                                  decoration: BoxDecoration(
+                                      color: const Color.fromARGB(
+                                          255, 0, 154, 173),
+                                      borderRadius:
+                                          BorderRadius.circular(20.0)),
+                                  child: Row(
+                                    children: [
+                                      const SizedBox(
+                                        width: 10,
+                                      ),
+                                      Image.asset(
+                                        'assets/Beranda/makanan_icon.png',
+                                        width: 20,
+                                        height: 20,
+                                        fit: BoxFit.cover,
+                                      ),
+                                      const SizedBox(
+                                        width: 10,
+                                      ),
+                                      Text(
+                                        'Makanan',
+                                        style: GoogleFonts.montserrat(
+                                          color: Colors.white,
+                                          // fontSize: 12,
+                                          fontWeight: FontWeight.w600,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                Container(
+                                  width: 140, height: 35,
+                                  // color: Color.fromARGB(255, 46, 46, 46),
+                                  decoration: BoxDecoration(
+                                      color: const Color.fromARGB(
+                                          255, 0, 154, 173),
+                                      borderRadius:
+                                          BorderRadius.circular(20.0)),
+                                  child: Row(
+                                    children: [
+                                      const SizedBox(
+                                        width: 10,
+                                      ),
+                                      Image.asset(
+                                        'assets/Beranda/minuman_icon.png',
+                                        width: 20,
+                                        height: 20,
+                                        fit: BoxFit.cover,
+                                      ),
+                                      const SizedBox(
+                                        width: 10,
+                                      ),
+                                      Text(
+                                        'Minuman',
+                                        style: GoogleFonts.montserrat(
+                                          color: Colors.white,
+                                          // fontSize: 12,
+                                          fontWeight: FontWeight.w600,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ]),
                           Container(
                             width: MediaQuery.of(context).size.width,
                             height: 500,
                             color: Colors.amber,
                             child: TabBarView(children: [
-                              Column(
-                                children: [
-                                  WidgetMakanan(context, newContext),
-                                  WidgetMinuman()
-                                ],
+                              SingleChildScrollView(
+                                child: Column(
+                                  children: [
+                                    WidgetMakanan(context, newContext),
+                                    WidgetMinuman()
+                                  ],
+                                ),
                               ),
-                              WidgetMakanan(context, newContext),
-                              WidgetMinuman()
+                              SingleChildScrollView(
+                                  child: WidgetMakanan(context, newContext)),
+                              SingleChildScrollView(child: WidgetMinuman())
                             ]),
                           ),
                         ],
