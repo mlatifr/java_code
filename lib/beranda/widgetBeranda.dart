@@ -17,6 +17,7 @@ class WidgetBeranda extends StatefulWidget {
 }
 
 class _WidgetBerandaState extends State<WidgetBeranda> {
+  TabController? _controllerTab;
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
@@ -29,6 +30,32 @@ class _WidgetBerandaState extends State<WidgetBeranda> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 const WidgetPencarian(),
+                DefaultTabController(
+                    length: 3,
+                    child: Container(
+                      color: Colors.blue,
+                      child: Column(
+                        children: [
+                          TabBar(tabs: [Text('1'), Text('2'), Text('3')]),
+                          Container(
+                            width: MediaQuery.of(context).size.width,
+                            height: 500,
+                            color: Colors.amber,
+                            child: TabBarView(children: [
+                              Column(
+                                children: [
+                                  WidgetMakanan(context, newContext),
+                                  WidgetMinuman()
+                                ],
+                              ),
+                              WidgetMakanan(context, newContext),
+                              WidgetMinuman()
+                            ]),
+                          ),
+                        ],
+                      ),
+                    )),
+
                 Padding(
                   padding: const EdgeInsetsDirectional.fromSTEB(25, 12, 20, 0),
                   child: Row(
