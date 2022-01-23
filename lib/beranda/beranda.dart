@@ -16,7 +16,7 @@ class Beranda extends StatefulWidget {
 
 class _BerandaState extends State<Beranda> {
   final screens = [
-    WidgetBeranda(), Pesanan(), Halaman2(),
+    const WidgetBeranda(), const Pesanan(), const Halaman2(),
     // const Pesanan(),
     // const WidgetPagePesanan()
   ];

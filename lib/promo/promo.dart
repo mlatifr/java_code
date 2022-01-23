@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:java_code/beranda/BottomNavBarProvider.dart';
 import 'package:java_code/beranda/beranda.dart';
-import 'package:java_code/beranda/halaman1.dart';
 import 'package:java_code/beranda/halaman2.dart';
 import 'package:java_code/pesanan/pesanan.dart';
 import 'package:provider/provider.dart';

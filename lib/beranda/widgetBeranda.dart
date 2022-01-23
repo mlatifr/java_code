@@ -1,11 +1,13 @@
-// ignore_for_file: file_names, avoid_print
+// ignore_for_file: file_names, avoid_print, unused_field, non_constant_identifier_names
 
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:java_code/beranda/ListMakanan/makanan_model.dart';
 import 'package:java_code/detail_menu/detail_menu.dart';
 import 'package:java_code/promo/promo.dart';
 import 'package:provider/provider.dart';
 import 'makananProvider.dart';
+import 'package:intl/intl.dart';
 
 class WidgetBeranda extends StatefulWidget {
   const WidgetBeranda({
@@ -72,7 +74,8 @@ class _WidgetBerandaState extends State<WidgetBeranda> {
                                   width: 160, height: 35,
                                   // color: Color.fromARGB(255, 46, 46, 46),
                                   decoration: BoxDecoration(
-                                      color: Color.fromARGB(255, 46, 46, 46),
+                                      color:
+                                          const Color.fromARGB(255, 46, 46, 46),
                                       borderRadius:
                                           BorderRadius.circular(20.0)),
                                   child: Row(
@@ -496,6 +499,7 @@ class _WidgetBerandaState extends State<WidgetBeranda> {
   }
 
   Widget WidgetMakanan(BuildContext context, BuildContext newContext) {
+    var numberToRp = new NumberFormat("#,##0", "id_ID");
     if (semuaMenu == 'semua menu' || semuaMenu == 'makanan') {
       return Column(
         children: [
@@ -526,9 +530,9 @@ class _WidgetBerandaState extends State<WidgetBeranda> {
             ),
           ),
           ListView.builder(
-              physics: NeverScrollableScrollPhysics(),
+              physics: const NeverScrollableScrollPhysics(),
               shrinkWrap: true,
-              itemCount: 5,
+              itemCount: listMakanan.length,
               itemBuilder: (context, index) {
                 return GestureDetector(
                   onTap: () {
@@ -572,7 +576,8 @@ class _WidgetBerandaState extends State<WidgetBeranda> {
                                   child: ClipRRect(
                                     borderRadius: BorderRadius.circular(10),
                                     child: Image.asset(
-                                      'assets/Beranda/chicken_katsu.png',
+                                      'assets/Beranda/${listMakanan[index].foto.toString()}.png',
+                                      // 'assets/Beranda/chicken_katsu.png',
                                       width: 75,
                                       height: 75,
                                       fit: BoxFit.cover,
@@ -592,7 +597,7 @@ class _WidgetBerandaState extends State<WidgetBeranda> {
                                           CrossAxisAlignment.start,
                                       children: [
                                         Text(
-                                          'Chicken Katsu',
+                                          '${listMakanan[index].nama}',
                                           style: GoogleFonts.montserrat(
                                             //fontFamily: 'Montserrat',
                                             color: const Color(0xFF111417),
@@ -601,7 +606,7 @@ class _WidgetBerandaState extends State<WidgetBeranda> {
                                           ),
                                         ),
                                         Text(
-                                          'Rp 10.000',
+                                          'Rp ${numberToRp.format(listMakanan[index].harga)}',
                                           style: GoogleFonts.montserrat(
                                             //fontFamily: 'Montserrat',
                                             color: const Color(0xFF009AAD),
@@ -645,25 +650,42 @@ class _WidgetBerandaState extends State<WidgetBeranda> {
                                                   newContext
                                                       .read<MakananProvider>()
                                                       .jumlah--;
+                                                  listMakanan[index].jumlah =
+                                                      newContext
+                                                          .read<
+                                                              MakananProvider>()
+                                                          .jumlah;
                                                 });
                                               }
                                             },
                                             icon: const Icon(Icons.remove)),
                                       ),
                                       Text(
-                                        '${newContext.read<MakananProvider>().jumlah}',
+                                        '${listMakanan[index].jumlah}',
                                         style: GoogleFonts.montserrat(
                                           //fontFamily: 'Montserrat',
                                           fontSize: 18,
                                           fontWeight: FontWeight.w500,
                                         ),
                                       ),
+                                      // Text(
+                                      //   '${newContext.read<MakananProvider>().jumlah}',
+                                      //   style: GoogleFonts.montserrat(
+                                      //     //fontFamily: 'Montserrat',
+                                      //     fontSize: 18,
+                                      //     fontWeight: FontWeight.w500,
+                                      //   ),
+                                      // ),
                                       IconButton(
                                         onPressed: () {
                                           setState(() {
                                             newContext
                                                 .read<MakananProvider>()
                                                 .jumlah++;
+                                            listMakanan[index].jumlah =
+                                                newContext
+                                                    .read<MakananProvider>()
+                                                    .jumlah;
                                           });
                                         },
                                         icon: const Icon(Icons.add_box),
