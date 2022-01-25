@@ -24,185 +24,177 @@ class _WidgetBerandaState extends State<WidgetBeranda> {
   TabController? _controllerTab;
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-      create: (context) => MakananProvider(),
-      child: Builder(builder: (BuildContext newContext) {
-        return SafeArea(
-          child: SingleChildScrollView(
-            child: Column(
-              mainAxisSize: MainAxisSize.max,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const WidgetPencarian(),
-                Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(25, 12, 20, 0),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.max,
-                    children: [
-                      Image.asset(
-                        'assets/Beranda/promo_yg_tersedia.png',
-                        width: 23,
-                        height: 16,
-                        fit: BoxFit.cover,
-                      ),
-                      Padding(
-                        padding:
-                            const EdgeInsetsDirectional.fromSTEB(9, 0, 0, 0),
-                        child: Text(
-                          'Promo yang Tersedia',
-                          style: GoogleFonts.montserrat(
-                            // //fontFamily: 'Montserrat',
-                            fontSize: 20,
-                            fontWeight: FontWeight.w600,
-                          ),
+    return Builder(builder: (BuildContext newContext) {
+      return SafeArea(
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisSize: MainAxisSize.max,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const WidgetPencarian(),
+              Padding(
+                padding: const EdgeInsetsDirectional.fromSTEB(25, 12, 20, 0),
+                child: Row(
+                  mainAxisSize: MainAxisSize.max,
+                  children: [
+                    Image.asset(
+                      'assets/Beranda/promo_yg_tersedia.png',
+                      width: 23,
+                      height: 16,
+                      fit: BoxFit.cover,
+                    ),
+                    Padding(
+                      padding: const EdgeInsetsDirectional.fromSTEB(9, 0, 0, 0),
+                      child: Text(
+                        'Promo yang Tersedia',
+                        style: GoogleFonts.montserrat(
+                          // //fontFamily: 'Montserrat',
+                          fontSize: 20,
+                          fontWeight: FontWeight.w600,
                         ),
                       ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
-                const WidgetListPromoYgTersedia(),
-                DefaultTabController(
-                    length: 3,
-                    child: Container(
-                      color: Colors.red,
-                      child: Column(
-                        children: [
-                          TabBar(
-                              indicatorColor: Colors.transparent,
-                              isScrollable: true,
-                              tabs: [
-                                Container(
-                                  width: 160, height: 35,
-                                  // color: Color.fromARGB(255, 46, 46, 46),
-                                  decoration: BoxDecoration(
-                                      color:
-                                          const Color.fromARGB(255, 46, 46, 46),
-                                      borderRadius:
-                                          BorderRadius.circular(20.0)),
-                                  child: Row(
-                                    children: [
-                                      const SizedBox(
-                                        width: 10,
+              ),
+              const WidgetListPromoYgTersedia(),
+              DefaultTabController(
+                  length: 3,
+                  child: Container(
+                    color: Colors.red,
+                    child: Column(
+                      children: [
+                        TabBar(
+                            indicatorColor: Colors.transparent,
+                            isScrollable: true,
+                            tabs: [
+                              Container(
+                                width: 160, height: 35,
+                                // color: Color.fromARGB(255, 46, 46, 46),
+                                decoration: BoxDecoration(
+                                    color:
+                                        const Color.fromARGB(255, 46, 46, 46),
+                                    borderRadius: BorderRadius.circular(20.0)),
+                                child: Row(
+                                  children: [
+                                    const SizedBox(
+                                      width: 10,
+                                    ),
+                                    Image.asset(
+                                      'assets/Beranda/semua_menu_icon.png',
+                                      width: 20,
+                                      height: 20,
+                                      fit: BoxFit.cover,
+                                    ),
+                                    const SizedBox(
+                                      width: 10,
+                                    ),
+                                    Text(
+                                      'Semua Menu',
+                                      style: GoogleFonts.montserrat(
+                                        color: Colors.white,
+                                        // fontSize: 12,
+                                        fontWeight: FontWeight.w600,
                                       ),
-                                      Image.asset(
-                                        'assets/Beranda/semua_menu_icon.png',
-                                        width: 20,
-                                        height: 20,
-                                        fit: BoxFit.cover,
-                                      ),
-                                      const SizedBox(
-                                        width: 10,
-                                      ),
-                                      Text(
-                                        'Semua Menu',
-                                        style: GoogleFonts.montserrat(
-                                          color: Colors.white,
-                                          // fontSize: 12,
-                                          fontWeight: FontWeight.w600,
-                                        ),
-                                      ),
-                                    ],
-                                  ),
+                                    ),
+                                  ],
                                 ),
-                                Container(
-                                  width: 140, height: 35,
-                                  // color: Color.fromARGB(255, 46, 46, 46),
-                                  decoration: BoxDecoration(
-                                      color: const Color.fromARGB(
-                                          255, 0, 154, 173),
-                                      borderRadius:
-                                          BorderRadius.circular(20.0)),
-                                  child: Row(
-                                    children: [
-                                      const SizedBox(
-                                        width: 10,
+                              ),
+                              Container(
+                                width: 140, height: 35,
+                                // color: Color.fromARGB(255, 46, 46, 46),
+                                decoration: BoxDecoration(
+                                    color:
+                                        const Color.fromARGB(255, 0, 154, 173),
+                                    borderRadius: BorderRadius.circular(20.0)),
+                                child: Row(
+                                  children: [
+                                    const SizedBox(
+                                      width: 10,
+                                    ),
+                                    Image.asset(
+                                      'assets/Beranda/makanan_icon.png',
+                                      width: 20,
+                                      height: 20,
+                                      fit: BoxFit.cover,
+                                    ),
+                                    const SizedBox(
+                                      width: 10,
+                                    ),
+                                    Text(
+                                      'Makanan',
+                                      style: GoogleFonts.montserrat(
+                                        color: Colors.white,
+                                        // fontSize: 12,
+                                        fontWeight: FontWeight.w600,
                                       ),
-                                      Image.asset(
-                                        'assets/Beranda/makanan_icon.png',
-                                        width: 20,
-                                        height: 20,
-                                        fit: BoxFit.cover,
-                                      ),
-                                      const SizedBox(
-                                        width: 10,
-                                      ),
-                                      Text(
-                                        'Makanan',
-                                        style: GoogleFonts.montserrat(
-                                          color: Colors.white,
-                                          // fontSize: 12,
-                                          fontWeight: FontWeight.w600,
-                                        ),
-                                      ),
-                                    ],
-                                  ),
+                                    ),
+                                  ],
                                 ),
-                                Container(
-                                  width: 140, height: 35,
-                                  // color: Color.fromARGB(255, 46, 46, 46),
-                                  decoration: BoxDecoration(
-                                      color: const Color.fromARGB(
-                                          255, 0, 154, 173),
-                                      borderRadius:
-                                          BorderRadius.circular(20.0)),
-                                  child: Row(
-                                    children: [
-                                      const SizedBox(
-                                        width: 10,
+                              ),
+                              Container(
+                                width: 140, height: 35,
+                                // color: Color.fromARGB(255, 46, 46, 46),
+                                decoration: BoxDecoration(
+                                    color:
+                                        const Color.fromARGB(255, 0, 154, 173),
+                                    borderRadius: BorderRadius.circular(20.0)),
+                                child: Row(
+                                  children: [
+                                    const SizedBox(
+                                      width: 10,
+                                    ),
+                                    Image.asset(
+                                      'assets/Beranda/minuman_icon.png',
+                                      width: 20,
+                                      height: 20,
+                                      fit: BoxFit.cover,
+                                    ),
+                                    const SizedBox(
+                                      width: 10,
+                                    ),
+                                    Text(
+                                      'Minuman',
+                                      style: GoogleFonts.montserrat(
+                                        color: Colors.white,
+                                        // fontSize: 12,
+                                        fontWeight: FontWeight.w600,
                                       ),
-                                      Image.asset(
-                                        'assets/Beranda/minuman_icon.png',
-                                        width: 20,
-                                        height: 20,
-                                        fit: BoxFit.cover,
-                                      ),
-                                      const SizedBox(
-                                        width: 10,
-                                      ),
-                                      Text(
-                                        'Minuman',
-                                        style: GoogleFonts.montserrat(
-                                          color: Colors.white,
-                                          // fontSize: 12,
-                                          fontWeight: FontWeight.w600,
-                                        ),
-                                      ),
-                                    ],
-                                  ),
+                                    ),
+                                  ],
                                 ),
-                              ]),
-                          Container(
-                            width: MediaQuery.of(context).size.width,
-                            height: (listMakanan.length * 110) +
-                                (listMakanan.length *
-                                    110) + //cara biar height mengkuti panjang list?
-                                80,
-                            color: Colors.amber,
-                            child: TabBarView(children: [
-                              SingleChildScrollView(
-                                  physics: NeverScrollableScrollPhysics(),
-                                  child: Column(
-                                    children: [
-                                      WidgetMakanan(context, newContext),
-                                      // WidgetMinuman(context, newContext)
-                                    ],
-                                  )),
-                              SingleChildScrollView(
-                                  physics: NeverScrollableScrollPhysics(),
-                                  child: WidgetMakanan(context, newContext)),
-                              SingleChildScrollView(
-                                  child: WidgetMinuman(context, newContext))
+                              ),
                             ]),
-                          ),
-                        ],
-                      ),
-                    )),
-              ],
-            ),
+                        Container(
+                          width: MediaQuery.of(context).size.width,
+                          height: (listMakanan.length * 110) +
+                              (listMakanan.length *
+                                  110) + //cara biar height mengkuti panjang list?
+                              80,
+                          color: Colors.amber,
+                          child: TabBarView(children: [
+                            SingleChildScrollView(
+                                physics: NeverScrollableScrollPhysics(),
+                                child: Column(
+                                  children: [
+                                    WidgetMakanan(context),
+                                    // WidgetMinuman(context, newContext)
+                                  ],
+                                )),
+                            SingleChildScrollView(
+                                physics: NeverScrollableScrollPhysics(),
+                                child: WidgetMakanan(context)),
+                            SingleChildScrollView(child: WidgetMinuman(context))
+                          ]),
+                        ),
+                      ],
+                    ),
+                  )),
+            ],
           ),
-        );
-      }),
-    );
+        ),
+      );
+    });
   }
 
   Padding WidgetSemuaMenu() {
@@ -347,412 +339,438 @@ class _WidgetBerandaState extends State<WidgetBeranda> {
   }
 
   String semuaMenu = 'semua menu';
-  Widget WidgetMinuman(BuildContext context, BuildContext newContext) {
+  Widget WidgetMinuman(BuildContext context) {
     var numberToRp = new NumberFormat("#,##0", "id_ID");
     if (semuaMenu == 'semua menu' || semuaMenu == 'minuman') {
-      return Column(
-        children: [
-          Padding(
-            padding: const EdgeInsetsDirectional.fromSTEB(25, 22, 0, 17),
-            child: Row(
-              mainAxisSize: MainAxisSize.max,
-              children: [
-                const Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0, 0, 5, 0),
-                  child: Icon(
-                    Icons.fastfood_sharp,
-                    color: Color(0xFF009AAD),
-                    size: 24,
-                  ),
-                ),
-                Text(
-                  'Minuman',
-                  textAlign: TextAlign.start,
-                  style: GoogleFonts.montserrat(
-                    //fontFamily: 'Poppins',
-                    color: const Color(0xFF009AAD),
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ],
-            ),
-          ),
-          ListView.builder(
-              physics: const NeverScrollableScrollPhysics(),
-              shrinkWrap: true,
-              itemCount: listMinuman.length,
-              itemBuilder: (context, index) {
-                return GestureDetector(
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const DetailMenu(),
+      return ChangeNotifierProvider(
+        create: (context) => MinumanProvider(),
+        child: Builder(builder: (BuildContext newContext) {
+          return Column(
+            children: [
+              Padding(
+                padding: const EdgeInsetsDirectional.fromSTEB(25, 22, 0, 17),
+                child: Row(
+                  mainAxisSize: MainAxisSize.max,
+                  children: [
+                    const Padding(
+                      padding: EdgeInsetsDirectional.fromSTEB(0, 0, 5, 0),
+                      child: Icon(
+                        Icons.fastfood_sharp,
+                        color: Color(0xFF009AAD),
+                        size: 24,
                       ),
-                    );
-                  },
-                  child: Padding(
-                    padding: const EdgeInsetsDirectional.fromSTEB(25, 0, 25, 0),
-                    child: Column(
-                      mainAxisSize: MainAxisSize.max,
-                      children: [
-                        Padding(
-                          padding:
-                              const EdgeInsetsDirectional.fromSTEB(0, 0, 0, 17),
-                          child: Container(
-                            width: 378,
-                            height: 89,
-                            decoration: BoxDecoration(
-                              color: const Color(0xFFF6F6F6),
-                              boxShadow: const [
-                                BoxShadow(
-                                  blurRadius: 8,
-                                  color: Color(0x592E2E2E),
-                                  offset: Offset(0, 2),
-                                  spreadRadius: 1,
-                                )
-                              ],
-                              borderRadius: BorderRadius.circular(10),
-                            ),
-                            child: Row(
-                              mainAxisSize: MainAxisSize.max,
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              children: [
-                                Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
-                                      7, 7, 7, 7),
-                                  child: ClipRRect(
-                                    borderRadius: BorderRadius.circular(10),
-                                    child: Image.asset(
-                                      'assets/Beranda/${listMinuman[index].foto.toString()}.png',
-                                      // 'assets/Beranda/chicken_katsu.png',
-                                      width: 75,
-                                      height: 75,
-                                      fit: BoxFit.cover,
-                                    ),
-                                  ),
+                    ),
+                    Text(
+                      'Minuman',
+                      textAlign: TextAlign.start,
+                      style: GoogleFonts.montserrat(
+                        //fontFamily: 'Poppins',
+                        color: const Color(0xFF009AAD),
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              ListView.builder(
+                  physics: const NeverScrollableScrollPhysics(),
+                  shrinkWrap: true,
+                  itemCount: listMinuman.length,
+                  itemBuilder: (context, index) {
+                    return GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const DetailMenu(),
+                          ),
+                        );
+                      },
+                      child: Padding(
+                        padding:
+                            const EdgeInsetsDirectional.fromSTEB(25, 0, 25, 0),
+                        child: Column(
+                          mainAxisSize: MainAxisSize.max,
+                          children: [
+                            Padding(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
+                                  0, 0, 0, 17),
+                              child: Container(
+                                width: 378,
+                                height: 89,
+                                decoration: BoxDecoration(
+                                  color: const Color(0xFFF6F6F6),
+                                  boxShadow: const [
+                                    BoxShadow(
+                                      blurRadius: 8,
+                                      color: Color(0x592E2E2E),
+                                      offset: Offset(0, 2),
+                                      spreadRadius: 1,
+                                    )
+                                  ],
+                                  borderRadius: BorderRadius.circular(10),
                                 ),
-                                Flexible(
-                                  flex: 2,
-                                  child: Padding(
-                                    padding:
-                                        const EdgeInsetsDirectional.fromSTEB(
-                                            10, 0, 0, 0),
-                                    child: Column(
-                                      // mainAxisSize: MainAxisSize.max,
-                                      // mainAxisAlignment: MainAxisAlignment.center,
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        Text(
-                                          '${listMinuman[index].nama}',
-                                          style: GoogleFonts.montserrat(
-                                            //fontFamily: 'Montserrat',
-                                            color: const Color(0xFF111417),
-                                            fontSize: 20,
-                                            fontWeight: FontWeight.w500,
-                                          ),
+                                child: Row(
+                                  mainAxisSize: MainAxisSize.max,
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  children: [
+                                    Padding(
+                                      padding:
+                                          const EdgeInsetsDirectional.fromSTEB(
+                                              7, 7, 7, 7),
+                                      child: ClipRRect(
+                                        borderRadius: BorderRadius.circular(10),
+                                        child: Image.asset(
+                                          'assets/Beranda/${listMinuman[index].foto.toString()}.png',
+                                          // 'assets/Beranda/chicken_katsu.png',
+                                          width: 75,
+                                          height: 75,
+                                          fit: BoxFit.cover,
                                         ),
-                                        Text(
-                                          'Rp ${numberToRp.format(listMinuman[index].harga)}',
-                                          style: GoogleFonts.montserrat(
-                                            //fontFamily: 'Montserrat',
-                                            color: const Color(0xFF009AAD),
-                                            fontSize: 18,
-                                            fontWeight: FontWeight.bold,
-                                          ),
-                                        ),
-                                        SizedBox(
-                                          height: 38,
-                                          child: TextButton.icon(
-                                              onPressed: () {},
-                                              icon: Image.asset(
-                                                  'assets/Beranda/tambahkan_catatan_icon.png'),
-                                              label: Text(
-                                                'Tambahkan Catatan',
-                                                style: GoogleFonts.montserrat(
-                                                    color:
-                                                        const Color(0xFFAAAAAA),
-                                                    fontWeight: FontWeight.w500,
-                                                    fontSize: 10),
-                                              )),
-                                        )
-                                      ],
+                                      ),
                                     ),
-                                  ),
-                                ),
-                                Flexible(
-                                  flex: 1,
-                                  child: Row(
-                                    mainAxisSize: MainAxisSize.max,
-                                    children: [
-                                      Flexible(
-                                        flex: 1,
-                                        child: IconButton(
-                                            onPressed: () {
-                                              if (newContext
-                                                      .read<MinumanProvider>()
-                                                      .jumlah >
-                                                  0) {
-                                                setState(() {
-                                                  newContext
-                                                      .read<MinumanProvider>()
-                                                      .jumlah--;
-                                                  listMinuman[index].jumlah =
+                                    Flexible(
+                                      flex: 2,
+                                      child: Padding(
+                                        padding: const EdgeInsetsDirectional
+                                            .fromSTEB(10, 0, 0, 0),
+                                        child: Column(
+                                          // mainAxisSize: MainAxisSize.max,
+                                          // mainAxisAlignment: MainAxisAlignment.center,
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Text(
+                                              '${listMinuman[index].nama}',
+                                              style: GoogleFonts.montserrat(
+                                                //fontFamily: 'Montserrat',
+                                                color: const Color(0xFF111417),
+                                                fontSize: 20,
+                                                fontWeight: FontWeight.w500,
+                                              ),
+                                            ),
+                                            Text(
+                                              'Rp ${numberToRp.format(listMinuman[index].harga)}',
+                                              style: GoogleFonts.montserrat(
+                                                //fontFamily: 'Montserrat',
+                                                color: const Color(0xFF009AAD),
+                                                fontSize: 18,
+                                                fontWeight: FontWeight.bold,
+                                              ),
+                                            ),
+                                            SizedBox(
+                                              height: 38,
+                                              child: TextButton.icon(
+                                                  onPressed: () {},
+                                                  icon: Image.asset(
+                                                      'assets/Beranda/tambahkan_catatan_icon.png'),
+                                                  label: Text(
+                                                    'Tambahkan Catatan',
+                                                    style:
+                                                        GoogleFonts.montserrat(
+                                                            color: const Color(
+                                                                0xFFAAAAAA),
+                                                            fontWeight:
+                                                                FontWeight.w500,
+                                                            fontSize: 10),
+                                                  )),
+                                            )
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+                                    Flexible(
+                                      flex: 1,
+                                      child: Row(
+                                        mainAxisSize: MainAxisSize.max,
+                                        children: [
+                                          Flexible(
+                                            flex: 1,
+                                            child: IconButton(
+                                                onPressed: () {
+                                                  if (newContext
+                                                          .read<
+                                                              MinumanProvider>()
+                                                          .listMinumanProvider[
+                                                              index]
+                                                          .jumlah >
+                                                      0) {
+                                                    setState(() {
                                                       newContext
                                                           .read<
                                                               MinumanProvider>()
-                                                          .jumlah;
-                                                });
-                                              }
-                                            },
-                                            icon: const Icon(Icons.remove)),
-                                      ),
-                                      Text(
-                                        '${listMinuman[index].jumlah}',
-                                        style: GoogleFonts.montserrat(
-                                          //fontFamily: 'Montserrat',
-                                          fontSize: 18,
-                                          fontWeight: FontWeight.w500,
-                                        ),
-                                      ),
-                                      IconButton(
-                                        onPressed: () {
-                                          setState(() {
-                                            newContext
-                                                .read<MinumanProvider>()
-                                                .jumlah++;
-                                            listMinuman[index].jumlah =
+                                                          .listMinumanProvider[
+                                                              index]
+                                                          .jumlah--;
+                                                      // listMinuman[index]
+                                                      //         .jumlah =
+                                                      //     newContext
+                                                      //         .read<
+                                                      //             MinumanProvider>()
+                                                      //         .jumlah;
+                                                    });
+                                                  }
+                                                },
+                                                icon: const Icon(Icons.remove)),
+                                          ),
+                                          Text(
+                                            '${listMinuman[index].jumlah}',
+                                            style: GoogleFonts.montserrat(
+                                              //fontFamily: 'Montserrat',
+                                              fontSize: 18,
+                                              fontWeight: FontWeight.w500,
+                                            ),
+                                          ),
+                                          IconButton(
+                                            onPressed: () {
+                                              setState(() {
                                                 newContext
                                                     .read<MinumanProvider>()
-                                                    .jumlah;
-                                          });
-                                        },
-                                        icon: const Icon(Icons.add_box),
-                                        color: const Color.fromARGB(
-                                            255, 0, 154, 173),
-                                      )
-                                    ],
-                                  ),
+                                                    .listMinumanProvider[index]
+                                                    .jumlah++;
+                                                // listMinuman[index].jumlah =
+                                                //     newContext
+                                                //         .read<MinumanProvider>()
+                                                //         .jumlah;
+                                              });
+                                            },
+                                            icon: const Icon(Icons.add_box),
+                                            color: const Color.fromARGB(
+                                                255, 0, 154, 173),
+                                          )
+                                        ],
+                                      ),
+                                    ),
+                                  ],
                                 ),
-                              ],
+                              ),
                             ),
-                          ),
+                          ],
                         ),
-                      ],
-                    ),
-                  ),
-                );
-              }),
-        ],
+                      ),
+                    );
+                  }),
+            ],
+          );
+        }),
       );
     } else {
       return Container();
     }
   }
 
-  Widget WidgetMakanan(BuildContext context, BuildContext newContext) {
+  Widget WidgetMakanan(BuildContext context) {
     var numberToRp = new NumberFormat("#,##0", "id_ID");
     if (semuaMenu == 'semua menu' || semuaMenu == 'makanan') {
-      return Column(
-        children: [
-          Padding(
-            padding: const EdgeInsetsDirectional.fromSTEB(25, 22, 0, 17),
-            child: Row(
-              mainAxisSize: MainAxisSize.max,
-              children: [
-                const Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0, 0, 5, 0),
-                  child: Icon(
-                    Icons.fastfood_sharp,
-                    color: Color(0xFF009AAD),
-                    size: 24,
-                  ),
+      return ChangeNotifierProvider(
+        create: (context) => MakananProvider(),
+        child: Builder(builder: (BuildContext newContext) {
+          return Column(
+            children: [
+              Padding(
+                padding: const EdgeInsetsDirectional.fromSTEB(25, 22, 0, 17),
+                child: Row(
+                  mainAxisSize: MainAxisSize.max,
+                  children: [
+                    const Padding(
+                      padding: EdgeInsetsDirectional.fromSTEB(0, 0, 5, 0),
+                      child: Icon(
+                        Icons.fastfood_sharp,
+                        color: Color(0xFF009AAD),
+                        size: 24,
+                      ),
+                    ),
+                    Text(
+                      'Makanan',
+                      textAlign: TextAlign.start,
+                      style: GoogleFonts.montserrat(
+                        // //fontFamily: 'Poppins',
+                        color: const Color(0xFF009AAD),
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ],
                 ),
-                Text(
-                  'Makanan',
-                  textAlign: TextAlign.start,
-                  style: GoogleFonts.montserrat(
-                    // //fontFamily: 'Poppins',
-                    color: const Color(0xFF009AAD),
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ],
-            ),
-          ),
-          ListView.builder(
-              physics: const NeverScrollableScrollPhysics(),
-              shrinkWrap: true,
-              itemCount: listMakanan.length,
-              itemBuilder: (context, index) {
-                return GestureDetector(
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const DetailMenu(),
+              ),
+              ListView.builder(
+                  physics: const NeverScrollableScrollPhysics(),
+                  shrinkWrap: true,
+                  itemCount: listMakanan.length,
+                  itemBuilder: (context, index) {
+                    return GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const DetailMenu(),
+                          ),
+                        );
+                      },
+                      child: Padding(
+                        padding:
+                            const EdgeInsetsDirectional.fromSTEB(25, 0, 25, 0),
+                        child: Column(
+                          mainAxisSize: MainAxisSize.max,
+                          children: [
+                            Padding(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
+                                  0, 0, 0, 17),
+                              child: Container(
+                                width: 378,
+                                height: 89,
+                                decoration: BoxDecoration(
+                                  color: const Color(0xFFF6F6F6),
+                                  boxShadow: const [
+                                    BoxShadow(
+                                      blurRadius: 8,
+                                      color: Color(0x592E2E2E),
+                                      offset: Offset(0, 2),
+                                      spreadRadius: 1,
+                                    )
+                                  ],
+                                  borderRadius: BorderRadius.circular(10),
+                                ),
+                                child: Row(
+                                  mainAxisSize: MainAxisSize.max,
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  children: [
+                                    Padding(
+                                      padding:
+                                          const EdgeInsetsDirectional.fromSTEB(
+                                              7, 7, 7, 7),
+                                      child: ClipRRect(
+                                        borderRadius: BorderRadius.circular(10),
+                                        child: Image.asset(
+                                          'assets/Beranda/${listMakanan[index].foto.toString()}.png',
+                                          // 'assets/Beranda/chicken_katsu.png',
+                                          width: 75,
+                                          height: 75,
+                                          fit: BoxFit.cover,
+                                        ),
+                                      ),
+                                    ),
+                                    Flexible(
+                                      flex: 2,
+                                      child: Padding(
+                                        padding: const EdgeInsetsDirectional
+                                            .fromSTEB(10, 0, 0, 0),
+                                        child: Column(
+                                          // mainAxisSize: MainAxisSize.max,
+                                          // mainAxisAlignment: MainAxisAlignment.center,
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Text(
+                                              '${listMakanan[index].nama}',
+                                              style: GoogleFonts.montserrat(
+                                                //fontFamily: 'Montserrat',
+                                                color: const Color(0xFF111417),
+                                                fontSize: 20,
+                                                fontWeight: FontWeight.w500,
+                                              ),
+                                            ),
+                                            Text(
+                                              'Rp ${numberToRp.format(listMakanan[index].harga)}',
+                                              style: GoogleFonts.montserrat(
+                                                //fontFamily: 'Montserrat',
+                                                color: const Color(0xFF009AAD),
+                                                fontSize: 18,
+                                                fontWeight: FontWeight.bold,
+                                              ),
+                                            ),
+                                            SizedBox(
+                                              height: 38,
+                                              child: TextButton.icon(
+                                                  onPressed: () {},
+                                                  icon: Image.asset(
+                                                      'assets/Beranda/tambahkan_catatan_icon.png'),
+                                                  label: Text(
+                                                    'Tambahkan Catatan',
+                                                    style:
+                                                        GoogleFonts.montserrat(
+                                                            color: const Color(
+                                                                0xFFAAAAAA),
+                                                            fontWeight:
+                                                                FontWeight.w500,
+                                                            fontSize: 10),
+                                                  )),
+                                            )
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+                                    Flexible(
+                                      flex: 1,
+                                      child: Row(
+                                        mainAxisSize: MainAxisSize.max,
+                                        children: [
+                                          Flexible(
+                                            flex: 1,
+                                            child: IconButton(
+                                                onPressed: () {
+                                                  if (newContext
+                                                          .read<
+                                                              MakananProvider>()
+                                                          .listMakananProvider[
+                                                              index]
+                                                          .jumlah >
+                                                      0) {
+                                                    setState(() {
+                                                      newContext
+                                                          .read<
+                                                              MakananProvider>()
+                                                          .listMakananProvider[
+                                                              index]
+                                                          .jumlah--;
+                                                    });
+                                                  }
+                                                },
+                                                icon: const Icon(Icons.remove)),
+                                          ),
+                                          Text(
+                                            '${listMakanan[index].jumlah}',
+                                            style: GoogleFonts.montserrat(
+                                              fontSize: 18,
+                                              fontWeight: FontWeight.w500,
+                                            ),
+                                          ),
+                                          IconButton(
+                                            onPressed: () {
+                                              setState(() {
+                                                newContext
+                                                    .read<MakananProvider>()
+                                                    .listMakananProvider[index]
+                                                    .jumlah++;
+                                                print(
+                                                    '${newContext.read<MakananProvider>().listMakananProvider[index].jumlah}');
+                                                // listMakanan[index].jumlah =
+                                                //     newContext
+                                                //         .read<MakananProvider>()
+                                                //         .listMakananProvider[index]
+                                                //         .jumlah;
+                                              });
+                                            },
+                                            icon: const Icon(Icons.add_box),
+                                            color: const Color.fromARGB(
+                                                255, 0, 154, 173),
+                                          )
+                                        ],
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
                     );
-                  },
-                  child: Padding(
-                    padding: const EdgeInsetsDirectional.fromSTEB(25, 0, 25, 0),
-                    child: Column(
-                      mainAxisSize: MainAxisSize.max,
-                      children: [
-                        Padding(
-                          padding:
-                              const EdgeInsetsDirectional.fromSTEB(0, 0, 0, 17),
-                          child: Container(
-                            width: 378,
-                            height: 89,
-                            decoration: BoxDecoration(
-                              color: const Color(0xFFF6F6F6),
-                              boxShadow: const [
-                                BoxShadow(
-                                  blurRadius: 8,
-                                  color: Color(0x592E2E2E),
-                                  offset: Offset(0, 2),
-                                  spreadRadius: 1,
-                                )
-                              ],
-                              borderRadius: BorderRadius.circular(10),
-                            ),
-                            child: Row(
-                              mainAxisSize: MainAxisSize.max,
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              children: [
-                                Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
-                                      7, 7, 7, 7),
-                                  child: ClipRRect(
-                                    borderRadius: BorderRadius.circular(10),
-                                    child: Image.asset(
-                                      'assets/Beranda/${listMakanan[index].foto.toString()}.png',
-                                      // 'assets/Beranda/chicken_katsu.png',
-                                      width: 75,
-                                      height: 75,
-                                      fit: BoxFit.cover,
-                                    ),
-                                  ),
-                                ),
-                                Flexible(
-                                  flex: 2,
-                                  child: Padding(
-                                    padding:
-                                        const EdgeInsetsDirectional.fromSTEB(
-                                            10, 0, 0, 0),
-                                    child: Column(
-                                      // mainAxisSize: MainAxisSize.max,
-                                      // mainAxisAlignment: MainAxisAlignment.center,
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        Text(
-                                          '${listMakanan[index].nama}',
-                                          style: GoogleFonts.montserrat(
-                                            //fontFamily: 'Montserrat',
-                                            color: const Color(0xFF111417),
-                                            fontSize: 20,
-                                            fontWeight: FontWeight.w500,
-                                          ),
-                                        ),
-                                        Text(
-                                          'Rp ${numberToRp.format(listMakanan[index].harga)}',
-                                          style: GoogleFonts.montserrat(
-                                            //fontFamily: 'Montserrat',
-                                            color: const Color(0xFF009AAD),
-                                            fontSize: 18,
-                                            fontWeight: FontWeight.bold,
-                                          ),
-                                        ),
-                                        SizedBox(
-                                          height: 38,
-                                          child: TextButton.icon(
-                                              onPressed: () {},
-                                              icon: Image.asset(
-                                                  'assets/Beranda/tambahkan_catatan_icon.png'),
-                                              label: Text(
-                                                'Tambahkan Catatan',
-                                                style: GoogleFonts.montserrat(
-                                                    color:
-                                                        const Color(0xFFAAAAAA),
-                                                    fontWeight: FontWeight.w500,
-                                                    fontSize: 10),
-                                              )),
-                                        )
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                                Flexible(
-                                  flex: 1,
-                                  child: Row(
-                                    mainAxisSize: MainAxisSize.max,
-                                    children: [
-                                      Flexible(
-                                        flex: 1,
-                                        child: IconButton(
-                                            onPressed: () {
-                                              if (newContext
-                                                      .read<MakananProvider>()
-                                                      .listMakananProvider[
-                                                          index]
-                                                      .jumlah >
-                                                  0) {
-                                                setState(() {
-                                                  newContext
-                                                      .read<MakananProvider>()
-                                                      .listMakananProvider[
-                                                          index]
-                                                      .jumlah--;
-                                                });
-                                              }
-                                            },
-                                            icon: const Icon(Icons.remove)),
-                                      ),
-                                      Text(
-                                        '${listMakanan[index].jumlah}',
-                                        style: GoogleFonts.montserrat(
-                                          fontSize: 18,
-                                          fontWeight: FontWeight.w500,
-                                        ),
-                                      ),
-                                      IconButton(
-                                        onPressed: () {
-                                          setState(() {
-                                            newContext
-                                                .read<MakananProvider>()
-                                                .listMakananProvider[index]
-                                                .jumlah++;
-                                            print(
-                                                '${newContext.read<MakananProvider>().listMakananProvider[index].jumlah}');
-                                            // listMakanan[index].jumlah =
-                                            //     newContext
-                                            //         .read<MakananProvider>()
-                                            //         .listMakananProvider[index]
-                                            //         .jumlah;
-                                          });
-                                        },
-                                        icon: const Icon(Icons.add_box),
-                                        color: const Color.fromARGB(
-                                            255, 0, 154, 173),
-                                      )
-                                    ],
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                );
-              }),
-        ],
+                  }),
+            ],
+          );
+        }),
       );
     } else {
       return Container();

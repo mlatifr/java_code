@@ -2,11 +2,12 @@
 
 import 'package:flutter/foundation.dart';
 
+import 'ListMinuman/minuman_model.dart';
+
 class MinumanProvider with ChangeNotifier {
-  int _jumlah = 0;
-  int get jumlah => _jumlah;
-  set jumlah(int tab) {
-    _jumlah = tab;
-    notifyListeners();
+   List<MinumanModel> _listMinumanProvider = listMinuman;
+  List<MinumanModel> get listMinumanProvider {
+    return _listMinumanProvider;
   }
+
 }
