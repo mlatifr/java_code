@@ -3,6 +3,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:java_code/beranda/ListMakanan/makanan_model.dart';
+import 'package:java_code/beranda/ListMinuman/minuman_model.dart';
+import 'package:java_code/beranda/minumanProvider.dart';
 import 'package:java_code/detail_menu/detail_menu.dart';
 import 'package:java_code/promo/promo.dart';
 import 'package:provider/provider.dart';
@@ -172,32 +174,17 @@ class _WidgetBerandaState extends State<WidgetBeranda> {
                           Container(
                             width: MediaQuery.of(context).size.width,
                             height: (listMakanan.length * 110) +
-                                (listMakanan.length * 110) +
+                                (listMakanan.length *
+                                    110) + //cara biar height mengkuti panjang list?
                                 80,
                             color: Colors.amber,
                             child: TabBarView(children: [
-                              // ListView(
-                              //   shrinkWrap: true,
-                              //   physics: const NeverScrollableScrollPhysics(),
-                              //   children: [
-                              //     Column(
-                              //       mainAxisSize: MainAxisSize.min,
-                              //       children: [
-                              //         WidgetMakanan(context, newContext),
-                              //         WidgetMakanan(context, newContext),
-                              //         WidgetMakanan(context, newContext),
-                              //         WidgetMakanan(context, newContext),
-                              //         WidgetMinuman()
-                              //       ],
-                              //     ),
-                              //   ],
-                              // ),
                               SingleChildScrollView(
                                   physics: NeverScrollableScrollPhysics(),
                                   child: Column(
                                     children: [
                                       WidgetMakanan(context, newContext),
-                                      WidgetMinuman(context, newContext)
+                                      // WidgetMinuman(context, newContext)
                                     ],
                                   )),
                               SingleChildScrollView(
@@ -210,11 +197,6 @@ class _WidgetBerandaState extends State<WidgetBeranda> {
                         ],
                       ),
                     )),
-                // //inline
-                // WidgetSemuaMenu(),
-                // // const WidgetListMakanan(),
-                // WidgetMakanan(context, newContext),
-                // WidgetMinuman(),
               ],
             ),
           ),
@@ -399,7 +381,7 @@ class _WidgetBerandaState extends State<WidgetBeranda> {
           ListView.builder(
               physics: const NeverScrollableScrollPhysics(),
               shrinkWrap: true,
-              itemCount: listMakanan.length,
+              itemCount: listMinuman.length,
               itemBuilder: (context, index) {
                 return GestureDetector(
                   onTap: () {
@@ -443,7 +425,7 @@ class _WidgetBerandaState extends State<WidgetBeranda> {
                                   child: ClipRRect(
                                     borderRadius: BorderRadius.circular(10),
                                     child: Image.asset(
-                                      'assets/Beranda/${listMakanan[index].foto.toString()}.png',
+                                      'assets/Beranda/${listMinuman[index].foto.toString()}.png',
                                       // 'assets/Beranda/chicken_katsu.png',
                                       width: 75,
                                       height: 75,
@@ -464,7 +446,7 @@ class _WidgetBerandaState extends State<WidgetBeranda> {
                                           CrossAxisAlignment.start,
                                       children: [
                                         Text(
-                                          '${listMakanan[index].nama}',
+                                          '${listMinuman[index].nama}',
                                           style: GoogleFonts.montserrat(
                                             //fontFamily: 'Montserrat',
                                             color: const Color(0xFF111417),
@@ -473,7 +455,7 @@ class _WidgetBerandaState extends State<WidgetBeranda> {
                                           ),
                                         ),
                                         Text(
-                                          'Rp ${numberToRp.format(listMakanan[index].harga)}',
+                                          'Rp ${numberToRp.format(listMinuman[index].harga)}',
                                           style: GoogleFonts.montserrat(
                                             //fontFamily: 'Montserrat',
                                             color: const Color(0xFF009AAD),
@@ -510,17 +492,17 @@ class _WidgetBerandaState extends State<WidgetBeranda> {
                                         child: IconButton(
                                             onPressed: () {
                                               if (newContext
-                                                      .read<MakananProvider>()
+                                                      .read<MinumanProvider>()
                                                       .jumlah >
                                                   0) {
                                                 setState(() {
                                                   newContext
-                                                      .read<MakananProvider>()
+                                                      .read<MinumanProvider>()
                                                       .jumlah--;
-                                                  listMakanan[index].jumlah =
+                                                  listMinuman[index].jumlah =
                                                       newContext
                                                           .read<
-                                                              MakananProvider>()
+                                                              MinumanProvider>()
                                                           .jumlah;
                                                 });
                                               }
@@ -528,30 +510,22 @@ class _WidgetBerandaState extends State<WidgetBeranda> {
                                             icon: const Icon(Icons.remove)),
                                       ),
                                       Text(
-                                        '${listMakanan[index].jumlah}',
+                                        '${listMinuman[index].jumlah}',
                                         style: GoogleFonts.montserrat(
                                           //fontFamily: 'Montserrat',
                                           fontSize: 18,
                                           fontWeight: FontWeight.w500,
                                         ),
                                       ),
-                                      // Text(
-                                      //   '${newContext.read<MakananProvider>().jumlah}',
-                                      //   style: GoogleFonts.montserrat(
-                                      //     //fontFamily: 'Montserrat',
-                                      //     fontSize: 18,
-                                      //     fontWeight: FontWeight.w500,
-                                      //   ),
-                                      // ),
                                       IconButton(
                                         onPressed: () {
                                           setState(() {
                                             newContext
-                                                .read<MakananProvider>()
+                                                .read<MinumanProvider>()
                                                 .jumlah++;
-                                            listMakanan[index].jumlah =
+                                            listMinuman[index].jumlah =
                                                 newContext
-                                                    .read<MakananProvider>()
+                                                    .read<MinumanProvider>()
                                                     .jumlah;
                                           });
                                         },
@@ -571,122 +545,6 @@ class _WidgetBerandaState extends State<WidgetBeranda> {
                   ),
                 );
               }),
-
-          // Padding(
-          //   padding: const EdgeInsetsDirectional.fromSTEB(25, 0, 25, 0),
-          //   child: Column(
-          //     mainAxisSize: MainAxisSize.max,
-          //     children: [
-          //       Padding(
-          //         padding: const EdgeInsetsDirectional.fromSTEB(0, 0, 0, 17),
-          //         child: Container(
-          //           width: 378,
-          //           height: 89,
-          //           decoration: BoxDecoration(
-          //             color: const Color(0xFFF6F6F6),
-          //             boxShadow: const [
-          //               BoxShadow(
-          //                 blurRadius: 8,
-          //                 color: Color(0x592E2E2E),
-          //                 offset: Offset(0, 2),
-          //                 spreadRadius: 1,
-          //               )
-          //             ],
-          //             borderRadius: BorderRadius.circular(10),
-          //           ),
-          //           child: Row(
-          //             mainAxisSize: MainAxisSize.max,
-          //             mainAxisAlignment: MainAxisAlignment.start,
-          //             children: [
-          //               Padding(
-          //                 padding:
-          //                     const EdgeInsetsDirectional.fromSTEB(7, 7, 7, 7),
-          //                 child: ClipRRect(
-          //                   borderRadius: BorderRadius.circular(10),
-          //                   child: Image.asset(
-          //                     'assets/Beranda/es_sogem.png',
-          //                     width: 75,
-          //                     height: 75,
-          //                     fit: BoxFit.cover,
-          //                   ),
-          //                 ),
-          //               ),
-          //               Expanded(
-          //                 child: Padding(
-          //                   padding: const EdgeInsetsDirectional.fromSTEB(
-          //                       10, 0, 0, 0),
-          //                   child: Column(
-          //                     // mainAxisSize: MainAxisSize.max,
-          //                     // mainAxisAlignment: MainAxisAlignment.center,
-          //                     crossAxisAlignment: CrossAxisAlignment.start,
-          //                     children: [
-          //                       Text(
-          //                         'Es Sogem',
-          //                         style: GoogleFonts.montserrat(
-          //                           //fontFamily: 'Montserrat',
-          //                           color: const Color(0xFF111417),
-          //                           fontSize: 20,
-          //                           fontWeight: FontWeight.w500,
-          //                         ),
-          //                       ),
-          //                       Text(
-          //                         'Rp 10.000',
-          //                         style: GoogleFonts.montserrat(
-          //                           //fontFamily: 'Montserrat',
-          //                           color: const Color(0xFF009AAD),
-          //                           fontSize: 18,
-          //                           fontWeight: FontWeight.bold,
-          //                         ),
-          //                       ),
-          //                       SizedBox(
-          //                         height: 38,
-          //                         child: TextButton.icon(
-          //                             onPressed: () {},
-          //                             icon: Image.asset(
-          //                                 'assets/Beranda/tambahkan_catatan_icon.png'),
-          //                             label: Text(
-          //                               'Tambahkan Catatan',
-          //                               style: GoogleFonts.montserrat(
-          //                                   color: const Color(0xFFAAAAAA),
-          //                                   fontWeight: FontWeight.w500,
-          //                                   fontSize: 10),
-          //                             )),
-          //                       )
-          //                     ],
-          //                   ),
-          //                 ),
-          //               ),
-          //               Flexible(
-          //                 flex: 1,
-          //                 child: Row(
-          //                   mainAxisSize: MainAxisSize.max,
-          //                   children: [
-          //                     IconButton(
-          //                         onPressed: () {},
-          //                         icon: const Icon(Icons.remove)),
-          //                     Text(
-          //                       '1',
-          //                       style: GoogleFonts.montserrat(
-          //                         //fontFamily: 'Montserrat',
-          //                         fontSize: 18,
-          //                         fontWeight: FontWeight.w500,
-          //                       ),
-          //                     ),
-          //                     IconButton(
-          //                       onPressed: () {},
-          //                       icon: const Icon(Icons.add_box),
-          //                       color: const Color.fromARGB(255, 0, 154, 173),
-          //                     )
-          //                   ],
-          //                 ),
-          //               ),
-          //             ],
-          //           ),
-          //         ),
-          //       ),
-          //     ],
-          //   ),
-          // ),
         ],
       );
     } else {
@@ -840,17 +698,16 @@ class _WidgetBerandaState extends State<WidgetBeranda> {
                                             onPressed: () {
                                               if (newContext
                                                       .read<MakananProvider>()
+                                                      .listMakananProvider[
+                                                          index]
                                                       .jumlah >
                                                   0) {
                                                 setState(() {
                                                   newContext
                                                       .read<MakananProvider>()
+                                                      .listMakananProvider[
+                                                          index]
                                                       .jumlah--;
-                                                  listMakanan[index].jumlah =
-                                                      newContext
-                                                          .read<
-                                                              MakananProvider>()
-                                                          .jumlah;
                                                 });
                                               }
                                             },
@@ -859,29 +716,24 @@ class _WidgetBerandaState extends State<WidgetBeranda> {
                                       Text(
                                         '${listMakanan[index].jumlah}',
                                         style: GoogleFonts.montserrat(
-                                          //fontFamily: 'Montserrat',
                                           fontSize: 18,
                                           fontWeight: FontWeight.w500,
                                         ),
                                       ),
-                                      // Text(
-                                      //   '${newContext.read<MakananProvider>().jumlah}',
-                                      //   style: GoogleFonts.montserrat(
-                                      //     //fontFamily: 'Montserrat',
-                                      //     fontSize: 18,
-                                      //     fontWeight: FontWeight.w500,
-                                      //   ),
-                                      // ),
                                       IconButton(
                                         onPressed: () {
                                           setState(() {
                                             newContext
                                                 .read<MakananProvider>()
+                                                .listMakananProvider[index]
                                                 .jumlah++;
-                                            listMakanan[index].jumlah =
-                                                newContext
-                                                    .read<MakananProvider>()
-                                                    .jumlah;
+                                            print(
+                                                '${newContext.read<MakananProvider>().listMakananProvider[index].jumlah}');
+                                            // listMakanan[index].jumlah =
+                                            //     newContext
+                                            //         .read<MakananProvider>()
+                                            //         .listMakananProvider[index]
+                                            //         .jumlah;
                                           });
                                         },
                                         icon: const Icon(Icons.add_box),
