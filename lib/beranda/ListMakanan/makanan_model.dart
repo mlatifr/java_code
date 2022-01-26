@@ -6,7 +6,7 @@ List<MakananModel> listMakanan = [
       stok: 10,
       jumlah: 0,
       topping: '-',
-      level: '0',
+      level: 1,
       catatan: 'tidak ada catatan'),
   MakananModel(
       nama: 'Chicken Katsu',
@@ -15,7 +15,7 @@ List<MakananModel> listMakanan = [
       stok: 10,
       jumlah: 0,
       topping: '-',
-      level: '0',
+      level: 2,
       catatan: 'tidak ada catatan'),
   MakananModel(
       nama: 'Chicken Katsu',
@@ -24,7 +24,7 @@ List<MakananModel> listMakanan = [
       stok: 10,
       jumlah: 0,
       topping: '-',
-      level: '0',
+      level: 3,
       catatan: 'tidak ada catatan'),
   MakananModel(
       nama: 'Chicken Katsu',
@@ -33,7 +33,7 @@ List<MakananModel> listMakanan = [
       stok: 10,
       jumlah: 0,
       topping: '-',
-      level: '0',
+      level: 4,
       catatan: 'tidak ada catatan'),
   MakananModel(
       nama: 'Chicken Katsu',
@@ -42,7 +42,7 @@ List<MakananModel> listMakanan = [
       stok: 10,
       jumlah: 0,
       topping: '-',
-      level: '0',
+      level: 1,
       catatan: 'tidak ada catatan'),
   MakananModel(
       nama: 'Chicken Katsu',
@@ -51,7 +51,7 @@ List<MakananModel> listMakanan = [
       stok: 10,
       jumlah: 0,
       topping: '-',
-      level: '0',
+      level: 2,
       catatan: 'tidak ada catatan'),
   MakananModel(
       nama: 'Chicken Kari',
@@ -60,7 +60,7 @@ List<MakananModel> listMakanan = [
       stok: 5,
       jumlah: 0,
       topping: '-',
-      level: '0',
+      level: 3,
       catatan: 'tidak ada catatan'),
   MakananModel(
       nama: 'Chicken Slam',
@@ -69,7 +69,7 @@ List<MakananModel> listMakanan = [
       stok: 0,
       jumlah: 0,
       topping: '-',
-      level: '0',
+      level: 4,
       catatan: 'tidak ada catatan'),
 ];
 
