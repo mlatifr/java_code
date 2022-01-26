@@ -178,7 +178,7 @@ class _WidgetBerandaState extends State<WidgetBeranda> {
                                 child: Column(
                                   children: [
                                     WidgetMakanan(context),
-                                    // WidgetMinuman(context, newContext)
+                                    WidgetMinuman(context)
                                   ],
                                 )),
                             SingleChildScrollView(
