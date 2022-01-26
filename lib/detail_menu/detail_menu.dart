@@ -1,10 +1,11 @@
-// ignore_for_file: prefer_const_literals_to_create_immutables, non_constant_identifier_names
-
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:java_code/beranda/makananProvider.dart';
+import 'package:provider/provider.dart';
 
 class DetailMenu extends StatefulWidget {
-  const DetailMenu({Key? key}) : super(key: key);
+  var index;
+  DetailMenu({Key? key, this.index}) : super(key: key);
 
   @override
   _DetailMenuState createState() => _DetailMenuState();
@@ -15,33 +16,100 @@ class _DetailMenuState extends State<DetailMenu> {
   Widget build(BuildContext context) {
     return Scaffold(
       extendBody: true,
-      // key: scaffoldKey,
-      backgroundColor: const Color.fromARGB(255, 229, 229, 229),
-      // backgroundColor: Colors.transparent,
+      backgroundColor: Color.fromARGB(255, 229, 229, 229),
       body: SafeArea(
         child: SingleChildScrollView(
           child: Column(
             mainAxisSize: MainAxisSize.max,
             crossAxisAlignment: CrossAxisAlignment.start,
-            children: const [
-              WidgetNavigatorBack(),
-              WidgetImageDetailKatalog(),
-              WidgetSyaratKetentuan(),
+            children: [
+              WidgetTittle(context),
+              WidgetImageDetailMakanan(),
+              widgetDetailMakanan(context),
             ],
           ),
         ),
       ),
     );
   }
-}
 
-class WidgetSyaratKetentuan extends StatelessWidget {
-  const WidgetSyaratKetentuan({
-    Key? key,
-  }) : super(key: key);
+  Row WidgetTittle(BuildContext context) {
+    return Row(
+      mainAxisSize: MainAxisSize.max,
+      children: [
+        Material(
+          elevation: 3,
+          shape: const RoundedRectangleBorder(
+            borderRadius: BorderRadius.only(
+              bottomLeft: Radius.circular(30),
+              bottomRight: Radius.circular(30),
+              topLeft: Radius.circular(0),
+              topRight: Radius.circular(0),
+            ),
+          ),
+          child: Container(
+            width: MediaQuery.of(context).size.width,
+            height: 60,
+            decoration: const BoxDecoration(
+              borderRadius: BorderRadius.only(
+                bottomLeft: Radius.circular(30),
+                bottomRight: Radius.circular(30),
+                topLeft: Radius.circular(0),
+                topRight: Radius.circular(0),
+              ),
+            ),
+            child: Padding(
+              padding: const EdgeInsetsDirectional.fromSTEB(20, 10, 20, 10),
+              child: Row(
+                mainAxisSize: MainAxisSize.max,
+                children: [
+                  IconButton(
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
+                      icon: const Icon(Icons.arrow_back_ios_rounded)),
+                  const SizedBox(
+                    width: 50,
+                  ),
+                  Padding(
+                    padding: const EdgeInsetsDirectional.fromSTEB(9, 0, 0, 0),
+                    child: Text(
+                      'Detail Menu',
+                      style: GoogleFonts.montserrat(
+                        // //fontFamily: 'Montserrat',
+                        fontSize: 20,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ),
+      ],
+    );
+  }
 
-  @override
-  Widget build(BuildContext context) {
+  Container WidgetImageDetailMakanan() {
+    return Container(
+        margin: const EdgeInsets.symmetric(vertical: 25, horizontal: 97),
+        // height: 180,
+        child: Padding(
+          padding: const EdgeInsetsDirectional.fromSTEB(0, 0, 20, 0),
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(15),
+            child: Image.asset(
+              'assets/DetailKatalog/chicken_katsu.png',
+              // width: 378,
+              // height: 150,
+              fit: BoxFit.cover,
+            ),
+          ),
+        ));
+  }
+
+  Container widgetDetailMakanan(BuildContext context) {
     return Container(
       height: MediaQuery.of(context).size.height -
           (MediaQuery.of(context).size.height * 1 / 2.15),
@@ -84,13 +152,19 @@ class WidgetSyaratKetentuan extends StatelessWidget {
                       children: [
                         IconButton(
                             onPressed: () {}, icon: const Icon(Icons.remove)),
-                        Text(
-                          '1',
-                          style: GoogleFonts.montserrat(
-                            //fontFamily: 'Montserrat',
-                            fontSize: 18,
-                            fontWeight: FontWeight.w500,
-                          ),
+                        ChangeNotifierProvider(
+                          create: (context) => MakananProvider(),
+                          child: Builder(builder: (BuildContext newContext) {
+                            return Text(
+                              // '1',
+                              '${newContext.read<MakananProvider>().listMakananProvider[widget.index].jumlah}',
+                              style: GoogleFonts.montserrat(
+                                //fontFamily: 'Montserrat',
+                                fontSize: 18,
+                                fontWeight: FontWeight.w500,
+                              ),
+                            );
+                          }),
                         ),
                         IconButton(
                           onPressed: () {},
@@ -779,109 +853,5 @@ class WidgetSyaratKetentuan extends StatelessWidget {
             ),
           );
         });
-  }
-}
-
-class WidgetImageDetailKatalog extends StatelessWidget {
-  const WidgetImageDetailKatalog({
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-        margin: const EdgeInsets.symmetric(vertical: 25, horizontal: 97),
-        // height: 180,
-        child: Padding(
-          padding: const EdgeInsetsDirectional.fromSTEB(0, 0, 20, 0),
-          child: ClipRRect(
-            borderRadius: BorderRadius.circular(15),
-            child: Image.asset(
-              'assets/DetailKatalog/chicken_katsu.png',
-              // width: 378,
-              // height: 150,
-              fit: BoxFit.cover,
-            ),
-          ),
-        ));
-  }
-}
-
-class WidgetNavigatorBack extends StatelessWidget {
-  const WidgetNavigatorBack({
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      mainAxisSize: MainAxisSize.max,
-      children: [
-        Material(
-          // color: Colors.transparent,
-          elevation: 3,
-          shape: const RoundedRectangleBorder(
-            borderRadius: BorderRadius.only(
-              bottomLeft: Radius.circular(30),
-              bottomRight: Radius.circular(30),
-              topLeft: Radius.circular(0),
-              topRight: Radius.circular(0),
-            ),
-          ),
-          child: Container(
-            width: MediaQuery.of(context).size.width,
-            height: 60,
-            decoration: const BoxDecoration(
-              // color: FlutterFlowTheme.tertiaryColor,
-              borderRadius: BorderRadius.only(
-                bottomLeft: Radius.circular(30),
-                bottomRight: Radius.circular(30),
-                topLeft: Radius.circular(0),
-                topRight: Radius.circular(0),
-              ),
-            ),
-            child: Padding(
-              padding: const EdgeInsetsDirectional.fromSTEB(20, 10, 20, 10),
-              child: Row(
-                mainAxisSize: MainAxisSize.max,
-                children: [
-                  IconButton(
-                      onPressed: () {
-                        Navigator.pop(context);
-                        // Navigator.push(
-                        //   context,
-                        //   MaterialPageRoute(
-                        //     builder: (context) => const Beranda(),
-                        //   ),
-                        // );
-                      },
-                      icon: const Icon(Icons.arrow_back_ios_rounded)),
-                  const SizedBox(
-                    width: 50,
-                  ),
-                  // Image.asset(
-                  //   'assets/Beranda/DetailKatalog_yg_tersedia.png',
-                  //   width: 23,
-                  //   height: 16,
-                  //   fit: BoxFit.cover,
-                  // ),
-                  Padding(
-                    padding: const EdgeInsetsDirectional.fromSTEB(9, 0, 0, 0),
-                    child: Text(
-                      'Detail Menu',
-                      style: GoogleFonts.montserrat(
-                        // //fontFamily: 'Montserrat',
-                        fontSize: 20,
-                        fontWeight: FontWeight.w600,
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ),
-        ),
-      ],
-    );
   }
 }

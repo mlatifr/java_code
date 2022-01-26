@@ -383,7 +383,9 @@ class _WidgetBerandaState extends State<WidgetBeranda> {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => const DetailMenu(),
+                            builder: (context) => DetailMenu(
+                              index: index,
+                            ),
                           ),
                         );
                       },
@@ -604,7 +606,9 @@ class _WidgetBerandaState extends State<WidgetBeranda> {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => const DetailMenu(),
+                            builder: (context) => DetailMenu(
+                              index: index,
+                            ),
                           ),
                         );
                       },
