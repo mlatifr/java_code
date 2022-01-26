@@ -45,212 +45,169 @@ class _WidgetBerandaState extends State<WidgetBeranda> {
 
     return Builder(builder: (BuildContext newContext) {
       return SafeArea(
-        child: SingleChildScrollView(
-          child: Column(
-            mainAxisSize: MainAxisSize.max,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const WidgetPencarian(),
-              Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(25, 12, 20, 0),
-                child: Row(
-                  mainAxisSize: MainAxisSize.max,
-                  children: [
-                    Image.asset(
-                      'assets/Beranda/promo_yg_tersedia.png',
-                      width: 23,
-                      height: 16,
-                      fit: BoxFit.cover,
-                    ),
-                    Padding(
-                      padding: const EdgeInsetsDirectional.fromSTEB(9, 0, 0, 0),
-                      child: Text(
-                        'Promo yang Tersedia',
-                        style: GoogleFonts.montserrat(
-                          // //fontFamily: 'Montserrat',
-                          fontSize: 20,
-                          fontWeight: FontWeight.w600,
-                        ),
+        child: ListView(
+          // mainAxisSize: MainAxisSize.max,
+          // crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const WidgetPencarian(),
+            Padding(
+              padding: const EdgeInsetsDirectional.fromSTEB(25, 12, 20, 0),
+              child: Row(
+                mainAxisSize: MainAxisSize.max,
+                children: [
+                  Image.asset(
+                    'assets/Beranda/promo_yg_tersedia.png',
+                    width: 23,
+                    height: 16,
+                    fit: BoxFit.cover,
+                  ),
+                  Padding(
+                    padding: const EdgeInsetsDirectional.fromSTEB(9, 0, 0, 0),
+                    child: Text(
+                      'Promo yang Tersedia',
+                      style: GoogleFonts.montserrat(
+                        // //fontFamily: 'Montserrat',
+                        fontSize: 20,
+                        fontWeight: FontWeight.w600,
                       ),
                     ),
-                  ],
-                ),
-              ),
-              const WidgetListPromoYgTersedia(),
-
-              Row(
-                children: [
-                  ElevatedButton(
-                      onPressed: () {
-                        setState(() {
-                          scn = 0;
-                          ScreenWgdt(scn);
-                        });
-                      },
-                      child: Text('1')),
-                  ElevatedButton(
-                      onPressed: () {
-                        setState(() {
-                          scn = 1;
-                          ScreenWgdt(scn);
-                        });
-                      },
-                      child: Text('2')),
-                  ElevatedButton(
-                      onPressed: () {
-                        setState(() {
-                          scn = 2;
-                          ScreenWgdt(scn);
-                        });
-                      },
-                      child: Text('3')),
+                  ),
                 ],
               ),
-
-              ScreenWgdt(scn)
-              // ChangeNotifierProvider(
-              //   create: (context) => BerandaMenuProvider(),
-              //   child: Builder(
-              //     builder: (BuildContext newContext) {
-              //       return screens[
-              //           newContext.read<BerandaMenuProvider>().currentTab];
-              //     },
-              //   ),
-              // )
-              // DefaultTabController(
-              //     length: 3,
-              //     child: Container(
-              //       color: Colors.red,
-              //       child: Column(
-              //         children: [
-              //           TabBar(
-              //               indicatorColor: Colors.transparent,
-              //               isScrollable: true,
-              //               tabs: [
-              //                 Container(
-              //                   width: 160, height: 35,
-              //                   // color: Color.fromARGB(255, 46, 46, 46),
-              //                   decoration: BoxDecoration(
-              //                       color:
-              //                           const Color.fromARGB(255, 46, 46, 46),
-              //                       borderRadius: BorderRadius.circular(20.0)),
-              //                   child: Row(
-              //                     children: [
-              //                       const SizedBox(
-              //                         width: 10,
-              //                       ),
-              //                       Image.asset(
-              //                         'assets/Beranda/semua_menu_icon.png',
-              //                         width: 20,
-              //                         height: 20,
-              //                         fit: BoxFit.cover,
-              //                       ),
-              //                       const SizedBox(
-              //                         width: 10,
-              //                       ),
-              //                       Text(
-              //                         'Semua Menu',
-              //                         style: GoogleFonts.montserrat(
-              //                           color: Colors.white,
-              //                           // fontSize: 12,
-              //                           fontWeight: FontWeight.w600,
-              //                         ),
-              //                       ),
-              //                     ],
-              //                   ),
-              //                 ),
-              //                 Container(
-              //                   width: 140, height: 35,
-              //                   // color: Color.fromARGB(255, 46, 46, 46),
-              //                   decoration: BoxDecoration(
-              //                       color:
-              //                           const Color.fromARGB(255, 0, 154, 173),
-              //                       borderRadius: BorderRadius.circular(20.0)),
-              //                   child: Row(
-              //                     children: [
-              //                       const SizedBox(
-              //                         width: 10,
-              //                       ),
-              //                       Image.asset(
-              //                         'assets/Beranda/makanan_icon.png',
-              //                         width: 20,
-              //                         height: 20,
-              //                         fit: BoxFit.cover,
-              //                       ),
-              //                       const SizedBox(
-              //                         width: 10,
-              //                       ),
-              //                       Text(
-              //                         'Makanan',
-              //                         style: GoogleFonts.montserrat(
-              //                           color: Colors.white,
-              //                           // fontSize: 12,
-              //                           fontWeight: FontWeight.w600,
-              //                         ),
-              //                       ),
-              //                     ],
-              //                   ),
-              //                 ),
-              //                 Container(
-              //                   width: 140, height: 35,
-              //                   // color: Color.fromARGB(255, 46, 46, 46),
-              //                   decoration: BoxDecoration(
-              //                       color:
-              //                           const Color.fromARGB(255, 0, 154, 173),
-              //                       borderRadius: BorderRadius.circular(20.0)),
-              //                   child: Row(
-              //                     children: [
-              //                       const SizedBox(
-              //                         width: 10,
-              //                       ),
-              //                       Image.asset(
-              //                         'assets/Beranda/minuman_icon.png',
-              //                         width: 20,
-              //                         height: 20,
-              //                         fit: BoxFit.cover,
-              //                       ),
-              //                       const SizedBox(
-              //                         width: 10,
-              //                       ),
-              //                       Text(
-              //                         'Minuman',
-              //                         style: GoogleFonts.montserrat(
-              //                           color: Colors.white,
-              //                           // fontSize: 12,
-              //                           fontWeight: FontWeight.w600,
-              //                         ),
-              //                       ),
-              //                     ],
-              //                   ),
-              //                 ),
-              //               ]),
-              //           Container(
-              //             width: MediaQuery.of(context).size.width,
-              //             height: (listMakanan.length * 110) +
-              //                 (listMakanan.length *
-              //                     110) + //cara biar height mengkuti panjang list?
-              //                 80,
-              //             color: Colors.amber,
-              //             child: TabBarView(children: [
-              //               SingleChildScrollView(
-              //                   physics: NeverScrollableScrollPhysics(),
-              //                   child: Column(
-              //                     children: [
-              //                       WidgetMakanan(context),
-              //                       // WidgetMinuman(context, newContext)
-              //                     ],
-              //                   )),
-              //               SingleChildScrollView(
-              //                   physics: NeverScrollableScrollPhysics(),
-              //                   child: WidgetMakanan(context)),
-              //               SingleChildScrollView(child: WidgetMinuman(context))
-              //             ]),
-              //           ),
-              //         ],
-              //       ),
-              //     )),
-            ],
-          ),
+            ),
+            const WidgetListPromoYgTersedia(),
+            Container(
+              height: 35,
+              child: ListView(
+                scrollDirection: Axis.horizontal,
+                shrinkWrap: true,
+                children: [
+                  SizedBox(
+                    width: 10,
+                  ),
+                  Container(
+                    width: 160,
+                    height: 35,
+                    decoration: BoxDecoration(
+                        color: const Color.fromARGB(255, 46, 46, 46),
+                        borderRadius: BorderRadius.circular(20.0)),
+                    child: Row(
+                      children: [
+                        const SizedBox(
+                          width: 10,
+                        ),
+                        Image.asset(
+                          'assets/Beranda/semua_menu_icon.png',
+                          width: 20,
+                          height: 20,
+                          fit: BoxFit.cover,
+                        ),
+                        const SizedBox(
+                          width: 10,
+                        ),
+                        Text(
+                          'Semua Menu',
+                          style: GoogleFonts.montserrat(
+                            color: Colors.white,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  SizedBox(
+                    width: 10,
+                  ),
+                  Container(
+                    width: 140, height: 35,
+                    // color: Color.fromARGB(255, 46, 46, 46),
+                    decoration: BoxDecoration(
+                        color: const Color.fromARGB(255, 0, 154, 173),
+                        borderRadius: BorderRadius.circular(20.0)),
+                    child: Row(
+                      children: [
+                        const SizedBox(
+                          width: 10,
+                        ),
+                        Image.asset(
+                          'assets/Beranda/makanan_icon.png',
+                          width: 20,
+                          height: 20,
+                          fit: BoxFit.cover,
+                        ),
+                        const SizedBox(
+                          width: 10,
+                        ),
+                        Text(
+                          'Makanan',
+                          style: GoogleFonts.montserrat(
+                            color: Colors.white,
+                            // fontSize: 12,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  SizedBox(
+                    width: 10,
+                  ),
+                  Container(
+                    width: 140, height: 35,
+                    // color: Color.fromARGB(255, 46, 46, 46),
+                    decoration: BoxDecoration(
+                        color: const Color.fromARGB(255, 0, 154, 173),
+                        borderRadius: BorderRadius.circular(20.0)),
+                    child: Row(
+                      children: [
+                        const SizedBox(
+                          width: 10,
+                        ),
+                        Image.asset(
+                          'assets/Beranda/minuman_icon.png',
+                          width: 20,
+                          height: 20,
+                          fit: BoxFit.cover,
+                        ),
+                        const SizedBox(
+                          width: 10,
+                        ),
+                        Text(
+                          'Minuman',
+                          style: GoogleFonts.montserrat(
+                            color: Colors.white,
+                            // fontSize: 12,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Container(
+              // height: double.maxFinite,
+              constraints: new BoxConstraints(
+                minHeight: 5.0,
+                minWidth: 5.0,
+                maxHeight: 500.0,
+                maxWidth: 500.0,
+              ),
+              child: ListView(
+                scrollDirection: Axis.horizontal,
+                shrinkWrap: true,
+                children: [
+                  Flexible(
+                      child: Column(
+                    children: [Text('data'), Text('data')],
+                  )),
+                  Text('data'),
+                  Text('data'),
+                ],
+              ),
+            )
+          ],
         ),
       );
     });
