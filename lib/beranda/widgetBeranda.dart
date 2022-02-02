@@ -174,7 +174,7 @@ class _WidgetBerandaState extends State<WidgetBeranda> {
                           color: Colors.amber,
                           child: TabBarView(children: [
                             SingleChildScrollView(
-                                physics: NeverScrollableScrollPhysics(),
+                                physics: const NeverScrollableScrollPhysics(),
                                 child: Column(
                                   children: [
                                     WidgetMakanan(context),
@@ -182,7 +182,7 @@ class _WidgetBerandaState extends State<WidgetBeranda> {
                                   ],
                                 )),
                             SingleChildScrollView(
-                                physics: NeverScrollableScrollPhysics(),
+                                physics: const NeverScrollableScrollPhysics(),
                                 child: WidgetMakanan(context)),
                             SingleChildScrollView(child: WidgetMinuman(context))
                           ]),
@@ -340,7 +340,7 @@ class _WidgetBerandaState extends State<WidgetBeranda> {
 
   String semuaMenu = 'semua menu';
   Widget WidgetMinuman(BuildContext context) {
-    var numberToRp = new NumberFormat("#,##0", "id_ID");
+    var numberToRp = NumberFormat("#,##0", "id_ID");
     if (semuaMenu == 'semua menu' || semuaMenu == 'minuman') {
       return ChangeNotifierProvider(
         create: (context) => MinumanProvider(),
@@ -563,7 +563,7 @@ class _WidgetBerandaState extends State<WidgetBeranda> {
   }
 
   Widget WidgetMakanan(BuildContext context) {
-    var numberToRp = new NumberFormat("#,##0", "id_ID");
+    var numberToRp = NumberFormat("#,##0", "id_ID");
     if (semuaMenu == 'semua menu' || semuaMenu == 'makanan') {
       return ChangeNotifierProvider(
         create: (context) => MakananProvider(),

@@ -1,7 +1,10 @@
+// ignore_for_file: non_constant_identifier_names, must_be_immutable, prefer_typing_uninitialized_variables
+
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:java_code/beranda/ListMakanan/makanan_model.dart';
 import 'package:java_code/beranda/makananProvider.dart';
+import 'package:java_code/pesanan/pesanan.dart';
 import 'package:provider/provider.dart';
 
 class DetailMenu extends StatefulWidget {
@@ -17,7 +20,7 @@ class _DetailMenuState extends State<DetailMenu> {
   Widget build(BuildContext context) {
     return Scaffold(
       extendBody: true,
-      backgroundColor: Color.fromARGB(255, 229, 229, 229),
+      backgroundColor: const Color.fromARGB(255, 229, 229, 229),
       body: SafeArea(
         child: SingleChildScrollView(
           child: Column(
@@ -112,8 +115,7 @@ class _DetailMenuState extends State<DetailMenu> {
 
   Container widgetDetailMakanan(BuildContext context) {
     return Container(
-      height: MediaQuery.of(context).size.height -
-          (MediaQuery.of(context).size.height * 1 / 2.15),
+      height: MediaQuery.of(context).size.height,
       color: Colors.transparent,
       child: Container(
           margin: const EdgeInsets.symmetric(vertical: 0, horizontal: 0),
@@ -454,6 +456,9 @@ class _DetailMenuState extends State<DetailMenu> {
                 ),
               ),
               const Divider(),
+              const SizedBox(
+                height: 20,
+              ),
               SizedBox(
                 height: 42,
                 width: 350,
@@ -464,7 +469,14 @@ class _DetailMenuState extends State<DetailMenu> {
                       borderRadius: BorderRadius.circular(30), // <-- Radius
                     ),
                   ),
-                  onPressed: () {},
+                  onPressed: () {
+                    // tambah ke list makanan
+                    // push to halaman pesanan
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => const Pesanan()),
+                    );
+                  },
                   child: Text(
                     'Tambahkan Ke Pesanan',
                     style: GoogleFonts.montserrat(
@@ -668,71 +680,6 @@ class _DetailMenuState extends State<DetailMenu> {
                   ),
                 ),
                 ButtonToping()
-                // Padding(
-                //   padding: const EdgeInsets.only(left: 18.0, right: 80),
-                //   child: Row(
-                //     mainAxisAlignment: MainAxisAlignment.spaceAround,
-                //     children: [
-                //       ButtonToping(),
-                //       ElevatedButton(
-                //           style: ButtonStyle(
-                //             shape: MaterialStateProperty
-                //                 .all<RoundedRectangleBorder>(
-                //                     RoundedRectangleBorder(
-                //                         borderRadius:
-                //                             BorderRadius.circular(18.0),
-                //                         side: const BorderSide(
-                //                           color:
-                //                               Color.fromARGB(255, 0, 154, 173),
-                //                         ))),
-                //             backgroundColor: MaterialStateProperty.all<Color>(
-                //                 const Color.fromARGB(255, 255, 255, 255)),
-                //           ),
-                //           onPressed: () {},
-                //           child: Text(
-                //             'Sausage',
-                //             style: GoogleFonts.montserrat(
-                //               //color: Colors.white,
-                //               fontSize: 12,
-                //               fontWeight: FontWeight.w400,
-                //               foreground: Paint()
-                //                 // ..style = PaintingStyle.stroke
-                //                 // ..strokeWidth = 2
-                //                 ..color = Colors.black,
-                //               // //fontFamily: 'Montserrat',
-                //             ),
-                //           )),
-                //       ElevatedButton(
-                //           style: ButtonStyle(
-                //             shape: MaterialStateProperty
-                //                 .all<RoundedRectangleBorder>(
-                //                     RoundedRectangleBorder(
-                //                         borderRadius:
-                //                             BorderRadius.circular(18.0),
-                //                         side: const BorderSide(
-                //                           color:
-                //                               Color.fromARGB(255, 0, 154, 173),
-                //                         ))),
-                //             backgroundColor: MaterialStateProperty.all<Color>(
-                //                 const Color.fromARGB(255, 255, 255, 255)),
-                //           ),
-                //           onPressed: () {},
-                //           child: Text(
-                //             'Dimsum',
-                //             style: GoogleFonts.montserrat(
-                //               //color: Colors.white,
-                //               fontSize: 12,
-                //               fontWeight: FontWeight.w400,
-                //               foreground: Paint()
-                //                 // ..style = PaintingStyle.stroke
-                //                 // ..strokeWidth = 2
-                //                 ..color = Colors.black,
-                //               // //fontFamily: 'Montserrat',
-                //             ),
-                //           )),
-                //     ],
-                //   ),
-                // ),
               ],
             ),
           );
@@ -845,7 +792,7 @@ class _DetailMenuState extends State<DetailMenu> {
           return Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
               //garis atas
@@ -863,7 +810,7 @@ class _DetailMenuState extends State<DetailMenu> {
                       )),
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
               Padding(
@@ -882,7 +829,7 @@ class _DetailMenuState extends State<DetailMenu> {
                   ),
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
               //textform catatan
@@ -942,7 +889,7 @@ class _DetailMenuState extends State<DetailMenu> {
                       ),
                     ],
                   )),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
             ],
