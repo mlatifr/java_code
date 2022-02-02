@@ -3,16 +3,16 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class Pesanan extends StatefulWidget {
-  const Pesanan({Key? key}) : super(key: key);
+class PesananRiwayat extends StatefulWidget {
+  const PesananRiwayat({Key? key}) : super(key: key);
 
   @override
-  _PesananState createState() => _PesananState();
+  _PesananRiwayatState createState() => _PesananRiwayatState();
 }
 
 var currentScreen = 0;
 
-class _PesananState extends State<Pesanan> {
+class _PesananRiwayatState extends State<PesananRiwayat> {
   final screenPesanan = [
     const WidgetContainerSedangBerjalan(),
     const WidgetContainerRiwayat()

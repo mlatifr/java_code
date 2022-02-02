@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:java_code/beranda/ListMakanan/makanan_model.dart';
 import 'package:java_code/beranda/makananProvider.dart';
-import 'package:java_code/pesanan/pesanan_riwayat.dart';
+import 'package:java_code/pesanan/pesanan.dart';
 import 'package:provider/provider.dart';
 
 class DetailMenu extends StatefulWidget {

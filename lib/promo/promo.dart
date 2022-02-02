@@ -16,7 +16,7 @@ class Promo extends StatefulWidget {
 }
 
 class _PromoState extends State<Promo> {
-  final screens = [const WidgetPagePromo(), const Pesanan(), const Halaman2()];
+  final screens = [const WidgetPagePromo(), const PesananRiwayat(), const Halaman2()];
 
   @override
   Widget build(BuildContext context) {
