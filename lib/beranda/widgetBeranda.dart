@@ -610,7 +610,9 @@ class _WidgetBerandaState extends State<WidgetBeranda> {
                               index: index,
                             ),
                           ),
-                        );
+                        ).then((value) => setState(() {
+                              WidgetMakanan(context);
+                            }));
                       },
                       child: Padding(
                         padding:

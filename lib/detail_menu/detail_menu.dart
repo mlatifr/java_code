@@ -143,8 +143,25 @@ class _DetailMenuState extends State<DetailMenu> {
                     Row(
                       mainAxisSize: MainAxisSize.max,
                       children: [
-                        IconButton(
-                            onPressed: () {}, icon: const Icon(Icons.remove)),
+                        ChangeNotifierProvider(
+                          create: (context) => MakananProvider(),
+                          child: Builder(builder: (BuildContext newContext) {
+                            return IconButton(
+                                onPressed: () {
+                                  setState(() {
+                                    newContext
+                                        .read<MakananProvider>()
+                                        .listMakananProvider[widget.index]
+                                        .jumlah--;
+                                    // listMinuman[index].jumlah =
+                                    //     newContext
+                                    //         .read<MinumanProvider>()
+                                    //         .jumlah;
+                                  });
+                                },
+                                icon: const Icon(Icons.remove));
+                          }),
+                        ),
                         ChangeNotifierProvider(
                           create: (context) => MakananProvider(),
                           child: Builder(builder: (BuildContext newContext) {
@@ -157,10 +174,26 @@ class _DetailMenuState extends State<DetailMenu> {
                             );
                           }),
                         ),
-                        IconButton(
-                          onPressed: () {},
-                          icon: const Icon(Icons.add_box),
-                          color: const Color.fromARGB(255, 0, 154, 173),
+                        ChangeNotifierProvider(
+                          create: (context) => MakananProvider(),
+                          child: Builder(builder: (BuildContext newContext) {
+                            return IconButton(
+                              onPressed: () {
+                                setState(() {
+                                  newContext
+                                      .read<MakananProvider>()
+                                      .listMakananProvider[widget.index]
+                                      .jumlah++;
+                                  // listMinuman[index].jumlah =
+                                  //     newContext
+                                  //         .read<MinumanProvider>()
+                                  //         .jumlah;
+                                });
+                              },
+                              icon: const Icon(Icons.add_box),
+                              color: const Color.fromARGB(255, 0, 154, 173),
+                            );
+                          }),
                         )
                       ],
                     ),
@@ -223,10 +256,7 @@ class _DetailMenuState extends State<DetailMenu> {
                         fontSize: 18,
                         fontWeight: FontWeight.w700,
                         foreground: Paint()
-                          // ..style = PaintingStyle.stroke
-                          // ..strokeWidth = 2
                           ..color = const Color.fromARGB(255, 0, 154, 173),
-                        // //fontFamily: 'Montserrat',
                       ),
                     ),
                   ],
@@ -251,14 +281,10 @@ class _DetailMenuState extends State<DetailMenu> {
                         Text(
                           'Level',
                           style: GoogleFonts.montserrat(
-                            //color: Colors.white,
                             fontSize: 16,
                             fontWeight: FontWeight.w600,
                             foreground: Paint()
-                              // ..style = PaintingStyle.stroke
-                              // ..strokeWidth = 2
                               ..color = const Color.fromARGB(255, 46, 46, 46),
-                            // //fontFamily: 'Montserrat',
                           ),
                         ),
                       ],
@@ -279,15 +305,11 @@ class _DetailMenuState extends State<DetailMenu> {
                             return Text(
                               '${newContext.read<MakananProvider>().listMakananProvider[widget.index].level}',
                               style: GoogleFonts.montserrat(
-                                //color: Colors.white,
                                 fontSize: 14,
                                 fontWeight: FontWeight.w400,
                                 foreground: Paint()
-                                  // ..style = PaintingStyle.stroke
-                                  // ..strokeWidth = 2
                                   ..color =
                                       const Color.fromARGB(255, 46, 46, 46),
-                                // //fontFamily: 'Montserrat',
                               ),
                             );
                           }),
@@ -341,18 +363,24 @@ class _DetailMenuState extends State<DetailMenu> {
                           Icons.chevron_right,
                           color: Colors.black,
                         ),
-                        icon: Text(
-                          '1',
-                          style: GoogleFonts.montserrat(
-                            //color: Colors.white,
-                            fontSize: 18,
-                            fontWeight: FontWeight.w400,
-                            foreground: Paint()
-                              // ..style = PaintingStyle.stroke
-                              // ..strokeWidth = 2
-                              ..color = const Color.fromARGB(255, 46, 46, 46),
-                            // //fontFamily: 'Montserrat',
-                          ),
+                        icon: ChangeNotifierProvider(
+                          create: (context) => MakananProvider(),
+                          child: Builder(builder: (BuildContext newContext) {
+                            return Text(
+                              '${newContext.read<MakananProvider>().listMakananProvider[widget.index].topping}',
+                              style: GoogleFonts.montserrat(
+                                //color: Colors.white,
+                                fontSize: 14,
+                                fontWeight: FontWeight.w400,
+                                foreground: Paint()
+                                  // ..style = PaintingStyle.stroke
+                                  // ..strokeWidth = 2
+                                  ..color =
+                                      const Color.fromARGB(255, 46, 46, 46),
+                                // //fontFamily: 'Montserrat',
+                              ),
+                            );
+                          }),
                         ),
                       ),
                     ),
@@ -632,103 +660,201 @@ class _DetailMenuState extends State<DetailMenu> {
                     ),
                   ),
                 ),
-                Padding(
-                  padding: const EdgeInsets.only(left: 18.0, right: 80),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      ElevatedButton(
-                          style: ButtonStyle(
-                              backgroundColor: MaterialStateProperty.all<Color>(
-                                  const Color.fromARGB(255, 0, 154, 173)),
-                              shape: MaterialStateProperty.all<
-                                      RoundedRectangleBorder>(
-                                  RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(18.0),
-                              ))),
-                          onPressed: () {},
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                            children: [
-                              Text(
-                                'Mozarella',
-                                style: GoogleFonts.montserrat(
-                                  //color: Colors.white,
-                                  fontSize: 12,
-                                  fontWeight: FontWeight.w400,
-                                  foreground: Paint()
-                                    // ..style = PaintingStyle.stroke
-                                    // ..strokeWidth = 2
-                                    ..color = Colors.white,
-                                  // //fontFamily: 'Montserrat',
-                                ),
-                              ),
-                              const Icon(Icons.check)
-                            ],
-                          )),
-                      ElevatedButton(
-                          style: ButtonStyle(
-                            shape: MaterialStateProperty
-                                .all<RoundedRectangleBorder>(
-                                    RoundedRectangleBorder(
-                                        borderRadius:
-                                            BorderRadius.circular(18.0),
-                                        side: const BorderSide(
-                                          color:
-                                              Color.fromARGB(255, 0, 154, 173),
-                                        ))),
-                            backgroundColor: MaterialStateProperty.all<Color>(
-                                const Color.fromARGB(255, 255, 255, 255)),
-                          ),
-                          onPressed: () {},
-                          child: Text(
-                            'Sausage',
-                            style: GoogleFonts.montserrat(
-                              //color: Colors.white,
-                              fontSize: 12,
-                              fontWeight: FontWeight.w400,
-                              foreground: Paint()
-                                // ..style = PaintingStyle.stroke
-                                // ..strokeWidth = 2
-                                ..color = Colors.black,
-                              // //fontFamily: 'Montserrat',
-                            ),
-                          )),
-                      ElevatedButton(
-                          style: ButtonStyle(
-                            shape: MaterialStateProperty
-                                .all<RoundedRectangleBorder>(
-                                    RoundedRectangleBorder(
-                                        borderRadius:
-                                            BorderRadius.circular(18.0),
-                                        side: const BorderSide(
-                                          color:
-                                              Color.fromARGB(255, 0, 154, 173),
-                                        ))),
-                            backgroundColor: MaterialStateProperty.all<Color>(
-                                const Color.fromARGB(255, 255, 255, 255)),
-                          ),
-                          onPressed: () {},
-                          child: Text(
-                            'Dimsum',
-                            style: GoogleFonts.montserrat(
-                              //color: Colors.white,
-                              fontSize: 12,
-                              fontWeight: FontWeight.w400,
-                              foreground: Paint()
-                                // ..style = PaintingStyle.stroke
-                                // ..strokeWidth = 2
-                                ..color = Colors.black,
-                              // //fontFamily: 'Montserrat',
-                            ),
-                          )),
-                    ],
-                  ),
-                ),
+                ButtonTopingz()
+                // Padding(
+                //   padding: const EdgeInsets.only(left: 18.0, right: 80),
+                //   child: Row(
+                //     mainAxisAlignment: MainAxisAlignment.spaceAround,
+                //     children: [
+                //       ButtonToping(),
+                //       ElevatedButton(
+                //           style: ButtonStyle(
+                //             shape: MaterialStateProperty
+                //                 .all<RoundedRectangleBorder>(
+                //                     RoundedRectangleBorder(
+                //                         borderRadius:
+                //                             BorderRadius.circular(18.0),
+                //                         side: const BorderSide(
+                //                           color:
+                //                               Color.fromARGB(255, 0, 154, 173),
+                //                         ))),
+                //             backgroundColor: MaterialStateProperty.all<Color>(
+                //                 const Color.fromARGB(255, 255, 255, 255)),
+                //           ),
+                //           onPressed: () {},
+                //           child: Text(
+                //             'Sausage',
+                //             style: GoogleFonts.montserrat(
+                //               //color: Colors.white,
+                //               fontSize: 12,
+                //               fontWeight: FontWeight.w400,
+                //               foreground: Paint()
+                //                 // ..style = PaintingStyle.stroke
+                //                 // ..strokeWidth = 2
+                //                 ..color = Colors.black,
+                //               // //fontFamily: 'Montserrat',
+                //             ),
+                //           )),
+                //       ElevatedButton(
+                //           style: ButtonStyle(
+                //             shape: MaterialStateProperty
+                //                 .all<RoundedRectangleBorder>(
+                //                     RoundedRectangleBorder(
+                //                         borderRadius:
+                //                             BorderRadius.circular(18.0),
+                //                         side: const BorderSide(
+                //                           color:
+                //                               Color.fromARGB(255, 0, 154, 173),
+                //                         ))),
+                //             backgroundColor: MaterialStateProperty.all<Color>(
+                //                 const Color.fromARGB(255, 255, 255, 255)),
+                //           ),
+                //           onPressed: () {},
+                //           child: Text(
+                //             'Dimsum',
+                //             style: GoogleFonts.montserrat(
+                //               //color: Colors.white,
+                //               fontSize: 12,
+                //               fontWeight: FontWeight.w400,
+                //               foreground: Paint()
+                //                 // ..style = PaintingStyle.stroke
+                //                 // ..strokeWidth = 2
+                //                 ..color = Colors.black,
+                //               // //fontFamily: 'Montserrat',
+                //             ),
+                //           )),
+                //     ],
+                //   ),
+                // ),
               ],
             ),
           );
         });
+  }
+
+  ChangeNotifierProvider<MakananProvider> ButtonTopingz() {
+    return ChangeNotifierProvider(
+      create: (context) => MakananProvider(),
+      child: Builder(builder: (BuildContext newContext) {
+        return Padding(
+          padding: const EdgeInsets.only(left: 18.0, right: 80),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              EltvdBtnToping(newContext, 'Mozarella'),
+              EltvdBtnToping(newContext, 'Dimsum'),
+              EltvdBtnToping(newContext, 'Keju'),
+            ],
+          ),
+        );
+      }),
+    );
+  }
+
+  ElevatedButton EltvdBtnToping(BuildContext newContext, toping) {
+    if (newContext
+            .read<MakananProvider>()
+            .listMakananProvider[widget.index]
+            .topping ==
+        toping) {
+      return ElevatedButton(
+          style: ButtonStyle(
+              backgroundColor: MaterialStateProperty.all<Color>(
+                  const Color.fromARGB(255, 0, 154, 173)),
+              shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                  RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(18.0),
+              ))),
+          onPressed: () {
+            setState(() {});
+          },
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              Text(
+                '$toping',
+                style: GoogleFonts.montserrat(
+                  //color: Colors.white,
+                  fontSize: 12,
+                  fontWeight: FontWeight.w400,
+                  foreground: Paint()
+                    // ..style = PaintingStyle.stroke
+                    // ..strokeWidth = 2
+                    ..color = Colors.white,
+                  // //fontFamily: 'Montserrat',
+                ),
+              ),
+              const Icon(Icons.check)
+            ],
+          ));
+    } else {
+      return ElevatedButton(
+          style: ButtonStyle(
+            shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(18.0),
+                    side: const BorderSide(
+                      color: Color.fromARGB(255, 0, 154, 173),
+                    ))),
+            backgroundColor: MaterialStateProperty.all<Color>(
+                const Color.fromARGB(255, 255, 255, 255)),
+          ),
+          onPressed: () {
+            setState(() {
+              newContext
+                  .read<MakananProvider>()
+                  .listMakananProvider[widget.index]
+                  .topping = toping;
+            });
+            Navigator.pop(context);
+          },
+          child: Text(
+            '$toping',
+            style: GoogleFonts.montserrat(
+              //color: Colors.white,
+              fontSize: 12,
+              fontWeight: FontWeight.w400,
+              foreground: Paint()
+                // ..style = PaintingStyle.stroke
+                // ..strokeWidth = 2
+                ..color = Colors.black,
+              // //fontFamily: 'Montserrat',
+            ),
+          ));
+    }
+  }
+
+  ElevatedButton ButtonToping() {
+    return ElevatedButton(
+        style: ButtonStyle(
+            backgroundColor: MaterialStateProperty.all<Color>(
+                const Color.fromARGB(255, 0, 154, 173)),
+            shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(18.0),
+            ))),
+        onPressed: () {
+          setState(() {});
+        },
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            Text(
+              'Mozarella',
+              style: GoogleFonts.montserrat(
+                //color: Colors.white,
+                fontSize: 12,
+                fontWeight: FontWeight.w400,
+                foreground: Paint()
+                  // ..style = PaintingStyle.stroke
+                  // ..strokeWidth = 2
+                  ..color = Colors.white,
+                // //fontFamily: 'Montserrat',
+              ),
+            ),
+            const Icon(Icons.check)
+          ],
+        ));
   }
 
   Future<dynamic> ModalBottomBuatCatatan(BuildContext context) {
