@@ -423,7 +423,7 @@ class _DetailMenuState extends State<DetailMenu> {
                       height: 30,
                       child: TextButton.icon(
                         onPressed: () {
-                          ModalBottomBuatCatatan(context);
+                          ModalBottomCatatan(context);
                         },
                         label: const Icon(
                           Icons.chevron_right,
@@ -831,7 +831,7 @@ class _DetailMenuState extends State<DetailMenu> {
     }
   }
 
-  Future<dynamic> ModalBottomBuatCatatan(BuildContext context) {
+  Future<dynamic> ModalBottomCatatan(BuildContext context) {
     TextEditingController controllerCatatanMakanan =
         TextEditingController(text: listMakanan[widget.index].catatan);
     return showModalBottomSheet(
@@ -839,127 +839,112 @@ class _DetailMenuState extends State<DetailMenu> {
         shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.vertical(top: Radius.circular(25.0)),
         ),
+        // clipBehavior: Clip.antiAliasWithSaveLayer,
         context: context,
         builder: (context) {
-          return Padding(
-            padding: EdgeInsets.only(
-                bottom: MediaQuery.of(context).viewInsets.bottom),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                //garis atas
-                Padding(
-                  padding: const EdgeInsets.only(left: 100, right: 100),
-                  child: SizedBox(
-                    height: 5.0,
-                    child: Container(
-                        decoration: BoxDecoration(
-                          color: const Color.fromARGB(196, 196, 196, 196),
-                          borderRadius: BorderRadius.circular(10.0),
-                        ),
-                        child: const Center(
-                          child: Text(""),
-                        )),
+          return Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              SizedBox(
+                height: 20,
+              ),
+              //garis atas
+              Padding(
+                padding: const EdgeInsets.only(left: 100, right: 100),
+                child: SizedBox(
+                  height: 5.0,
+                  child: Container(
+                      decoration: BoxDecoration(
+                        color: const Color.fromARGB(196, 196, 196, 196),
+                        borderRadius: BorderRadius.circular(10.0),
+                      ),
+                      child: const Center(
+                        child: Text(""),
+                      )),
+                ),
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              Padding(
+                padding: const EdgeInsets.only(right: 270.0, bottom: 10),
+                child: Text(
+                  'Buat Catatan',
+                  style: GoogleFonts.montserrat(
+                    // color: Colors.amber,
+                    fontSize: 17,
+                    fontWeight: FontWeight.w700,
+                    foreground: Paint()
+                      // ..style = PaintingStyle.stroke
+                      // ..strokeWidth = 2
+                      ..color = const Color.fromARGB(255, 46, 46, 46),
+                    // //fontFamily: 'Montserrat',
                   ),
                 ),
-                // Padding(
-                //   padding: EdgeInsets.only(
-                //       bottom: MediaQuery.of(context).viewInsets.bottom),
-                //   child: Container(
-                //     height: 50,
-                //     width: double.maxFinite,
-                //     color: Colors.amber,
-                //   ),
-                // ),
-                // //buat catatan
-                // Text(
-                //   'Buat Catatan',
-                //   style: GoogleFonts.montserrat(
-                //     // color: Colors.amber,
-                //     fontSize: 17,
-                //     fontWeight: FontWeight.w700,
-                //     foreground: Paint()
-                //       // ..style = PaintingStyle.stroke
-                //       // ..strokeWidth = 2
-                //       ..color = const Color.fromARGB(255, 46, 46, 46),
-                //     // //fontFamily: 'Montserrat',
-                //   ),
-                // ),
-                // //buat catatan
-                Padding(
-                  padding: const EdgeInsets.only(right: 270.0, bottom: 10),
-                  child: Text(
-                    'Buat Catatan',
-                    style: GoogleFonts.montserrat(
-                      // color: Colors.amber,
-                      fontSize: 17,
-                      fontWeight: FontWeight.w700,
-                      foreground: Paint()
-                        // ..style = PaintingStyle.stroke
-                        // ..strokeWidth = 2
-                        ..color = const Color.fromARGB(255, 46, 46, 46),
-                      // //fontFamily: 'Montserrat',
-                    ),
-                  ),
-                ),
-                //textform catatan
-                Padding(
-                    padding: EdgeInsets.only(
-                        left: 18.0,
-                        right: 10,
-                        bottom: MediaQuery.of(context).viewInsets.bottom),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        Flexible(
-                          flex: 5,
-                          child: ChangeNotifierProvider(
-                            create: (context) => MakananProvider(),
-                            child: Builder(builder: (BuildContext newContext) {
-                              return TextFormField(
-                                controller: controllerCatatanMakanan,
-                                // initialValue:
-                                //     '${newContext.read<MakananProvider>().listMakananProvider[widget.index].catatan}',
-                              );
-                            }),
-                          ),
-                        ),
-                        ChangeNotifierProvider(
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              //textform catatan
+              Padding(
+                  padding: EdgeInsets.only(
+                      left: 18.0,
+                      right: 10,
+                      bottom: MediaQuery.of(context).viewInsets.bottom),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Flexible(
+                        flex: 5,
+                        child: ChangeNotifierProvider(
                           create: (context) => MakananProvider(),
                           child: Builder(builder: (BuildContext newContext) {
-                            return Flexible(
-                              flex: 1,
-                              child: ElevatedButton(
-                                  style: ButtonStyle(
-                                    shape: MaterialStateProperty.all(
-                                        const CircleBorder(
-                                            side: BorderSide(
-                                      color: Color.fromARGB(255, 0, 154, 173),
-                                    ))),
-                                    backgroundColor: MaterialStateProperty.all<
-                                            Color>(
-                                        const Color.fromARGB(255, 0, 154, 173)),
-                                  ),
-                                  onPressed: () {
-                                    setState(() {
-                                      newContext
-                                              .read<MakananProvider>()
-                                              .listMakananProvider[widget.index]
-                                              .catatan =
-                                          controllerCatatanMakanan.text;
-                                    });
-                                  },
-                                  child: const Icon(
-                                    Icons.check,
-                                    size: 14,
-                                  )),
+                            return TextFormField(
+                              controller: controllerCatatanMakanan,
+                              // initialValue:
+                              //     '${newContext.read<MakananProvider>().listMakananProvider[widget.index].catatan}',
                             );
                           }),
                         ),
-                      ],
-                    )),
-              ],
-            ),
+                      ),
+                      ChangeNotifierProvider(
+                        create: (context) => MakananProvider(),
+                        child: Builder(builder: (BuildContext newContext) {
+                          return Flexible(
+                            flex: 1,
+                            child: ElevatedButton(
+                                style: ButtonStyle(
+                                  shape: MaterialStateProperty.all(
+                                      const CircleBorder(
+                                          side: BorderSide(
+                                    color: Color.fromARGB(255, 0, 154, 173),
+                                  ))),
+                                  backgroundColor: MaterialStateProperty.all<
+                                          Color>(
+                                      const Color.fromARGB(255, 0, 154, 173)),
+                                ),
+                                onPressed: () {
+                                  setState(() {
+                                    newContext
+                                            .read<MakananProvider>()
+                                            .listMakananProvider[widget.index]
+                                            .catatan =
+                                        controllerCatatanMakanan.text;
+                                  });
+                                },
+                                child: const Icon(
+                                  Icons.check,
+                                  size: 14,
+                                )),
+                          );
+                        }),
+                      ),
+                    ],
+                  )),
+              SizedBox(
+                height: 20,
+              ),
+            ],
           );
         });
   }
