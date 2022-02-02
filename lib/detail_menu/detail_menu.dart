@@ -931,6 +931,7 @@ class _DetailMenuState extends State<DetailMenu> {
                                             .catatan =
                                         controllerCatatanMakanan.text;
                                   });
+                                  Navigator.pop(context);
                                 },
                                 child: const Icon(
                                   Icons.check,
