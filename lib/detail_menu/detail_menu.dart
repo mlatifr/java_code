@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:java_code/beranda/ListMakanan/makanan_model.dart';
 import 'package:java_code/beranda/makananProvider.dart';
 import 'package:provider/provider.dart';
 
@@ -305,7 +306,7 @@ class _DetailMenuState extends State<DetailMenu> {
                             return Text(
                               '${newContext.read<MakananProvider>().listMakananProvider[widget.index].level}',
                               style: GoogleFonts.montserrat(
-                                fontSize: 14,
+                                fontSize: 12,
                                 fontWeight: FontWeight.w400,
                                 foreground: Paint()
                                   ..color =
@@ -370,7 +371,7 @@ class _DetailMenuState extends State<DetailMenu> {
                               '${newContext.read<MakananProvider>().listMakananProvider[widget.index].topping}',
                               style: GoogleFonts.montserrat(
                                 //color: Colors.white,
-                                fontSize: 14,
+                                fontSize: 12,
                                 fontWeight: FontWeight.w400,
                                 foreground: Paint()
                                   // ..style = PaintingStyle.stroke
@@ -428,18 +429,24 @@ class _DetailMenuState extends State<DetailMenu> {
                           Icons.chevron_right,
                           color: Colors.black,
                         ),
-                        icon: Text(
-                          '1',
-                          style: GoogleFonts.montserrat(
-                            //color: Colors.white,
-                            fontSize: 18,
-                            fontWeight: FontWeight.w400,
-                            foreground: Paint()
-                              // ..style = PaintingStyle.stroke
-                              // ..strokeWidth = 2
-                              ..color = const Color.fromARGB(255, 46, 46, 46),
-                            // //fontFamily: 'Montserrat',
-                          ),
+                        icon: ChangeNotifierProvider(
+                          create: (context) => MakananProvider(),
+                          child: Builder(builder: (BuildContext newContext) {
+                            return Text(
+                              '${newContext.read<MakananProvider>().listMakananProvider[widget.index].catatan}',
+                              style: GoogleFonts.montserrat(
+                                //color: Colors.white,
+                                fontSize: 12,
+                                fontWeight: FontWeight.w400,
+                                foreground: Paint()
+                                  // ..style = PaintingStyle.stroke
+                                  // ..strokeWidth = 2
+                                  ..color =
+                                      const Color.fromARGB(255, 46, 46, 46),
+                                // //fontFamily: 'Montserrat',
+                              ),
+                            );
+                          }),
                         ),
                       ),
                     ),
@@ -660,7 +667,7 @@ class _DetailMenuState extends State<DetailMenu> {
                     ),
                   ),
                 ),
-                ButtonTopingz()
+                ButtonToping()
                 // Padding(
                 //   padding: const EdgeInsets.only(left: 18.0, right: 80),
                 //   child: Row(
@@ -732,7 +739,7 @@ class _DetailMenuState extends State<DetailMenu> {
         });
   }
 
-  ChangeNotifierProvider<MakananProvider> ButtonTopingz() {
+  ChangeNotifierProvider<MakananProvider> ButtonToping() {
     return ChangeNotifierProvider(
       create: (context) => MakananProvider(),
       child: Builder(builder: (BuildContext newContext) {
@@ -824,52 +831,23 @@ class _DetailMenuState extends State<DetailMenu> {
     }
   }
 
-  ElevatedButton ButtonToping() {
-    return ElevatedButton(
-        style: ButtonStyle(
-            backgroundColor: MaterialStateProperty.all<Color>(
-                const Color.fromARGB(255, 0, 154, 173)),
-            shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(18.0),
-            ))),
-        onPressed: () {
-          setState(() {});
-        },
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: [
-            Text(
-              'Mozarella',
-              style: GoogleFonts.montserrat(
-                //color: Colors.white,
-                fontSize: 12,
-                fontWeight: FontWeight.w400,
-                foreground: Paint()
-                  // ..style = PaintingStyle.stroke
-                  // ..strokeWidth = 2
-                  ..color = Colors.white,
-                // //fontFamily: 'Montserrat',
-              ),
-            ),
-            const Icon(Icons.check)
-          ],
-        ));
-  }
-
   Future<dynamic> ModalBottomBuatCatatan(BuildContext context) {
+    TextEditingController controllerCatatanMakanan =
+        TextEditingController(text: listMakanan[widget.index].catatan);
     return showModalBottomSheet(
+        isScrollControlled: true,
         shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.vertical(top: Radius.circular(25.0)),
         ),
         context: context,
         builder: (context) {
-          return Container(
-            margin: const EdgeInsets.symmetric(vertical: 0, horizontal: 0),
-            height: MediaQuery.of(context).size.height * 1 / 5,
+          return Padding(
+            padding: EdgeInsets.only(
+                bottom: MediaQuery.of(context).viewInsets.bottom),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
+                //garis atas
                 Padding(
                   padding: const EdgeInsets.only(left: 100, right: 100),
                   child: SizedBox(
@@ -884,12 +862,36 @@ class _DetailMenuState extends State<DetailMenu> {
                         )),
                   ),
                 ),
+                // Padding(
+                //   padding: EdgeInsets.only(
+                //       bottom: MediaQuery.of(context).viewInsets.bottom),
+                //   child: Container(
+                //     height: 50,
+                //     width: double.maxFinite,
+                //     color: Colors.amber,
+                //   ),
+                // ),
+                // //buat catatan
+                // Text(
+                //   'Buat Catatan',
+                //   style: GoogleFonts.montserrat(
+                //     // color: Colors.amber,
+                //     fontSize: 17,
+                //     fontWeight: FontWeight.w700,
+                //     foreground: Paint()
+                //       // ..style = PaintingStyle.stroke
+                //       // ..strokeWidth = 2
+                //       ..color = const Color.fromARGB(255, 46, 46, 46),
+                //     // //fontFamily: 'Montserrat',
+                //   ),
+                // ),
+                // //buat catatan
                 Padding(
-                  padding: const EdgeInsets.only(right: 270.0),
+                  padding: const EdgeInsets.only(right: 270.0, bottom: 10),
                   child: Text(
                     'Buat Catatan',
                     style: GoogleFonts.montserrat(
-                      //color: Colors.white,
+                      // color: Colors.amber,
                       fontSize: 17,
                       fontWeight: FontWeight.w700,
                       foreground: Paint()
@@ -900,36 +902,59 @@ class _DetailMenuState extends State<DetailMenu> {
                     ),
                   ),
                 ),
+                //textform catatan
                 Padding(
-                    padding: const EdgeInsets.only(left: 18.0, right: 10),
+                    padding: EdgeInsets.only(
+                        left: 18.0,
+                        right: 10,
+                        bottom: MediaQuery.of(context).viewInsets.bottom),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
                         Flexible(
                           flex: 5,
-                          child: TextFormField(
-                            initialValue:
-                                'Lorem ipsum dolor sit amet, consectetur adipisicing elit',
+                          child: ChangeNotifierProvider(
+                            create: (context) => MakananProvider(),
+                            child: Builder(builder: (BuildContext newContext) {
+                              return TextFormField(
+                                controller: controllerCatatanMakanan,
+                                // initialValue:
+                                //     '${newContext.read<MakananProvider>().listMakananProvider[widget.index].catatan}',
+                              );
+                            }),
                           ),
                         ),
-                        Flexible(
-                          flex: 1,
-                          child: ElevatedButton(
-                              style: ButtonStyle(
-                                shape: MaterialStateProperty.all(
-                                    const CircleBorder(
-                                        side: BorderSide(
-                                  color: Color.fromARGB(255, 0, 154, 173),
-                                ))),
-                                backgroundColor:
-                                    MaterialStateProperty.all<Color>(
+                        ChangeNotifierProvider(
+                          create: (context) => MakananProvider(),
+                          child: Builder(builder: (BuildContext newContext) {
+                            return Flexible(
+                              flex: 1,
+                              child: ElevatedButton(
+                                  style: ButtonStyle(
+                                    shape: MaterialStateProperty.all(
+                                        const CircleBorder(
+                                            side: BorderSide(
+                                      color: Color.fromARGB(255, 0, 154, 173),
+                                    ))),
+                                    backgroundColor: MaterialStateProperty.all<
+                                            Color>(
                                         const Color.fromARGB(255, 0, 154, 173)),
-                              ),
-                              onPressed: () {},
-                              child: const Icon(
-                                Icons.check,
-                                size: 14,
-                              )),
+                                  ),
+                                  onPressed: () {
+                                    setState(() {
+                                      newContext
+                                              .read<MakananProvider>()
+                                              .listMakananProvider[widget.index]
+                                              .catatan =
+                                          controllerCatatanMakanan.text;
+                                    });
+                                  },
+                                  child: const Icon(
+                                    Icons.check,
+                                    size: 14,
+                                  )),
+                            );
+                          }),
                         ),
                       ],
                     )),
