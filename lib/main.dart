@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:java_code/check_connection/check_connection.dart';
-
+import 'package:firebase_core/firebase_core.dart';
+import 'package:java_code/google_signin/google_sigin.dart';
+import 'package:provider/provider.dart';
 import 'loading_menemukan_lokasi/loading_menemukan_lokasi.dart';
 
-void main() {
+Future main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(const MyApp());
 }
 
@@ -237,41 +241,52 @@ class _MyHomePageState extends State<MyHomePage> {
                     Padding(
                       padding:
                           const EdgeInsetsDirectional.fromSTEB(12, 5, 0, 0),
-                      child: ElevatedButton(
-                          style: ElevatedButton.styleFrom(
-                              fixedSize: const Size(336, 44),
-                              primary: const Color.fromARGB(255, 255, 255, 255),
-                              shadowColor:
-                                  const Color.fromARGB(255, 46, 46, 46),
-                              shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(20.0))),
-                          onPressed: () {},
-                          child: Row(
-                            children: [
-                              const SizedBox(
-                                width: 25,
-                              ),
-                              Image.asset(
-                                'assets/login/google_icon.png',
-                                width: 20,
-                                height: 20,
-                                fit: BoxFit.cover,
-                              ),
-                              const SizedBox(
-                                width: 25,
-                              ),
-                              const Text(
-                                'Masuk Menggunakan ',
-                                style: TextStyle(color: Colors.black),
-                              ),
-                              const Text(
-                                'Google',
-                                style: TextStyle(
-                                    color: Colors.black,
-                                    fontWeight: FontWeight.w700),
-                              ),
-                            ],
-                          )),
+                      child: ChangeNotifierProvider(
+                        create: (context) => GoogleSignInProvider(),
+                        child: Builder(builder: (BuildContext newContext) {
+                          return ElevatedButton(
+                              style: ElevatedButton.styleFrom(
+                                  fixedSize: const Size(336, 44),
+                                  primary:
+                                      const Color.fromARGB(255, 255, 255, 255),
+                                  shadowColor:
+                                      const Color.fromARGB(255, 46, 46, 46),
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius:
+                                          BorderRadius.circular(20.0))),
+                              onPressed: () {
+                                newContext
+                                    .read<GoogleSignInProvider>()
+                                    .googleLogin();
+                              },
+                              child: Row(
+                                children: [
+                                  const SizedBox(
+                                    width: 25,
+                                  ),
+                                  Image.asset(
+                                    'assets/login/google_icon.png',
+                                    width: 20,
+                                    height: 20,
+                                    fit: BoxFit.cover,
+                                  ),
+                                  const SizedBox(
+                                    width: 25,
+                                  ),
+                                  const Text(
+                                    'Masuk Menggunakan ',
+                                    style: TextStyle(color: Colors.black),
+                                  ),
+                                  const Text(
+                                    'Google',
+                                    style: TextStyle(
+                                        color: Colors.black,
+                                        fontWeight: FontWeight.w700),
+                                  ),
+                                ],
+                              ));
+                        }),
+                      ),
                     ),
                     Padding(
                       padding:
