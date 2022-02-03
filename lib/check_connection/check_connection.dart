@@ -3,24 +3,30 @@ library java_code.check_connection;
 import 'dart:async';
 import 'package:data_connection_checker/data_connection_checker.dart';
 import 'package:flutter/material.dart';
+import 'no_internet.dart';
 
 class checkInternet {
   late StreamSubscription<DataConnectionStatus> listener;
   var InternetStatus = "Unknown";
-  var contentmessage = "Unknown";
-
   checkConnection(BuildContext context) async {
     listener = DataConnectionChecker().onStatusChange.listen((status) {
       switch (status) {
         case DataConnectionStatus.connected:
-          InternetStatus = "Connected to the Internet";
-          contentmessage = "Connected to the Internet";
-          print('${InternetStatus + " | " + contentmessage}');
+          if (InternetStatus == "no internet") {
+            Navigator.pop(context);
+          }
+          InternetStatus = "internet";
+          print('${InternetStatus}');
           break;
         case DataConnectionStatus.disconnected:
-          InternetStatus = "You are disconnected to the Internet. ";
-          contentmessage = "Please check your internet connection";
-          print('${InternetStatus + " | " + contentmessage}');
+          InternetStatus = "no internet";
+          print('${InternetStatus}');
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => NoInternetPage(),
+            ),
+          );
           break;
       }
     });
