@@ -22,16 +22,14 @@ class _DetailMenuState extends State<DetailMenu> {
       extendBody: true,
       backgroundColor: const Color.fromARGB(255, 229, 229, 229),
       body: SafeArea(
-        child: SingleChildScrollView(
-          child: Column(
-            mainAxisSize: MainAxisSize.max,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              WidgetTittle(context),
-              WidgetImageDetailMakanan(),
-              widgetDetailMakanan(context),
-            ],
-          ),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            WidgetTittle(context),
+            WidgetImageDetailMakanan(),
+            widgetDetailMakanan(context),
+          ],
         ),
       ),
     );
@@ -115,386 +113,380 @@ class _DetailMenuState extends State<DetailMenu> {
 
   Container widgetDetailMakanan(BuildContext context) {
     return Container(
-      height: MediaQuery.of(context).size.height,
-      color: Colors.transparent,
-      child: Container(
-          margin: const EdgeInsets.symmetric(vertical: 0, horizontal: 0),
-          decoration: const BoxDecoration(
-              color: Color.fromARGB(255, 255, 255, 255),
-              borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(30.0),
-                topRight: Radius.circular(30.0),
-              )),
-          child: Column(
-            children: [
-              Padding(
-                padding: const EdgeInsets.only(
-                    top: 20, bottom: 10, left: 20, right: 20),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      'Chicken Katsu',
-                      style: GoogleFonts.montserrat(
-                        fontSize: 20,
-                        fontWeight: FontWeight.w600,
-                        foreground: Paint()
-                          ..strokeWidth = 2
-                          ..color = const Color.fromARGB(255, 0, 154, 173),
-                      ),
+        margin: const EdgeInsets.symmetric(vertical: 0, horizontal: 0),
+        decoration: const BoxDecoration(
+            color: Color.fromARGB(255, 255, 255, 255),
+            borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(30.0),
+              topRight: Radius.circular(30.0),
+            )),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Padding(
+              padding: const EdgeInsets.only(
+                  top: 20, bottom: 10, left: 20, right: 20),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    'Chicken Katsu',
+                    style: GoogleFonts.montserrat(
+                      fontSize: 20,
+                      fontWeight: FontWeight.w600,
+                      foreground: Paint()
+                        ..strokeWidth = 2
+                        ..color = const Color.fromARGB(255, 0, 154, 173),
                     ),
-                    Row(
-                      mainAxisSize: MainAxisSize.max,
-                      children: [
-                        ChangeNotifierProvider(
-                          create: (context) => MakananProvider(),
-                          child: Builder(builder: (BuildContext newContext) {
-                            return IconButton(
-                                onPressed: () {
-                                  setState(() {
-                                    newContext
-                                        .read<MakananProvider>()
-                                        .listMakananProvider[widget.index]
-                                        .jumlah--;
-                                    // listMinuman[index].jumlah =
-                                    //     newContext
-                                    //         .read<MinumanProvider>()
-                                    //         .jumlah;
-                                  });
-                                },
-                                icon: const Icon(Icons.remove));
-                          }),
-                        ),
-                        ChangeNotifierProvider(
-                          create: (context) => MakananProvider(),
-                          child: Builder(builder: (BuildContext newContext) {
-                            return Text(
-                              '${newContext.read<MakananProvider>().listMakananProvider[widget.index].jumlah}',
-                              style: GoogleFonts.montserrat(
-                                fontSize: 18,
-                                fontWeight: FontWeight.w500,
-                              ),
-                            );
-                          }),
-                        ),
-                        ChangeNotifierProvider(
-                          create: (context) => MakananProvider(),
-                          child: Builder(builder: (BuildContext newContext) {
-                            return IconButton(
+                  ),
+                  Row(
+                    mainAxisSize: MainAxisSize.max,
+                    children: [
+                      ChangeNotifierProvider(
+                        create: (context) => MakananProvider(),
+                        child: Builder(builder: (BuildContext newContext) {
+                          return IconButton(
                               onPressed: () {
                                 setState(() {
                                   newContext
                                       .read<MakananProvider>()
                                       .listMakananProvider[widget.index]
-                                      .jumlah++;
+                                      .jumlah--;
                                   // listMinuman[index].jumlah =
                                   //     newContext
                                   //         .read<MinumanProvider>()
                                   //         .jumlah;
                                 });
                               },
-                              icon: const Icon(Icons.add_box),
-                              color: const Color.fromARGB(255, 0, 154, 173),
-                            );
-                          }),
-                        )
-                      ],
-                    ),
-                  ],
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(
-                    top: 0, bottom: 10, left: 20, right: 100),
-                child: Text(
-                  'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-                  maxLines: 3,
-                  style: GoogleFonts.montserrat(
-                    //color: Colors.white,
-                    fontSize: 12,
-                    fontWeight: FontWeight.w400,
-                    foreground: Paint()
-                      // ..style = PaintingStyle.stroke
-                      // ..strokeWidth = 2
-                      ..color = const Color.fromARGB(255, 46, 46, 46),
-                    // //fontFamily: 'Montserrat',
+                              icon: const Icon(Icons.remove));
+                        }),
+                      ),
+                      ChangeNotifierProvider(
+                        create: (context) => MakananProvider(),
+                        child: Builder(builder: (BuildContext newContext) {
+                          return Text(
+                            '${newContext.read<MakananProvider>().listMakananProvider[widget.index].jumlah}',
+                            style: GoogleFonts.montserrat(
+                              fontSize: 18,
+                              fontWeight: FontWeight.w500,
+                            ),
+                          );
+                        }),
+                      ),
+                      ChangeNotifierProvider(
+                        create: (context) => MakananProvider(),
+                        child: Builder(builder: (BuildContext newContext) {
+                          return IconButton(
+                            onPressed: () {
+                              setState(() {
+                                newContext
+                                    .read<MakananProvider>()
+                                    .listMakananProvider[widget.index]
+                                    .jumlah++;
+                                // listMinuman[index].jumlah =
+                                //     newContext
+                                //         .read<MinumanProvider>()
+                                //         .jumlah;
+                              });
+                            },
+                            icon: const Icon(Icons.add_box),
+                            color: const Color.fromARGB(255, 0, 154, 173),
+                          );
+                        }),
+                      )
+                    ],
                   ),
+                ],
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(
+                  top: 0, bottom: 10, left: 20, right: 100),
+              child: Text(
+                'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+                maxLines: 3,
+                style: GoogleFonts.montserrat(
+                  //color: Colors.white,
+                  fontSize: 12,
+                  fontWeight: FontWeight.w400,
+                  foreground: Paint()
+                    // ..style = PaintingStyle.stroke
+                    // ..strokeWidth = 2
+                    ..color = const Color.fromARGB(255, 46, 46, 46),
+                  // //fontFamily: 'Montserrat',
                 ),
               ),
-              const Divider(),
-              Padding(
-                padding: const EdgeInsets.only(left: 20, right: 20),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Row(
-                      children: [
-                        const ImageIcon(
-                          AssetImage("assets/DetailKatalog/harga.png"),
-                          color: Color.fromARGB(255, 0, 154, 173),
-                          size: 16,
-                        ),
-                        const SizedBox(
-                          width: 10,
-                        ),
-                        Text(
-                          'Harga',
-                          style: GoogleFonts.montserrat(
-                            //color: Colors.white,
-                            fontSize: 16,
-                            fontWeight: FontWeight.w600,
-                            foreground: Paint()
-                              // ..style = PaintingStyle.stroke
-                              // ..strokeWidth = 2
-                              ..color = const Color.fromARGB(255, 46, 46, 46),
-                            // //fontFamily: 'Montserrat',
-                          ),
-                        ),
-                      ],
-                    ),
-                    Text(
-                      'Rp 10.000',
-                      style: GoogleFonts.montserrat(
-                        //color: Colors.white,
-                        fontSize: 18,
-                        fontWeight: FontWeight.w700,
-                        foreground: Paint()
-                          ..color = const Color.fromARGB(255, 0, 154, 173),
+            ),
+            const Divider(),
+            Padding(
+              padding: const EdgeInsets.only(left: 20, right: 20),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Row(
+                    children: [
+                      const ImageIcon(
+                        AssetImage("assets/DetailKatalog/harga.png"),
+                        color: Color.fromARGB(255, 0, 154, 173),
+                        size: 16,
                       ),
-                    ),
-                  ],
-                ),
-              ),
-              const Divider(),
-              Padding(
-                padding: const EdgeInsets.only(left: 20, right: 20),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Row(
-                      children: [
-                        const ImageIcon(
-                          AssetImage("assets/DetailKatalog/level.png"),
-                          color: Color.fromARGB(255, 0, 154, 173),
-                          size: 16,
-                        ),
-                        const SizedBox(
-                          width: 10,
-                        ),
-                        Text(
-                          'Level',
-                          style: GoogleFonts.montserrat(
-                            fontSize: 16,
-                            fontWeight: FontWeight.w600,
-                            foreground: Paint()
-                              ..color = const Color.fromARGB(255, 46, 46, 46),
-                          ),
-                        ),
-                      ],
-                    ),
-                    SizedBox(
-                      height: 30,
-                      child: TextButton.icon(
-                        onPressed: () {
-                          ModalBottomLevel(context);
-                        },
-                        label: const Icon(
-                          Icons.chevron_right,
-                          color: Colors.black,
-                        ),
-                        icon: ChangeNotifierProvider(
-                          create: (context) => MakananProvider(),
-                          child: Builder(builder: (BuildContext newContext) {
-                            return Text(
-                              '${newContext.read<MakananProvider>().listMakananProvider[widget.index].level}',
-                              style: GoogleFonts.montserrat(
-                                fontSize: 12,
-                                fontWeight: FontWeight.w400,
-                                foreground: Paint()
-                                  ..color =
-                                      const Color.fromARGB(255, 46, 46, 46),
-                              ),
-                            );
-                          }),
+                      const SizedBox(
+                        width: 10,
+                      ),
+                      Text(
+                        'Harga',
+                        style: GoogleFonts.montserrat(
+                          //color: Colors.white,
+                          fontSize: 16,
+                          fontWeight: FontWeight.w600,
+                          foreground: Paint()
+                            // ..style = PaintingStyle.stroke
+                            // ..strokeWidth = 2
+                            ..color = const Color.fromARGB(255, 46, 46, 46),
+                          // //fontFamily: 'Montserrat',
                         ),
                       ),
-                    ),
-                  ],
-                ),
-              ),
-              const Divider(),
-              Padding(
-                padding: const EdgeInsets.only(
-                  left: 20,
-                  right: 20,
-                ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Row(
-                      children: [
-                        const ImageIcon(
-                          AssetImage("assets/DetailKatalog/toping.png"),
-                          color: Color.fromARGB(255, 0, 154, 173),
-                          size: 16,
-                        ),
-                        const SizedBox(
-                          width: 10,
-                        ),
-                        Text(
-                          'Toping',
-                          style: GoogleFonts.montserrat(
-                            //color: Colors.white,
-                            fontSize: 16,
-                            fontWeight: FontWeight.w600,
-                            foreground: Paint()
-                              // ..style = PaintingStyle.stroke
-                              // ..strokeWidth = 2
-                              ..color = const Color.fromARGB(255, 46, 46, 46),
-                            // //fontFamily: 'Montserrat',
-                          ),
-                        ),
-                      ],
-                    ),
-                    SizedBox(
-                      height: 30,
-                      child: TextButton.icon(
-                        onPressed: () {
-                          ModalBottomToping(context);
-                        },
-                        label: const Icon(
-                          Icons.chevron_right,
-                          color: Colors.black,
-                        ),
-                        icon: ChangeNotifierProvider(
-                          create: (context) => MakananProvider(),
-                          child: Builder(builder: (BuildContext newContext) {
-                            return Text(
-                              '${newContext.read<MakananProvider>().listMakananProvider[widget.index].topping}',
-                              style: GoogleFonts.montserrat(
-                                //color: Colors.white,
-                                fontSize: 12,
-                                fontWeight: FontWeight.w400,
-                                foreground: Paint()
-                                  // ..style = PaintingStyle.stroke
-                                  // ..strokeWidth = 2
-                                  ..color =
-                                      const Color.fromARGB(255, 46, 46, 46),
-                                // //fontFamily: 'Montserrat',
-                              ),
-                            );
-                          }),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              const Divider(),
-              Padding(
-                padding: const EdgeInsets.only(left: 20, right: 20),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Row(
-                      children: [
-                        const ImageIcon(
-                          AssetImage("assets/DetailKatalog/catatan.png"),
-                          color: Color.fromARGB(255, 0, 154, 173),
-                          size: 16,
-                        ),
-                        const SizedBox(
-                          width: 10,
-                        ),
-                        Text(
-                          'Catatan',
-                          style: GoogleFonts.montserrat(
-                            //color: Colors.white,
-                            fontSize: 16,
-                            fontWeight: FontWeight.w600,
-                            foreground: Paint()
-                              // ..style = PaintingStyle.stroke
-                              // ..strokeWidth = 2
-                              ..color = const Color.fromARGB(255, 46, 46, 46),
-                            // //fontFamily: 'Montserrat',
-                          ),
-                        ),
-                      ],
-                    ),
-                    SizedBox(
-                      height: 30,
-                      child: TextButton.icon(
-                        onPressed: () {
-                          ModalBottomCatatan(context);
-                        },
-                        label: const Icon(
-                          Icons.chevron_right,
-                          color: Colors.black,
-                        ),
-                        icon: ChangeNotifierProvider(
-                          create: (context) => MakananProvider(),
-                          child: Builder(builder: (BuildContext newContext) {
-                            return Text(
-                              '${newContext.read<MakananProvider>().listMakananProvider[widget.index].catatan}',
-                              style: GoogleFonts.montserrat(
-                                //color: Colors.white,
-                                fontSize: 12,
-                                fontWeight: FontWeight.w400,
-                                foreground: Paint()
-                                  // ..style = PaintingStyle.stroke
-                                  // ..strokeWidth = 2
-                                  ..color =
-                                      const Color.fromARGB(255, 46, 46, 46),
-                                // //fontFamily: 'Montserrat',
-                              ),
-                            );
-                          }),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              const Divider(),
-              const SizedBox(
-                height: 20,
-              ),
-              SizedBox(
-                height: 42,
-                width: 350,
-                child: ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    primary: const Color.fromARGB(255, 0, 154, 173),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(30), // <-- Radius
-                    ),
+                    ],
                   ),
-                  onPressed: () {
-                    // tambah ke list makanan
-                    // push to halaman pesanan
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => const Pesanan()),
-                    );
-                  },
-                  child: Text(
-                    'Tambahkan Ke Pesanan',
+                  Text(
+                    'Rp 10.000',
                     style: GoogleFonts.montserrat(
-                        //color: Colors.white,
-                        fontSize: 16,
-                        fontWeight: FontWeight.w600,
-                        foreground: Paint()
-                          // ..style = PaintingStyle.stroke
-                          // ..strokeWidth = 2
-                          ..color = Colors.white
-                        // //fontFamily: 'Montserrat',
+                      //color: Colors.white,
+                      fontSize: 18,
+                      fontWeight: FontWeight.w700,
+                      foreground: Paint()
+                        ..color = const Color.fromARGB(255, 0, 154, 173),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            const Divider(),
+            Padding(
+              padding: const EdgeInsets.only(left: 20, right: 20),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Row(
+                    children: [
+                      const ImageIcon(
+                        AssetImage("assets/DetailKatalog/level.png"),
+                        color: Color.fromARGB(255, 0, 154, 173),
+                        size: 16,
+                      ),
+                      const SizedBox(
+                        width: 10,
+                      ),
+                      Text(
+                        'Level',
+                        style: GoogleFonts.montserrat(
+                          fontSize: 16,
+                          fontWeight: FontWeight.w600,
+                          foreground: Paint()
+                            ..color = const Color.fromARGB(255, 46, 46, 46),
                         ),
+                      ),
+                    ],
+                  ),
+                  SizedBox(
+                    height: 30,
+                    child: TextButton.icon(
+                      onPressed: () {
+                        ModalBottomLevel(context);
+                      },
+                      label: const Icon(
+                        Icons.chevron_right,
+                        color: Colors.black,
+                      ),
+                      icon: ChangeNotifierProvider(
+                        create: (context) => MakananProvider(),
+                        child: Builder(builder: (BuildContext newContext) {
+                          return Text(
+                            '${newContext.read<MakananProvider>().listMakananProvider[widget.index].level}',
+                            style: GoogleFonts.montserrat(
+                              fontSize: 12,
+                              fontWeight: FontWeight.w400,
+                              foreground: Paint()
+                                ..color = const Color.fromARGB(255, 46, 46, 46),
+                            ),
+                          );
+                        }),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            const Divider(),
+            Padding(
+              padding: const EdgeInsets.only(
+                left: 20,
+                right: 20,
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Row(
+                    children: [
+                      const ImageIcon(
+                        AssetImage("assets/DetailKatalog/toping.png"),
+                        color: Color.fromARGB(255, 0, 154, 173),
+                        size: 16,
+                      ),
+                      const SizedBox(
+                        width: 10,
+                      ),
+                      Text(
+                        'Toping',
+                        style: GoogleFonts.montserrat(
+                          //color: Colors.white,
+                          fontSize: 16,
+                          fontWeight: FontWeight.w600,
+                          foreground: Paint()
+                            // ..style = PaintingStyle.stroke
+                            // ..strokeWidth = 2
+                            ..color = const Color.fromARGB(255, 46, 46, 46),
+                          // //fontFamily: 'Montserrat',
+                        ),
+                      ),
+                    ],
+                  ),
+                  SizedBox(
+                    height: 30,
+                    child: TextButton.icon(
+                      onPressed: () {
+                        ModalBottomToping(context);
+                      },
+                      label: const Icon(
+                        Icons.chevron_right,
+                        color: Colors.black,
+                      ),
+                      icon: ChangeNotifierProvider(
+                        create: (context) => MakananProvider(),
+                        child: Builder(builder: (BuildContext newContext) {
+                          return Text(
+                            '${newContext.read<MakananProvider>().listMakananProvider[widget.index].topping}',
+                            style: GoogleFonts.montserrat(
+                              //color: Colors.white,
+                              fontSize: 12,
+                              fontWeight: FontWeight.w400,
+                              foreground: Paint()
+                                // ..style = PaintingStyle.stroke
+                                // ..strokeWidth = 2
+                                ..color = const Color.fromARGB(255, 46, 46, 46),
+                              // //fontFamily: 'Montserrat',
+                            ),
+                          );
+                        }),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            const Divider(),
+            Padding(
+              padding: const EdgeInsets.only(left: 20, right: 20),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Row(
+                    children: [
+                      const ImageIcon(
+                        AssetImage("assets/DetailKatalog/catatan.png"),
+                        color: Color.fromARGB(255, 0, 154, 173),
+                        size: 16,
+                      ),
+                      const SizedBox(
+                        width: 10,
+                      ),
+                      Text(
+                        'Catatan',
+                        style: GoogleFonts.montserrat(
+                          //color: Colors.white,
+                          fontSize: 16,
+                          fontWeight: FontWeight.w600,
+                          foreground: Paint()
+                            // ..style = PaintingStyle.stroke
+                            // ..strokeWidth = 2
+                            ..color = const Color.fromARGB(255, 46, 46, 46),
+                          // //fontFamily: 'Montserrat',
+                        ),
+                      ),
+                    ],
+                  ),
+                  SizedBox(
+                    height: 30,
+                    child: TextButton.icon(
+                      onPressed: () {
+                        ModalBottomCatatan(context);
+                      },
+                      label: const Icon(
+                        Icons.chevron_right,
+                        color: Colors.black,
+                      ),
+                      icon: ChangeNotifierProvider(
+                        create: (context) => MakananProvider(),
+                        child: Builder(builder: (BuildContext newContext) {
+                          return Text(
+                            '${newContext.read<MakananProvider>().listMakananProvider[widget.index].catatan}',
+                            style: GoogleFonts.montserrat(
+                              //color: Colors.white,
+                              fontSize: 12,
+                              fontWeight: FontWeight.w400,
+                              foreground: Paint()
+                                // ..style = PaintingStyle.stroke
+                                // ..strokeWidth = 2
+                                ..color = const Color.fromARGB(255, 46, 46, 46),
+                              // //fontFamily: 'Montserrat',
+                            ),
+                          );
+                        }),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            const Divider(),
+            const SizedBox(
+              height: 20,
+            ),
+            SizedBox(
+              height: 42,
+              width: 350,
+              child: ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  primary: const Color.fromARGB(255, 0, 154, 173),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(30), // <-- Radius
                   ),
                 ),
-              )
-            ],
-          )),
-    );
+                onPressed: () {
+                  // tambah ke list makanan
+                  // push to halaman pesanan
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const Pesanan()),
+                  );
+                },
+                child: Text(
+                  'Tambahkan Ke Pesanan',
+                  style: GoogleFonts.montserrat(
+                      //color: Colors.white,
+                      fontSize: 16,
+                      fontWeight: FontWeight.w600,
+                      foreground: Paint()
+                        // ..style = PaintingStyle.stroke
+                        // ..strokeWidth = 2
+                        ..color = Colors.white
+                      // //fontFamily: 'Montserrat',
+                      ),
+                ),
+              ),
+            )
+          ],
+        ));
   }
 
   Future<dynamic> ModalBottomLevel(BuildContext context) {

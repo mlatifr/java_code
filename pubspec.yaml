@@ -37,6 +37,9 @@ dependencies:
   google_fonts: ^2.2.0
   provider: ^6.0.2
   intl: ^0.17.0
+  http: ^0.13.4
+  connectivity_plus: ^2.2.0
+  data_connection_checker: ^0.3.4
 
 dev_dependencies:
   flutter_test:
@@ -97,6 +100,7 @@ flutter:
     - 'assets/Pesanan/top_nav_bar_icon.png'
     - 'assets/Pesanan/background_pesanan.png'
     - 'assets/Pesanan/img_center_pesanan.png'
+    - 'assets/Pesanan/pesanan_top_navbar.png'
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
 

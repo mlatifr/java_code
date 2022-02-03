@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:java_code/check_connection/check_connection.dart';
 
 import 'loading_menemukan_lokasi/loading_menemukan_lokasi.dart';
 
@@ -32,9 +33,16 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  @override
+  void initState() {
+    super.initState();
+    checkInternet().checkConnection(context);
+  }
+
   TextEditingController textControllerEmail = TextEditingController();
   TextEditingController textControllerPasword = TextEditingController();
   bool passwordVisibility = false;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
