@@ -258,16 +258,27 @@ class _MyHomePageState extends State<MyHomePage> {
                                       borderRadius:
                                           BorderRadius.circular(20.0))),
                               onPressed: () {
+                                // GoogleSignIn()
+                                //     .signIn()
+                                //     .then((value) => Navigator.push(
+                                //           context,
+                                //           MaterialPageRoute(
+                                //             builder: (context) =>
+                                //                 const LoadingMenentukanLokasi(),
+                                //           ),
+                                //         ));
                                 newContext
                                     .read<GoogleSignInProvider>()
                                     .googleLogin()
-                                    .then((value) => Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                            builder: (context) =>
-                                                const LoadingMenentukanLokasi(),
-                                          ),
-                                        ));
+                                    .then((value) {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) =>
+                                          const LoadingMenentukanLokasi(),
+                                    ),
+                                  );
+                                });
                               },
                               child: Row(
                                 children: [

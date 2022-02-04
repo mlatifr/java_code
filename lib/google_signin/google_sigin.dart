@@ -7,20 +7,27 @@ import 'package:provider/provider.dart';
 class GoogleSignInProvider extends ChangeNotifier {
   final googleSignin = GoogleSignIn();
   GoogleSignInAccount? _user;
-  GoogleSignInAccount? get user => _user!;
+  GoogleSignInAccount? get user => _user;
   Future googleLogin() async {
-    final googleUser = await googleSignin.signIn();
-    if (googleUser == null) return;
-    _user = googleUser;
-    print('googleUser.email ${googleUser.email}');
+    // final googleUser = await googleSignin.signIn();
+    // if (googleUser == null) return;
+    _user = await googleSignin.signIn();
+    print('_user.email ${_user?.email}');
+    // return googleUser.email;
     notifyListeners();
   }
 
-  Future signOut() async {
-    final googleUser = await googleSignin.signOut();
-    if (googleUser != null) return;
-    _user = googleUser;
+  Future displayName() async {
+    _user = await googleSignin.signIn();
+    print('_user?.displayName ${_user?.displayName}');
+    return _user?.displayName;
+  }
 
-    print('googleUser.email ${googleUser?.email}');
+  Future handleSignOut() => googleSignin.disconnect();
+
+  Future signOut() async {
+    _user = await googleSignin.signOut();
+
+    print('logout.email ${_user?.email}');
   }
 }

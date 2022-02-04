@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:java_code/beranda/beranda.dart';
 import 'package:java_code/google_signin/google_sigin.dart';
 import 'package:provider/provider.dart';
@@ -14,6 +15,7 @@ class LoadingMenentukanLokasi extends StatefulWidget {
 }
 
 class _LoadingMenentukanLokasiState extends State<LoadingMenentukanLokasi> {
+  GoogleSignInAccount? user;
   @override
   Widget build(BuildContext context) {
     final userGoogle = FirebaseAuth.instance.currentUser;
@@ -40,9 +42,8 @@ class _LoadingMenentukanLokasiState extends State<LoadingMenentukanLokasi> {
                   child: Builder(builder: (BuildContext newContext) {
                     return ElevatedButton(
                         onPressed: () {
-                          print(newContext
-                              .read<GoogleSignInProvider>()
-                              .signOut());
+                          // GoogleSignIn().signOut();
+                          newContext.read<GoogleSignInProvider>().displayName();
                         },
                         child: Text('logout'));
                   })),
@@ -50,7 +51,7 @@ class _LoadingMenentukanLokasiState extends State<LoadingMenentukanLokasi> {
                   create: (context) => GoogleSignInProvider(),
                   child: Builder(builder: (BuildContext newContext) {
                     return Text(
-                        '${newContext.read<GoogleSignInProvider>().user?.email}');
+                        '${newContext.read<GoogleSignInProvider>().user}');
                   })),
               Padding(
                 padding: const EdgeInsetsDirectional.fromSTEB(61, 117, 61, 0),
