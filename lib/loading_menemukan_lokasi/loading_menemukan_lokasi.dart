@@ -1,6 +1,9 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:java_code/beranda/beranda.dart';
+import 'package:java_code/google_signin/google_sigin.dart';
+import 'package:provider/provider.dart';
 
 class LoadingMenentukanLokasi extends StatefulWidget {
   const LoadingMenentukanLokasi({Key? key}) : super(key: key);
@@ -13,6 +16,7 @@ class LoadingMenentukanLokasi extends StatefulWidget {
 class _LoadingMenentukanLokasiState extends State<LoadingMenentukanLokasi> {
   @override
   Widget build(BuildContext context) {
+    final userGoogle = FirebaseAuth.instance.currentUser;
     return Scaffold(
       // key: scaffoldKey,
       backgroundColor: Colors.white,
@@ -31,6 +35,23 @@ class _LoadingMenentukanLokasiState extends State<LoadingMenentukanLokasi> {
           child: Column(
             mainAxisSize: MainAxisSize.max,
             children: [
+              ChangeNotifierProvider(
+                  create: (context) => GoogleSignInProvider(),
+                  child: Builder(builder: (BuildContext newContext) {
+                    return ElevatedButton(
+                        onPressed: () {
+                          print(newContext
+                              .read<GoogleSignInProvider>()
+                              .signOut());
+                        },
+                        child: Text('logout'));
+                  })),
+              ChangeNotifierProvider(
+                  create: (context) => GoogleSignInProvider(),
+                  child: Builder(builder: (BuildContext newContext) {
+                    return Text(
+                        '${newContext.read<GoogleSignInProvider>().user?.email}');
+                  })),
               Padding(
                 padding: const EdgeInsetsDirectional.fromSTEB(61, 117, 61, 0),
                 child: Text(
