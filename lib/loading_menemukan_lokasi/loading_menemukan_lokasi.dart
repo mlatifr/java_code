@@ -45,6 +45,16 @@ class _LoadingMenentukanLokasiState extends State<LoadingMenentukanLokasi> {
                           // GoogleSignIn().signOut();
                           newContext.read<GoogleSignInProvider>().displayName();
                         },
+                        child: Text('display name'));
+                  })),
+              ChangeNotifierProvider(
+                  create: (context) => GoogleSignInProvider(),
+                  child: Builder(builder: (BuildContext newContext) {
+                    return ElevatedButton(
+                        onPressed: () {
+                          // GoogleSignIn().signOut();
+                          newContext.read<GoogleSignInProvider>().signOut();
+                        },
                         child: Text('logout'));
                   })),
               ChangeNotifierProvider(

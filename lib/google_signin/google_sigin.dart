@@ -18,7 +18,7 @@ class GoogleSignInProvider extends ChangeNotifier {
   }
 
   Future displayName() async {
-    _user = await googleSignin.signIn();
+    // _user = await googleSignin.signIn();
     print('_user?.displayName ${_user?.displayName}');
     return _user?.displayName;
   }
@@ -26,7 +26,8 @@ class GoogleSignInProvider extends ChangeNotifier {
   Future handleSignOut() => googleSignin.disconnect();
 
   Future signOut() async {
-    _user = await googleSignin.signOut();
+    // _user?.clearAuthCache();
+    return await googleSignin.signOut();
 
     print('logout.email ${_user?.email}');
   }
