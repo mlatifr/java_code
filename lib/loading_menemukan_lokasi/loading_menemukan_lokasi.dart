@@ -4,6 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:java_code/beranda/beranda.dart';
 import 'package:java_code/google_signin/google_sigin.dart';
+import 'package:java_code/main.dart';
 import 'package:provider/provider.dart';
 
 class LoadingMenentukanLokasi extends StatefulWidget {
@@ -15,10 +16,8 @@ class LoadingMenentukanLokasi extends StatefulWidget {
 }
 
 class _LoadingMenentukanLokasiState extends State<LoadingMenentukanLokasi> {
-  GoogleSignInAccount? user;
   @override
   Widget build(BuildContext context) {
-    final userGoogle = FirebaseAuth.instance.currentUser;
     return Scaffold(
       // key: scaffoldKey,
       backgroundColor: Colors.white,
@@ -37,32 +36,21 @@ class _LoadingMenentukanLokasiState extends State<LoadingMenentukanLokasi> {
           child: Column(
             mainAxisSize: MainAxisSize.max,
             children: [
-              ChangeNotifierProvider(
-                  create: (context) => GoogleSignInProvider(),
-                  child: Builder(builder: (BuildContext newContext) {
-                    return ElevatedButton(
-                        onPressed: () {
-                          // GoogleSignIn().signOut();
-                          newContext.read<GoogleSignInProvider>().displayName();
-                        },
-                        child: Text('display name'));
-                  })),
-              ChangeNotifierProvider(
-                  create: (context) => GoogleSignInProvider(),
-                  child: Builder(builder: (BuildContext newContext) {
-                    return ElevatedButton(
-                        onPressed: () {
-                          // GoogleSignIn().signOut();
-                          newContext.read<GoogleSignInProvider>().signOut();
-                        },
-                        child: Text('logout'));
-                  })),
-              ChangeNotifierProvider(
-                  create: (context) => GoogleSignInProvider(),
-                  child: Builder(builder: (BuildContext newContext) {
-                    return Text(
-                        '${newContext.read<GoogleSignInProvider>().user}');
-                  })),
+              nama(),
+              ElevatedButton(
+                  onPressed: () {
+                    // googleSignIn.disconnect();
+                    // currentUser == null;
+                    print('${currentUser?.displayName}');
+                  },
+                  child: Text('print')),
+              ElevatedButton(
+                  onPressed: () async {
+                    await googleSignIn.disconnect();
+                    currentUser == null;
+                    // print('${currentUser?.displayName}');
+                  },
+                  child: Text('logout')),
               Padding(
                 padding: const EdgeInsetsDirectional.fromSTEB(61, 117, 61, 0),
                 child: Text(
@@ -111,6 +99,12 @@ class _LoadingMenentukanLokasiState extends State<LoadingMenentukanLokasi> {
           ),
         ),
       ),
+    );
+  }
+
+  Center nama() {
+    return Center(
+      child: Text('${currentUser?.displayName}'),
     );
   }
 }

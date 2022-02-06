@@ -39,11 +39,34 @@ class MyHomePage extends StatefulWidget {
   State<MyHomePage> createState() => _MyHomePageState();
 }
 
+GoogleSignIn googleSignIn = GoogleSignIn();
+GoogleSignInAccount? currentUser;
+Future<void> _handleSignIn() async {
+  print('sign in');
+  try {
+    await googleSignIn.signIn();
+  } catch (error) {
+    print(error);
+  }
+}
+
+Future<void> _handleSignOut() => googleSignIn.disconnect();
+
 class _MyHomePageState extends State<MyHomePage> {
   @override
   void initState() {
     super.initState();
     checkInternet().checkConnection(context);
+    googleSignIn.onCurrentUserChanged.listen((GoogleSignInAccount? account) {
+      setState(() {
+        currentUser = account;
+      });
+    });
+    try {
+      // _googleSignIn.signInSilently();
+    } catch (e) {
+      print('error signInSilently(): $e');
+    }
   }
 
   TextEditingController textControllerEmail = TextEditingController();
@@ -244,70 +267,48 @@ class _MyHomePageState extends State<MyHomePage> {
                     Padding(
                       padding:
                           const EdgeInsetsDirectional.fromSTEB(12, 5, 0, 0),
-                      child: ChangeNotifierProvider(
-                        create: (context) => GoogleSignInProvider(),
-                        child: Builder(builder: (BuildContext newContext) {
-                          return ElevatedButton(
-                              style: ElevatedButton.styleFrom(
-                                  fixedSize: const Size(336, 44),
-                                  primary:
-                                      const Color.fromARGB(255, 255, 255, 255),
-                                  shadowColor:
-                                      const Color.fromARGB(255, 46, 46, 46),
-                                  shape: RoundedRectangleBorder(
-                                      borderRadius:
-                                          BorderRadius.circular(20.0))),
-                              onPressed: () {
-                                // GoogleSignIn()
-                                //     .signIn()
-                                //     .then((value) => Navigator.push(
-                                //           context,
-                                //           MaterialPageRoute(
-                                //             builder: (context) =>
-                                //                 const LoadingMenentukanLokasi(),
-                                //           ),
-                                //         ));
-                                newContext
-                                    .read<GoogleSignInProvider>()
-                                    .googleLogin()
-                                    .then((value) {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (context) =>
-                                          const LoadingMenentukanLokasi(),
-                                    ),
-                                  );
-                                });
-                              },
-                              child: Row(
-                                children: [
-                                  const SizedBox(
-                                    width: 25,
-                                  ),
-                                  Image.asset(
-                                    'assets/login/google_icon.png',
-                                    width: 20,
-                                    height: 20,
-                                    fit: BoxFit.cover,
-                                  ),
-                                  const SizedBox(
-                                    width: 25,
-                                  ),
-                                  const Text(
-                                    'Masuk Menggunakan ',
-                                    style: TextStyle(color: Colors.black),
-                                  ),
-                                  const Text(
-                                    'Google',
-                                    style: TextStyle(
-                                        color: Colors.black,
-                                        fontWeight: FontWeight.w700),
-                                  ),
-                                ],
-                              ));
-                        }),
-                      ),
+                      child: Builder(builder: (BuildContext newContext) {
+                        return ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                                fixedSize: const Size(336, 44),
+                                primary:
+                                    const Color.fromARGB(255, 255, 255, 255),
+                                shadowColor:
+                                    const Color.fromARGB(255, 46, 46, 46),
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(20.0))),
+                            onPressed: () async {
+                              print('_handleSignIn');
+                              await googleSignIn.signIn();
+                              // _handleSignIn;
+                            },
+                            child: Row(
+                              children: [
+                                const SizedBox(
+                                  width: 25,
+                                ),
+                                Image.asset(
+                                  'assets/login/google_icon.png',
+                                  width: 20,
+                                  height: 20,
+                                  fit: BoxFit.cover,
+                                ),
+                                const SizedBox(
+                                  width: 25,
+                                ),
+                                const Text(
+                                  'Masuk Menggunakan ',
+                                  style: TextStyle(color: Colors.black),
+                                ),
+                                const Text(
+                                  'Google',
+                                  style: TextStyle(
+                                      color: Colors.black,
+                                      fontWeight: FontWeight.w700),
+                                ),
+                              ],
+                            ));
+                      }),
                     ),
                     Padding(
                       padding:
