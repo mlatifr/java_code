@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:java_code/beranda/beranda.dart';
-import 'package:java_code/google_signin/google_sigin.dart';
 import 'package:java_code/main.dart';
 import 'package:provider/provider.dart';
 
@@ -36,25 +35,11 @@ class _LoadingMenentukanLokasiState extends State<LoadingMenentukanLokasi> {
           child: Column(
             mainAxisSize: MainAxisSize.max,
             children: [
-              nama(),
-              ElevatedButton(
-                  onPressed: () {
-                    // googleSignIn.disconnect();
-                    // currentUser == null;
-                    print('${currentUser?.displayName}');
-                  },
-                  child: Text('print')),
-              ElevatedButton(
-                  onPressed: () async {
-                    await googleSignIn.disconnect();
-                    currentUser == null;
-                    // print('${currentUser?.displayName}');
-                  },
-                  child: Text('logout')),
               Padding(
                 padding: const EdgeInsetsDirectional.fromSTEB(61, 117, 61, 0),
                 child: Text(
-                  'Mencari Lokasimu ...',
+                  '${googleSignIn.currentUser?.displayName}\n' +
+                      'Mencari Lokasimu ...',
                   style: GoogleFonts.montserrat(
                     color: const Color(0x801E1E1E),
                     fontSize: 22,
@@ -99,12 +84,6 @@ class _LoadingMenentukanLokasiState extends State<LoadingMenentukanLokasi> {
           ),
         ),
       ),
-    );
-  }
-
-  Center nama() {
-    return Center(
-      child: Text('${currentUser?.displayName}'),
     );
   }
 }

@@ -5,28 +5,55 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:java_code/check_connection/check_connection.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:java_code/google_signin/google_sigin.dart';
+import 'package:java_code/login_page/login_page.dart';
 import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'loading_menemukan_lokasi/loading_menemukan_lokasi.dart';
 
+void doLogout() async {
+  final prefs = await SharedPreferences.getInstance();
+  prefs.remove("user");
+  print('user id doLogout(): $user');
+  user = '';
+  main();
+}
+
+Future<String> cekLogin() async {
+  try {
+    final prefs = await SharedPreferences.getInstance();
+    // ignore: non_constant_identifier_names
+    String _username = prefs.getString("user") ?? '';
+    // print('cek _username = $_username');
+    return _username;
+  } catch (e) {
+    print('error karena $e');
+    return '';
+  }
+}
+
 Future main() async {
+  // ignore: missing_return
+
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-  runApp(const MyApp());
+
+  if (user == '' && !user.isNotEmpty) {
+    runApp(MaterialApp(
+      home: LoginPage(),
+    ));
+  } else
+    runApp(MaterialApp(
+      home: LoadingMenentukanLokasi(),
+    ));
 }
+
+var user = '';
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      debugShowCheckedModeBanner: false,
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
-    );
+    return LoadingMenentukanLokasi();
   }
 }
 
@@ -41,6 +68,7 @@ class MyHomePage extends StatefulWidget {
 
 GoogleSignIn googleSignIn = GoogleSignIn();
 GoogleSignInAccount? currentUser;
+GoogleSignInAccount? userGoogle;
 Future<void> _handleSignIn() async {
   print('sign in');
   try {
@@ -279,7 +307,18 @@ class _MyHomePageState extends State<MyHomePage> {
                                     borderRadius: BorderRadius.circular(20.0))),
                             onPressed: () async {
                               print('_handleSignIn');
-                              await googleSignIn.signIn();
+                              await googleSignIn.signIn().then((value) {
+                                setState(() {
+                                  user == currentUser?.displayName;
+                                });
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) =>
+                                        const LoadingMenentukanLokasi(),
+                                  ),
+                                );
+                              });
                               // _handleSignIn;
                             },
                             child: Row(
